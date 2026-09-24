@@ -1,0 +1,12 @@
+# Security & Secrets
+recovery-codes.txt
+*.txt
+*.pem
+*.key
+*.env
+*.env.*
+.DS_Store
+Thumbs.db
+
+# Temp scripts
+scripts/
