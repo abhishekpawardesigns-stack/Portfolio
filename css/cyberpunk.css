@@ -1,0 +1,45 @@
+/* ==========================================================================
+   ATHOS LIGHT MODE (STUDIO WHITE & ATHOS VERMILLION)
+   ========================================================================== */
+
+body[data-theme="light"],
+body[data-theme="cyberpunk"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-modal: #ffffff;
+
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+
+  --accent-orange: #ff4d2e;
+
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Header */
+body[data-theme="light"] .header,
+body[data-theme="cyberpunk"] .header {
+  background-color: rgba(248, 250, 252, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Athos Cards */
+body[data-theme="light"] .athos-stacked-card,
+body[data-theme="cyberpunk"] .athos-stacked-card,
+body[data-theme="light"] .athos-bento-card,
+body[data-theme="cyberpunk"] .athos-bento-card,
+body[data-theme="light"] .modal-content,
+body[data-theme="cyberpunk"] .modal-content {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}

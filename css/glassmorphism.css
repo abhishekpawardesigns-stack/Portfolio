@@ -1,0 +1,44 @@
+/* ==========================================================================
+   ATHOS DARK MODE (OBSIDIAN & ATHOS VERMILLION)
+   ========================================================================== */
+
+body[data-theme="dark"],
+body[data-theme="glassmorphism"] {
+  --bg-primary: #08090a;
+  --bg-secondary: #0e1014;
+  --bg-card: #121418;
+  --bg-card-hover: #181b22;
+  --bg-modal: #0a0b0e;
+
+  --text-primary: #ffffff;
+  --text-secondary: #9499a6;
+  --text-muted: #5e6370;
+
+  --accent-orange: #ff4d2e;
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 77, 46, 0.4);
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Header */
+body[data-theme="dark"] .header,
+body[data-theme="glassmorphism"] .header {
+  background-color: rgba(8, 9, 10, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Athos Cards */
+body[data-theme="dark"] .athos-stacked-card,
+body[data-theme="glassmorphism"] .athos-stacked-card,
+body[data-theme="dark"] .athos-bento-card,
+body[data-theme="glassmorphism"] .athos-bento-card,
+body[data-theme="dark"] .modal-content,
+body[data-theme="glassmorphism"] .modal-content {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+}
