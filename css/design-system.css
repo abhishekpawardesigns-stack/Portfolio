@@ -223,7 +223,7 @@ img {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 0 12px rgba(213, 247, 76, 0.15);
+  box-shadow: none;
 }
 
 .brand-logo-img {
@@ -267,13 +267,13 @@ img {
   font-weight: 700;
   letter-spacing: -0.01em;
   transition: all var(--transition-fast);
-  box-shadow: 0 8px 24px rgba(213, 247, 76, 0.25);
+  box-shadow: none;
 }
 
 .btn-lime:hover {
   background-color: var(--accent-lime-hover);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(213, 247, 76, 0.4);
+  box-shadow: none;
 }
 
 .btn-outline {
@@ -548,6 +548,128 @@ img {
   background: var(--accent-lime);
   border-color: var(--accent-lime);
   color: var(--bg-dark);
+}
+
+/* Behance Portfolio Action Banner in Selected Projects */
+.behance-portfolio-banner {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem;
+  padding: 1.75rem 2.25rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(18, 19, 22, 0.95) 0%, rgba(12, 13, 14, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.behance-portfolio-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 10% 50%, rgba(213, 247, 76, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.behance-portfolio-banner:hover {
+  transform: translateY(-3px);
+  border-color: rgba(213, 247, 76, 0.35);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(213, 247, 76, 0.08);
+}
+
+.behance-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.behance-badge-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 14px;
+  background: rgba(213, 247, 76, 0.1);
+  border: 1px solid rgba(213, 247, 76, 0.25);
+  color: var(--accent-lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.behance-portfolio-banner:hover .behance-badge-icon {
+  background: var(--accent-lime);
+  color: #000000;
+  box-shadow: none;
+}
+
+.behance-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.behance-banner-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.behance-banner-desc {
+  font-size: 0.92rem;
+  color: var(--text-gray);
+  margin: 0;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+.behance-action-btn {
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.behance-action-btn .behance-arrow {
+  font-size: 1.1rem;
+  transition: transform var(--transition-fast);
+  display: inline-block;
+}
+
+.behance-action-btn:hover .behance-arrow {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 768px) {
+  .behance-portfolio-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+  
+  .behance-banner-left {
+    flex-direction: row;
+    gap: 1.15rem;
+  }
+
+  .behance-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Stats Bento Grid */
@@ -971,7 +1093,7 @@ img {
 .process-3d-character {
   width: auto;
   max-width: 100%;
-  max-height: 312px;
+  max-height: 328px;
   object-fit: contain;
   filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 24px rgba(213, 247, 76, 0.18));
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -996,7 +1118,7 @@ img {
     justify-content: center;
   }
   .process-3d-character {
-    max-height: 264px;
+    max-height: 278px;
   }
 }
 
@@ -1135,7 +1257,7 @@ img {
 .process-pill-btn:hover {
   background: #e2ff62;
   transform: scale(1.04);
-  box-shadow: 0 4px 18px rgba(213, 247, 76, 0.35);
+  box-shadow: none;
 }
 
 .process-pill-btn svg {
@@ -1305,7 +1427,7 @@ img {
   background: #141517;
   border: 3px solid var(--accent-lime);
   z-index: 3;
-  box-shadow: 0 0 15px rgba(213, 247, 76, 0.4);
+  box-shadow: none;
 }
 
 .timeline-card-date {
@@ -1384,7 +1506,7 @@ img {
 
 .vertical-timeline-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(213, 247, 76, 0.4);
+  box-shadow: none;
   background: #e4ff6e;
 }
 
@@ -1770,3 +1892,35 @@ img {
   color: #0f172a;
   border-color: rgba(0, 0, 0, 0.12);
 }
+
+[data-theme="light"] .behance-portfolio-banner {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .behance-portfolio-banner:hover {
+  border-color: var(--accent-lime);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .behance-badge-icon {
+  background: rgba(92, 148, 0, 0.1);
+  border-color: rgba(92, 148, 0, 0.25);
+  color: #5c9400;
+}
+
+[data-theme="light"] .behance-portfolio-banner:hover .behance-badge-icon {
+  background: #5c9400;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+[data-theme="light"] .behance-banner-title {
+  color: #0f172a;
+}
+
+[data-theme="light"] .behance-banner-desc {
+  color: #64748b;
+}
+
