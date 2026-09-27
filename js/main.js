@@ -90,6 +90,53 @@ function loadMoreProjects() {
   alert('All featured projects are currently displayed.');
 }
 
+function initHorizontalScrollTimeline() {
+  const section = document.getElementById('experience');
+  const track = document.getElementById('horizontalScrollTrack');
+  if (!section || !track) return;
+
+  let ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        if (window.innerWidth <= 868) {
+          track.style.transform = 'none';
+          ticking = false;
+          return;
+        }
+
+        const rect = section.getBoundingClientRect();
+        const totalScrollable = section.offsetHeight - window.innerHeight;
+        if (totalScrollable <= 0) {
+          ticking = false;
+          return;
+        }
+
+        const progress = Math.max(0, Math.min(1, -rect.top / totalScrollable));
+        const maxTranslate = track.scrollWidth - window.innerWidth;
+        const translateX = -progress * Math.max(0, maxTranslate);
+
+        track.style.transform = `translateX(${translateX}px)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+}
+
+function stepHorizontalTimeline(direction) {
+  const section = document.getElementById('experience');
+  if (!section) return;
+  const totalScroll = section.offsetHeight - window.innerHeight;
+  const step = totalScroll / 5;
+  window.scrollBy({ top: direction * step, behavior: 'smooth' });
+}
+
 function initTheme() {
   const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
   document.documentElement.setAttribute('data-theme', savedTheme);
@@ -102,6 +149,11 @@ function toggleTheme() {
   localStorage.setItem('portfolio-theme', newTheme);
 }
 
-document.addEventListener('DOMContentLoaded', initTheme);
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initHorizontalScrollTimeline();
+});
+
+
 
 

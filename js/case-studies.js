@@ -88,7 +88,7 @@ const caseStudiesData = {
   'exp-tech-mahindra': {
     title: 'Tech Mahindra (Microsoft) — Senior UX Designer',
     category: 'Full Time • Jan 2026 – Present',
-    overview: 'Introduced an AI-first approach to enterprise design workflows, eliminating fragmented design processes and enabling deep-dive usability audits. Transformed complex enterprise interfaces into a scalable, high-performance design system.',
+    overview: 'I stepped into an environment where design workflows were slow and fragmented, so I introduced an AI-first approach to handle the heavy lifting. This freed me up to focus on deep-dive usability audits, turning disjointed enterprise interfaces into a clean, consistent system. The result was a 25–40% boost in speed and a much more polished user experience that actually scales.',
     projects: [
       {
         title: 'AI-First Design Workflow Pipeline',
@@ -221,7 +221,7 @@ const caseStudiesData = {
   'exp-bilwamindia': {
     title: 'BilwamIndia Technologies — UX/UI Designer',
     category: 'Full Time • Jun 2018 – Jun 2020',
-    overview: 'My efforts led to significant improvements in user engagement and website performance.',
+    overview: 'My efforts led to significant improvements in user engagement and website performance. Collaborated with developers to rebrand a travel and tour website with a consistent design system, developed a landing page boosting site traffic by 50%, and revamped the cab service app interface to drive a 30% engagement lift.',
     projects: [
       {
         title: 'Rebranded Travel and Tour Website',
