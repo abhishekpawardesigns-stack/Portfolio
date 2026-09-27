@@ -3,7 +3,7 @@
    Exact Replication of All Sections from https://visualidentity.studio/
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
   /* Visual Identity Studio Palette */
@@ -443,6 +443,137 @@ img {
   }
 }
 
+/* ==========================================================================
+   ABOUT SECTION — LEFT CONTENT / RIGHT 3D CHARACTER ON PODIUM
+   ========================================================================== */
+.about-hero-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.about-hero-content {
+  flex: 1 1 44%;
+  max-width: 520px;
+  position: relative;
+  z-index: 2;
+}
+
+.about-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 800;
+  color: var(--text-white);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.about-hero-title .accent-lime {
+  color: var(--accent-lime);
+}
+
+.about-hero-quote {
+  font-family: var(--font-body);
+  font-size: clamp(1.15rem, 1.45vw, 1.32rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+  margin-bottom: 0;
+}
+
+.about-hero-visual {
+  flex: 1 1 56%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 620px;
+}
+
+.about-hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(213, 247, 76, 0.25) 0%, rgba(213, 247, 76, 0) 70%);
+  filter: blur(75px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-hero-character {
+  position: relative;
+  z-index: 1;
+  width: 125%;
+  max-width: 860px;
+  height: auto;
+  max-height: 780px;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(213, 247, 76, 0.25));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+  transform-origin: center center;
+}
+
+.about-hero-character:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+@media (max-width: 1100px) {
+  .about-hero-visual {
+    min-height: 520px;
+  }
+  .about-hero-character {
+    width: 115%;
+    max-width: 700px;
+    max-height: 640px;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-hero-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+  .about-hero-content {
+    max-width: 100%;
+  }
+  .about-hero-visual {
+    width: 100%;
+    justify-content: center;
+    min-height: 480px;
+  }
+  .about-hero-character {
+    width: 100%;
+    max-width: 600px;
+    max-height: 560px;
+  }
+  .about-hero-glow {
+    width: 440px;
+    height: 440px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hero-visual {
+    min-height: 380px;
+  }
+  .about-hero-character {
+    width: 100%;
+    max-width: 100%;
+    max-height: 420px;
+  }
+  .about-hero-glow {
+    width: 300px;
+    height: 300px;
+  }
+}
+
 /* 3-Column Portfolio Projects Grid */
 .portfolio-grid {
   display: grid;
@@ -851,6 +982,7 @@ img {
 .timeline-block:hover .trend-link {
   gap: 0.75rem;
 }
+
 
 /* Services Nested Accordion Component */
 .accordion-wrapper {
@@ -1923,4 +2055,230 @@ img {
 [data-theme="light"] .behance-banner-desc {
   color: #64748b;
 }
+
+/* ==========================================================================
+   HIGHLIGHTS SECTION (Continuous Slow Infinite Photo Carousel)
+   ========================================================================== */
+.highlights-section {
+  position: relative;
+  background: #000000;
+  padding: 4.5rem 0 5rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.highlights-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 90%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.highlights-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.highlights-header {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.highlights-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--text-white);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.highlights-header .section-description {
+  margin-top: 0.65rem;
+  margin-bottom: 0;
+}
+
+/* Continuous Infinite Marquee Track */
+.highlights-marquee-track {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 2rem 0 3.25rem;
+}
+
+.highlights-marquee-track::before,
+.highlights-marquee-track::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.highlights-marquee-track::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-dark), transparent);
+}
+
+.highlights-marquee-track::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-dark), transparent);
+}
+
+.highlights-marquee-wrapper {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 2.25rem;
+  animation: highlightsScroll 48s linear infinite;
+  will-change: transform;
+}
+
+.highlights-marquee-wrapper:hover {
+  animation-play-state: paused;
+}
+
+@keyframes highlightsScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Large Photo Card Structure */
+.highlight-card-wrapper {
+  flex-shrink: 0;
+  width: 330px;
+  position: relative;
+  perspective: 1000px;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.3s ease;
+  cursor: pointer;
+  transform-origin: center center;
+}
+
+/* Specific Organic Tilts */
+.highlight-card-wrapper:nth-child(7n + 1) { transform: rotate(-3.5deg) translateY(10px); z-index: 1; }
+.highlight-card-wrapper:nth-child(7n + 2) { transform: rotate(2.8deg) translateY(-8px); z-index: 2; }
+.highlight-card-wrapper:nth-child(7n + 3) { transform: rotate(-1.5deg) translateY(6px); z-index: 3; }
+.highlight-card-wrapper:nth-child(7n + 4) { transform: rotate(3.2deg) translateY(-6px); z-index: 4; }
+.highlight-card-wrapper:nth-child(7n + 5) { transform: rotate(-2.6deg) translateY(8px); z-index: 5; }
+.highlight-card-wrapper:nth-child(7n + 6) { transform: rotate(2.2deg) translateY(-5px); z-index: 6; }
+.highlight-card-wrapper:nth-child(7n + 7) { transform: rotate(-2.0deg) translateY(4px); z-index: 7; }
+
+.highlight-card-wrapper:hover {
+  transform: rotate(0deg) scale(1.05) translateY(-14px) !important;
+  z-index: 25 !important;
+}
+
+/* Double-layered Card Aesthetic */
+.highlight-card {
+  position: relative;
+  background: #0f1013;
+  padding: 8px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.highlight-card-wrapper:hover .highlight-card {
+  border-color: rgba(213, 247, 76, 0.45);
+  box-shadow: 0 32px 65px rgba(0, 0, 0, 0.95), 0 0 35px rgba(213, 247, 76, 0.18);
+}
+
+.highlight-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.highlight-card-inner {
+  width: 100%;
+  aspect-ratio: 3 / 4.2;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background: #141518;
+}
+
+.highlight-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.highlight-card-wrapper:hover .highlight-card-img {
+  transform: scale(1.03);
+}
+
+/* Light Mode Adaptations */
+[data-theme="light"] .highlights-section {
+  background: #f8f9fb;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .highlights-caption {
+  color: rgba(15, 23, 42, 0.85);
+}
+
+[data-theme="light"] .highlights-arrow {
+  color: rgba(15, 23, 42, 0.6);
+}
+
+[data-theme="light"] .highlight-card {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .highlight-card-wrapper:hover .highlight-card {
+  border-color: var(--accent-lime);
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.15), 0 0 26px rgba(92, 148, 0, 0.18);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .highlight-card-wrapper {
+    width: 290px;
+  }
+  .highlights-caption {
+    font-size: 1.65rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .highlights-section {
+    padding: 3.5rem 0 4rem;
+  }
+  .highlight-card-wrapper {
+    width: 250px;
+  }
+  .highlights-marquee-track::before,
+  .highlights-marquee-track::after {
+    width: 60px;
+  }
+  .highlights-marquee-track {
+    padding: 1.5rem 0 2.5rem;
+  }
+  .highlights-marquee-wrapper {
+    gap: 1.5rem;
+    animation-duration: 36s;
+  }
+}
+
+
 

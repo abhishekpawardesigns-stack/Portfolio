@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Geometry &amp; Claymorphism Lab — Experimental Test Suite</title>
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=2" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png?v=2" />
+  <link rel="shortcut icon" href="favicon.ico?v=2" />
+  
+  <!-- Modern Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Core Design System -->
+  <link rel="stylesheet" href="css/design-system.css" />
+
+  <style>
+    /* Test Lab Specialized Styles */
+    body {
+      overflow-x: hidden;
+      background-color: #000000;
+      color: #ffffff;
+      font-family: var(--font-body);
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    #lab-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    .lab-ui-overlay {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      pointer-events: none;
+      padding: 1.5rem 2rem;
+      box-sizing: border-box;
+    }
+
+    .interactive {
+      pointer-events: auto;
+    }
+
+    /* Lab Top Header */
+    .lab-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      background: rgba(12, 13, 14, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      padding: 0.75rem 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .lab-header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-gray);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .back-btn:hover {
+      color: #000000;
+      background: var(--accent-lime);
+      border-color: var(--accent-lime);
+    }
+
+    .lab-title-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+    }
+
+    .lab-pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent-lime);
+      box-shadow: 0 0 10px var(--accent-lime);
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.5; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+
+    /* Material Type Switcher Segmented Bar */
+    .material-switcher-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 0.3rem 0.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mat-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background: transparent;
+      border: none;
+      color: var(--text-gray);
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mat-btn:hover {
+      color: #ffffff;
+    }
+
+    .mat-btn.active {
+      background: rgba(213, 247, 76, 0.2);
+      color: var(--accent-lime);
+      border: 1px solid rgba(213, 247, 76, 0.4);
+    }
+
+    /* Main Floating Shape Switcher Bar */
+    .shape-selector-container {
+      margin: 1.5rem auto;
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .shape-selector-dock {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.75rem;
+      background: rgba(18, 19, 22, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .shape-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.6rem 1.15rem;
+      border-radius: 999px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-gray);
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .shape-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .shape-btn.active {
+      background: var(--accent-lime);
+      color: #000000;
+      font-weight: 800;
+    }
+
+    .shape-btn .material-symbols-outlined {
+      font-size: 18px;
+    }
+
+    .featured-shape-btn {
+      border-color: rgba(213, 247, 76, 0.4) !important;
+      background: rgba(213, 247, 76, 0.08);
+      color: var(--accent-lime);
+    }
+
+    /* Controls Panel Dock */
+    .lab-controls-panel {
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto;
+      background: rgba(12, 13, 14, 0.9);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 1.25rem 1.75rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-gray);
+    }
+
+    .control-label span:last-child {
+      color: var(--accent-lime);
+      font-family: monospace;
+      font-size: 0.85rem;
+    }
+
+    .custom-range {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.12);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .custom-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent-lime);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(213, 247, 76, 0.5);
+      transition: transform 0.15s ease;
+    }
+
+    .custom-range::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .hud-stat-pill {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    @media (max-width: 900px) {
+      .lab-ui-overlay {
+        padding: 1rem;
+      }
+      .lab-header {
+        border-radius: 16px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .shape-selector-dock {
+        border-radius: 16px;
+      }
+      .shape-btn {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen WebGL2 Multi-Shape Raymarching Canvas -->
+  <canvas id="lab-canvas"></canvas>
+
+  <!-- Interactive HUD Overlay -->
+  <div class="lab-ui-overlay">
+    
+    <!-- Top Navigation Header -->
+    <header class="lab-header interactive">
+      <div class="lab-header-left">
+        <a href="index.html" class="back-btn">
+          <span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span>
+          <span>Back to Portfolio</span>
+        </a>
+        <div class="lab-title-badge">
+          <span class="lab-pulse-dot"></span>
+          <span>3D Clay &amp; Shader Laboratory</span>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <!-- Material Mode Switcher -->
+        <div class="material-switcher-bar">
+          <button class="mat-btn active" id="btn-mat-clay" onclick="setMaterial(1, this)">
+            <span class="material-symbols-outlined" style="font-size: 15px;">brush</span>
+            <span>Clay Matte</span>
+          </button>
+          <button class="mat-btn" id="btn-mat-glass" onclick="setMaterial(0, this)">
+            <span class="material-symbols-outlined" style="font-size: 15px;">lens_blur</span>
+            <span>Glass Refraction</span>
+          </button>
+        </div>
+
+        <span class="hud-stat-pill" id="fps-display">60 FPS</span>
+        <span class="hud-stat-pill" style="color: var(--accent-lime);" id="active-shape-indicator">Active: 3 Clay Gears</span>
+      </div>
+    </header>
+
+    <!-- Center Floating Shape Selector -->
+    <div class="shape-selector-container">
+      
+      <!-- Shape Pills Dock -->
+      <div class="shape-selector-dock interactive" id="shape-dock">
+        <!-- New 3 Rotating Clay Gears Shape -->
+        <button class="shape-btn active featured-shape-btn" onclick="setShape(7, '3 Interconnected Gears', this)">
+          <span class="material-symbols-outlined">settings</span>
+          <span>⚙️ 3 Rotating Gears</span>
+        </button>
+
+        <button class="shape-btn" onclick="setShape(4, '8-Cone Star', this)">
+          <span class="material-symbols-outlined">flare</span>
+          <span>8-Cone Star</span>
+        </button>
+
+        <button class="shape-btn" onclick="setShape(2, 'Organic Blob', this)">
+          <span class="material-symbols-outlined">water_drop</span>
+          <span>Organic Blob</span>
+        </button>
+
+        <button class="shape-btn" onclick="setShape(1, 'Sphere', this)">
+          <span class="material-symbols-outlined">radio_button_checked</span>
+          <span>Sphere</span>
+        </button>
+
+        <button class="shape-btn" onclick="setShape(3, 'Cuboid', this)">
+          <span class="material-symbols-outlined">view_in_ar</span>
+          <span>Cuboid</span>
+        </button>
+
+        <button class="shape-btn" onclick="setShape(0, 'Octagram Star', this)">
+          <span class="material-symbols-outlined">stars</span>
+          <span>Octagram Star</span>
+        </button>
+
+        <button class="shape-btn" onclick="setShape(5, 'Torus Ring', this)">
+          <span class="material-symbols-outlined">motion_photos_on</span>
+          <span>Torus</span>
+        </button>
+
+        <button class="shape-btn" onclick="setShape(6, 'Octahedron', this)">
+          <span class="material-symbols-outlined">diamond</span>
+          <span>Octahedron</span>
+        </button>
+      </div>
+
+      <!-- Quick Tip -->
+      <div style="text-align: center; color: var(--text-gray); font-size: 0.85rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
+        Move your mouse to orbit lighting and explore 3D raymarched clay rendering.
+      </div>
+    </div>
+
+    <!-- Bottom Real-time Controls Panel -->
+    <div class="lab-controls-panel interactive">
+      
+      <!-- Control 1: Gear / Object Rotation Speed -->
+      <div class="control-group">
+        <div class="control-label">
+          <span>Gear Rotation Speed</span>
+          <span id="val-rot">1.0x</span>
+        </div>
+        <input type="range" class="custom-range" id="slider-rot" min="0.0" max="3.0" step="0.1" value="1.0" oninput="updateParam('rot', this.value)" />
+      </div>
+
+      <!-- Control 2: Clay Softness / Velvet Sheen -->
+      <div class="control-group">
+        <div class="control-label">
+          <span>Clay Velvet Sheen</span>
+          <span id="val-sheen">0.45</span>
+        </div>
+        <input type="range" class="custom-range" id="slider-sheen" min="0.0" max="1.0" step="0.05" value="0.45" oninput="updateParam('sheen', this.value)" />
+      </div>
+
+      <!-- Control 3: Ambient Occlusion Intensity -->
+      <div class="control-group">
+        <div class="control-label">
+          <span>Ambient Occlusion</span>
+          <span id="val-ao">0.65</span>
+        </div>
+        <input type="range" class="custom-range" id="slider-ao" min="0.0" max="1.0" step="0.05" value="0.65" oninput="updateParam('ao', this.value)" />
+      </div>
+
+      <!-- Control 4: Glass Refraction (Active in Glass Mode) -->
+      <div class="control-group" id="grp-ior">
+        <div class="control-label">
+          <span>Glass IOR / Dispersion</span>
+          <span id="val-disp">0.288</span>
+        </div>
+        <input type="range" class="custom-range" id="slider-disp" min="0.0" max="0.8" step="0.01" value="0.288" oninput="updateParam('disp', this.value)" />
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- WebGL Shader Script for Multi-Shape 3D Geometry Raymarching -->
+  <script>
+    const canvas = document.getElementById('lab-canvas');
+    const gl = canvas.getContext('webgl2', { alpha: false, antialias: false });
+
+    if (!gl) {
+      alert('WebGL 2.0 is required to run the 3D Geometry Laboratory.');
+    }
+
+    // Vertex Shader
+    const VS = `#version 300 es
+    in vec2 aPos; out vec2 vUv;
+    void main(){ vUv=aPos*.5+.5; gl_Position=vec4(aPos,0.,1.); }`;
+
+    // Background OKLab Dynamic Gradient Fragment Shader
+    const FG = `#version 300 es
+    precision highp float;
+    in vec2 vUv; uniform float uT; uniform vec2 uM; uniform int uMat; out vec4 fC;
+    uvec2 pcg(uvec2 v){v=v*1664525u+1013904223u;v.x+=v.y*v.y*1664525u+1013904223u;v.y+=v.x*v.x*1664525u+1013904223u;v^=v>>16u;v.x+=v.y*v.y*1664525u+1013904223u;v.y+=v.x*v.x*1664525u+1013904223u;return v;}
+    float hsh(vec2 p){uvec2 v=floatBitsToUint(p);v=pcg(v);return float(v.x^v.y)/4294967295.;}
+    float gv(int i){if(i==0)return 0.;if(i==1)return .16078;if(i==2)return .39215;if(i==3)return .61568;if(i==4)return .81568;return 1.;}
+    vec3 lin(float v){return vec3(pow(max(v,0.),2.2));}
+    vec3 srgb(vec3 v){return pow(max(v,vec3(0.)),vec3(1./2.2));}
+    vec3 cbrt(vec3 v){return sign(v)*pow(abs(v),vec3(1./3.));}
+    vec3 oklab(vec3 a,vec3 b,float t){
+      const mat3 L=mat3(.41216,.21185,.0883,.53627,.68071,.28184,.05145,.1074,.63026);
+      const mat3 F=mat3(4.07672,-1.26814,-.00411,-3.30721,2.60933,-.70347,.23075,-.34113,1.70686);
+      vec3 l1=cbrt(L*a),l2=cbrt(L*b),l=mix(l1,l2,t);l*=1.+.025*t*(1.-t);return F*(l*l*l);}
+    vec3 gc(float p){p=clamp(p,0.,1.);for(int i=0;i<5;i++){float a=float(i)*.2,b=float(i+1)*.2;if(p<=b||i==4){float t=clamp((p-a)/max(b-a,1e-5),0.,1.);return srgb(oklab(lin(gv(i)),lin(gv(i+1)),t));}}return vec3(1.);}
+    vec2 rot2(vec2 v,float a){float s=sin(a),c=cos(a);return vec2(v.x*c-v.y*s,v.x*s+v.y*c);}
+    const float PI=3.14159265359;
+    void main(){
+      if (uMat == 1) {
+        // Clay studio backdrop: rich dark vignette with subtle lime radial sheen
+        vec2 uv = vUv - vec2(0.5);
+        float d = length(uv);
+        vec3 darkObsidian = vec3(0.04, 0.045, 0.05);
+        vec3 limeGlow = vec3(0.08, 0.11, 0.04);
+        vec3 col = mix(limeGlow, darkObsidian, smoothstep(0.1, 0.9, d));
+        col += (hsh(gl_FragCoord.xy) - 0.5) / 255.0;
+        fC = vec4(col, 1.0);
+      } else {
+        vec2 ctr=vec2(.5069686,.9874730)+mix(vec2(0.),(uM-.5),.77);
+        vec2 uv=rot2((vUv-ctr)/1.46,(.7506-.5)*2.*PI);
+        float p=length(uv)-uT*.0625; float cy=floor(p); bool rv=int(cy)%2==0;
+        float ap=rv?1.-fract(p):fract(p);
+        vec3 col=gc(ap); col+=(hsh(gl_FragCoord.xy)-.5)/255.;
+        fC=vec4(col,1.);
+      }
+    }`;
+
+    // Texture blender
+    const FT = `#version 300 es
+    precision highp float;
+    in vec2 vUv; uniform sampler2D uGrad; uniform sampler2D uText; out vec4 fC;
+    void main(){
+      vec4 g = texture(uGrad, vUv);
+      vec4 t = texture(uText, vec2(vUv.x, 1.-vUv.y));
+      fC = vec4(mix(g.rgb, t.rgb, t.a), 1.);
+    }`;
+
+    // Main 3D Multi-Shape Raymarching Fragment Shader
+    const FS = `#version 300 es
+    precision highp float; precision highp int;
+    in vec2 vUv;
+    uniform sampler2D uBg;
+    uniform float uT;
+    uniform vec2 uM;
+    uniform vec2 uR;
+    uniform float uRnd;
+    uniform int uShape;     // 0: Octagram, 1: Sphere, 2: Blob, 3: Cuboid, 4: 8-Cones, 5: Torus, 6: Octahedron, 7: 3 Gears
+    uniform int uMat;       // 0: Glass, 1: Clay
+    uniform float uIOR;     // Refraction index
+    uniform float uDisp;    // Dispersion factor
+    uniform float uRotSpd;  // Rotation speed
+    uniform float uSheen;   // Clay sheen
+    uniform float uAO;      // Ambient occlusion intensity
+
+    out vec4 fC;
+    const float PI = 3.14159265359;
+    const vec3 RO = vec3(0., 0., -4.25);
+
+    mat3 rX(float a){float c=cos(a),s=sin(a);return mat3(1,0,0,0,c,-s,0,s,c);}
+    mat3 rY(float a){float c=cos(a),s=sin(a);return mat3(c,0,s,0,1,0,-s,0,c);}
+    mat3 rZ(float a){float c=cos(a),s=sin(a);return mat3(c,-s,0,s,c,0,0,0,1);}
+    vec2 rot2(vec2 v, float a){float s=sin(a),c=cos(a);return vec2(v.x*c-v.y*s, v.x*s+v.y*c);}
+
+    // Primitive SDFs
+    float bx(vec3 p, vec3 b){vec3 d=abs(p)-b;return length(max(d,0.))+min(max(d.x,max(d.y,d.z)),0.);}
+
+    // 0: Octagram Star (4 intersecting boxes)
+    float sdOctagram(vec3 p) {
+      p = vec3(-p.z, p.y, p.x);
+      vec3 b = vec3(.125, .75, .225);
+      float r = bx(p, b);
+      r = min(r, bx(rZ(PI*.25)*p, b));
+      r = min(r, bx(rZ(PI*.5)*p, b));
+      r = min(r, bx(rZ(PI*.75)*p, b));
+      return r;
+    }
+
+    // 1: Sphere
+    float sdSphere(vec3 p, float s) {
+      return length(p) - s;
+    }
+
+    // 2: Organic Blob
+    float sdBlob(vec3 p, float s, float t) {
+      float d = length(p) - s;
+      float disp = sin(3.0 * p.x + t * 2.0) * sin(3.0 * p.y + t * 1.5) * sin(3.0 * p.z + t * 2.5) * 0.18;
+      disp += sin(6.0 * p.x - t) * sin(6.0 * p.y + t) * sin(6.0 * p.z) * 0.07;
+      return d + disp;
+    }
+
+    // 3: Cuboid
+    float sdRoundBox(vec3 p, vec3 b, float r) {
+      vec3 q = abs(p) - b;
+      return length(max(q, 0.0)) + min(max(q.x, max(q.y, q.z)), 0.0) - r;
+    }
+
+    // 4: 8 Connected Cones Star
+    float sd8Cones(vec3 p) {
+      vec3 q = abs(p);
+      if (q.x < q.y) q.xy = q.yx;
+      if (q.x < q.z) q.xz = q.zx;
+      if (q.y < q.z) q.yz = q.zy;
+
+      vec3 cAxis = normalize(vec3(1.0, 1.0, 1.0));
+      float h = dot(q, cAxis);
+      vec3 perp = q - h * cAxis;
+      float coneRadius = max(0.0, (0.95 - h) * 0.38);
+      float dCone = max(length(perp) - coneRadius, h - 0.95);
+      dCone = max(dCone, -h);
+
+      float core = length(q) - 0.28;
+      return min(dCone, core);
+    }
+
+    // 5: Torus Glass Ring
+    float sdTorus(vec3 p, vec2 t) {
+      vec2 q = vec2(length(p.xz) - t.x, p.y);
+      return length(q) - t.y;
+    }
+
+    // 6: Diamond Octahedron
+    float sdOctahedron(vec3 p, float s) {
+      p = abs(p);
+      return (p.x + p.y + p.z - s) * 0.57735027;
+    }
+
+    // 7: Mechanical 3D Gear Generator
+    float sdSingleGear(vec3 p, float R, float teethCount, float toothDepth, float thickness, float holeRadius, float angle) {
+      vec2 p2 = rot2(p.xy, angle);
+      float r = length(p2);
+      float a = atan(p2.y, p2.x);
+      
+      // Trapezoidal teeth modulation
+      float tooth = clamp(cos(teethCount * a) * 2.2, -0.65, 0.65) * toothDepth;
+      float gearProfile = r - (R + tooth);
+      
+      // Extrude along Z with rounded bevels
+      vec2 w = vec2(gearProfile, abs(p.z) - thickness);
+      float dGear = min(max(w.x, w.y), 0.0) + length(max(w, 0.0)) - 0.025;
+      
+      // Center hub bore hole
+      float dHole = length(p.xy) - holeRadius;
+      dGear = max(dGear, -dHole);
+      
+      // Center axle hub collar
+      float dHub = max(length(p.xy) - (holeRadius + 0.075), abs(p.z) - (thickness + 0.04)) - 0.02;
+      dHub = max(dHub, -dHole);
+
+      // Recessed spoke web plate
+      float dRecess = max(length(p.xy) - (R - 0.06), abs(p.z) - (thickness * 0.5)) - 0.015;
+      dRecess = max(dRecess, -dHole);
+      
+      return min(dGear, min(dHub, dRecess));
+    }
+
+    // Global Gear ID for multi-tone clay materials
+    int gGearId = 0;
+
+    // Three Interconnected Gears SDF
+    float sd3Gears(vec3 p) {
+      float spd = uT * 1.5 * uRotSpd;
+      
+      // Gear 1: Main Driving Center Gear (14 Teeth, Green Accent)
+      vec3 p1 = p - vec3(0.0, 0.15, 0.0);
+      float g1 = sdSingleGear(p1, 0.55, 14.0, 0.09, 0.12, 0.14, spd);
+
+      // Gear 2: Left Meshed Gear (10 Teeth, Counter-rotating)
+      vec3 p2 = p - vec3(-0.68, -0.42, 0.0);
+      float g2 = sdSingleGear(p2, 0.40, 10.0, 0.08, 0.12, 0.11, -spd * (14.0 / 10.0) + 0.22);
+
+      // Gear 3: Right Meshed Gear (12 Teeth, Counter-rotating)
+      vec3 p3 = p - vec3(0.72, 0.48, 0.0);
+      float g3 = sdSingleGear(p3, 0.47, 12.0, 0.085, 0.12, 0.12, -spd * (14.0 / 12.0) - 0.18);
+
+      float dMin = g1;
+      gGearId = 1;
+      if (g2 < dMin) { dMin = g2; gGearId = 2; }
+      if (g3 < dMin) { dMin = g3; gGearId = 3; }
+
+      return dMin;
+    }
+
+    // Master Geometry Evaluator
+    float evalShape(vec3 p) {
+      if (uShape == 0) return sdOctagram(p);
+      if (uShape == 1) return sdSphere(p, 0.65);
+      if (uShape == 2) return sdBlob(p, 0.55, uT * uRotSpd);
+      if (uShape == 3) return sdRoundBox(p, vec3(0.42, 0.42, 0.42), 0.12);
+      if (uShape == 4) return sd8Cones(p);
+      if (uShape == 5) return sdTorus(p, vec2(0.55, 0.22));
+      if (uShape == 6) return sdOctahedron(p, 0.85);
+      if (uShape == 7) return sd3Gears(p);
+      return sd8Cones(p);
+    }
+
+    vec3 aP(vec3 p){
+      if (uShape == 7) {
+        // Subtle 3D isometric tilt for the gear assembly
+        vec3 q = p / 0.38 * vec3(uR.x / uR.y, 1., 1.);
+        vec2 mAngle = (uM - 0.5) * 1.5;
+        q = rY(mAngle.x + 0.25) * rX(-0.35 + mAngle.y) * q;
+        return q;
+      }
+      vec3 q = p / 0.3 * vec3(uR.x / uR.y, 1., 1.) * (1. + uRnd + .01);
+      vec2 axis = vec2(-.5278 - 1., .5) * 2.;
+      q = rY(uT * .25 * uRotSpd) * rZ(.4167 * 2. * PI) * rY(axis.y * PI) * rX(axis.x * PI) * q;
+      return q.xzy;
+    }
+
+    float sdf(vec3 p){
+      return max(1e-10, evalShape(aP(p)) - (uRnd + .005)) * .3;
+    }
+
+    vec3 nm(vec3 p, float e){
+      vec2 h = vec2(1., -1.) * e * .5;
+      return normalize(h.xyy * evalShape(aP(p + h.xyy)) + h.yyx * evalShape(aP(p + h.yyx)) + h.yxy * evalShape(aP(p + h.yxy)) + h.xxx * evalShape(aP(p + h.xxx)));
+    }
+
+    // Ambient Occlusion Calculator
+    float calcAO(vec3 pos, vec3 nor) {
+      float occ = 0.0;
+      float sca = 1.0;
+      for(int i = 0; i < 5; i++) {
+        float h = 0.01 + 0.12 * float(i) / 4.0;
+        float d = sdf(pos + h * nor);
+        occ += (h - d) * sca;
+        sca *= 0.95;
+      }
+      return clamp(1.0 - 2.5 * occ * uAO, 0.0, 1.0);
+    }
+
+    float ign(vec2 s){return fract(52.9829189*fract(dot(s,vec2(.06711056,.00583715))));}
+
+    // Glass Refraction Dispersion
+    vec3 disp(vec3 rd, vec3 n){
+      float ib = uIOR;
+      vec3 dc = vec3(.03, .06, .1) * uDisp;
+      vec3 col = vec3(0.);
+      for(int i = 0; i < 4; i++){
+        float s = float(i) * .25 + .125;
+        vec3 d = s * dc;
+        vec3 ior = 1. / (ib + d);
+        vec3 rR = refract(rd, n, ior.r), rG = refract(rd, n, ior.g), rB = refract(rd, n, ior.b);
+        col += vec3(texture(uBg, vUv - rR.xy).r, texture(uBg, vUv - rG.xy).g, texture(uBg, vUv - rB.xy).b);
+      }
+      return clamp(col * .25, 0., 1.);
+    }
+
+    float frFn(vec3 e, vec3 n, float pw){
+      float NdV = abs(dot(e, n));
+      float ed = smoothstep(.2, -.2, fwidth(dot(e, n)));
+      return pow(1. - NdV, pw) * mix(1., ed * 2., .5);
+    }
+
+    uvec2 pcg(uvec2 v){v=v*1664525u+1013904223u;v.x+=v.y*v.y*1664525u+1013904223u;v.y+=v.x*v.x*1664525u+1013904223u;v^=v>>16u;v.x+=v.y*v.y*1664525u+1013904223u;v.y+=v.x*v.x*1664525u+1013904223u;return v;}
+    float hsh(vec2 p){uvec2 v=floatBitsToUint(p);v=pcg(v);return float(v.x^v.y)/4294967295.;}
+
+    // Clay Matte Shading Pipeline
+    vec3 shadeClay(vec3 ro, vec3 rd, vec3 pos, vec3 nor) {
+      // Base Electric Lime & Clay Tones
+      vec3 limeMain = vec3(0.835, 0.968, 0.298);      // Signature #d5f74c
+      vec3 limeDark = vec3(0.18, 0.22, 0.10);        // Deep shadow clay
+      vec3 charcoalClay = vec3(0.12, 0.13, 0.14);    // Obsidian accent
+
+      vec3 baseColor = limeMain;
+      if (uShape == 7) {
+        if (gGearId == 1) baseColor = limeMain;                  // Main Gear: Pure Electric Lime
+        else if (gGearId == 2) baseColor = vec3(0.72, 0.88, 0.22); // Left Gear: Warm Lime
+        else baseColor = vec3(0.55, 0.72, 0.18);                   // Right Gear: Deep Chartreuse
+      }
+
+      // Studio Multi-Point Lighting
+      vec3 keyLight = normalize(vec3(0.8, 1.2, -1.2));
+      vec3 fillLight = normalize(vec3(-1.0, -0.4, -0.8));
+      vec3 rimLight = normalize(vec3(0.0, -1.0, 1.5));
+
+      // Diffuse Lambertian with soft Oren-Nayar wrapping
+      float diffKey = max(dot(nor, keyLight), 0.0);
+      float diffFill = max(dot(nor, fillLight), 0.0) * 0.35;
+      float diffRim = max(dot(nor, rimLight), 0.0) * 0.45;
+
+      // Soft Subsurface scattering feel
+      float sss = pow(clamp(dot(rd, -keyLight + nor * 0.3), 0.0, 1.0), 3.0) * 0.4;
+
+      // Ambient Occlusion
+      float ao = calcAO(pos, nor);
+
+      // Matte Velvet Fresnel Sheen
+      float fresnel = pow(1.0 - max(dot(-rd, nor), 0.0), 3.5) * uSheen;
+
+      // Composite Clay Color
+      vec3 col = baseColor * (diffKey * 0.85 + diffFill + 0.15);
+      col += baseColor * sss * 0.5;
+      col += vec3(0.9, 1.0, 0.6) * fresnel * 0.6;
+      col *= ao;
+
+      // Subtle specular soft gloss
+      vec3 halfVec = normalize(keyLight - rd);
+      float spec = pow(max(dot(nor, halfVec), 0.0), 32.0) * 0.25;
+      col += vec3(1.0) * spec;
+
+      return col;
+    }
+
+    vec4 march(vec3 ro, vec3 rd){
+      float ps = .005, j = ign(gl_FragCoord.xy), t = j, hit = 0.;
+      vec3 ep = vec3(0.), en = vec3(0.);
+      for(int i = 0; i < 75; i++){
+        vec3 p = ro + rd * t;
+        float d = sdf(p);
+        float pg = float(i) / 75.;
+        float st = d * mix(.5, 2., pg) * mix(1., j + .5, 1. - pg);
+        if(d > 100.) break;
+        if(d < ps){
+          hit = 1.;
+          ep = p;
+          en = nm(p, ps * 1.6);
+          break;
+        }
+        t += max(st, ps);
+        if(t > 100.) break;
+      }
+      if(hit == 0.) return texture(uBg, vUv);
+
+      if (uMat == 1) {
+        // Clay Render
+        vec3 col = shadeClay(ro, rd, ep, en);
+        col += (hsh(vUv) - .5) / 255.;
+        return vec4(col, 1.0);
+      } else {
+        // Glass Render
+        vec3 col = disp(rd, en);
+        vec3 acc = vec3(.83529, .96862, .29803); // Electric Lime
+        col += frFn(rd, en, 8.) * .5 * acc;
+        vec3 ld = vec3(-.749, .751, -3.);
+        col += pow(max(dot(en, normalize(ld + rd)), 0.), 64.01) * acc;
+        col += (hsh(vUv) - .5) / 255.;
+        return vec4(col, 1.);
+      }
+    }
+
+    void main(){
+      vec2 uv = vUv;
+      vec2 ctr = vec2(.5) + mix(vec2(0.), (uM - .5), .77);
+      uv -= ctr;
+      vec3 rd = vec3(uv * tan(radians(20.) * .5), .5);
+      fC = march(RO, rd);
+    }`;
+
+    // Post-processing Chromatic Aberration Shader
+    const FC = `#version 300 es
+    precision highp float;
+    in vec2 vUv; uniform sampler2D uTx; uniform float uT; uniform vec2 uR; uniform float uA; uniform int uMat; out vec4 fC;
+    const float PI = 3.14159265359;
+    void main(){
+      if (uMat == 1) {
+        // Clay Mode: Crisp rendering without chromatic fringe distortion
+        fC = texture(uTx, vUv);
+      } else {
+        float ar = uR.x / uR.y;
+        float ang = ((0.2349 + uT * .3125) * 360.) * PI / 180.;
+        vec2 rot = vec2(sin(ang), cos(ang));
+        vec4 col = texture(uTx, vUv);
+        float md = max(0., 1. - distance(vUv * vec2(ar, 1.), vec2(.5 * ar, .5)) * 4.);
+        vec2 ab = uA * rot * .03 * md;
+        if(length(ab) >= .001){
+          col.r = texture(uTx, vUv - ab).r;
+          col.b = texture(uTx, vUv + ab).b;
+        }
+        fC = col;
+      }
+    }`;
+
+    function mkSh(src, t){const s=gl.createShader(t);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))console.error(gl.getShaderInfoLog(s));return s;}
+    function mkPr(v, f){const p=gl.createProgram();gl.attachShader(p,mkSh(v,gl.VERTEX_SHADER));gl.attachShader(p,mkSh(f,gl.FRAGMENT_SHADER));gl.linkProgram(p);return p;}
+    function mkFB(w, h){const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA8,w,h,0,gl.RGBA,gl.UNSIGNED_BYTE,null);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);const f=gl.createFramebuffer();gl.bindFramebuffer(gl.FRAMEBUFFER,f);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,t,0);gl.bindFramebuffer(gl.FRAMEBUFFER,null);return{f,t};}
+
+    const gP = mkPr(VS, FG), tP = mkPr(VS, FT), sP = mkPr(VS, FS), cP = mkPr(VS, FC);
+    const qb = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, qb);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+    function bq(p){const l=gl.getAttribLocation(p,'aPos');gl.bindBuffer(gl.ARRAY_BUFFER,qb);gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,2,gl.FLOAT,false,0,0);}
+    const u = (p, n) => gl.getUniformLocation(p, n);
+
+    const gU = { t: u(gP, 'uT'), m: u(gP, 'uM'), mat: u(gP, 'uMat') };
+    const tU = { g: u(tP, 'uGrad'), tx: u(tP, 'uText') };
+    const sU = {
+      bg: u(sP, 'uBg'),
+      t: u(sP, 'uT'),
+      m: u(sP, 'uM'),
+      r: u(sP, 'uR'),
+      rnd: u(sP, 'uRnd'),
+      shape: u(sP, 'uShape'),
+      mat: u(sP, 'uMat'),
+      ior: u(sP, 'uIOR'),
+      disp: u(sP, 'uDisp'),
+      rotSpd: u(sP, 'uRotSpd'),
+      sheen: u(sP, 'uSheen'),
+      ao: u(sP, 'uAO')
+    };
+    const cU = { tx: u(cP, 'uTx'), t: u(cP, 'uT'), r: u(cP, 'uR'), a: u(cP, 'uA'), mat: u(cP, 'uMat') };
+
+    let textTex = null;
+    let W, H, fboGrad, fboComb, fboShape;
+
+    // Interactive Parameters State
+    const state = {
+      shape: 7,     // Default to 3 Gears
+      mat: 1,       // Default to Clay Mode
+      ior: 1.035,
+      disp: 0.288,
+      rotSpd: 1.0,
+      sheen: 0.45,
+      ao: 0.65
+    };
+
+    function buildTextTex() {
+      const tc = document.createElement('canvas');
+      tc.width = W; tc.height = H;
+      const ctx = tc.getContext('2d');
+      ctx.clearRect(0, 0, W, H);
+      
+      const isMobile = W < 768;
+      const fs = isMobile ? W * 0.065 : W * 0.055;
+      const lh = fs * 1.15;
+      
+      ctx.fillStyle = '#000000';
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
+
+      const rx = W * 0.92;
+      const cy = (H * 0.5) + 60;
+
+      ctx.font = `700 ${fs * 0.25}px 'Inter Tight', sans-serif`;
+      ctx.fillText('3D CLAY & GEOMETRY LAB', rx, cy - (lh * 1.5));
+
+      ctx.font = `800 ${fs}px 'Inter Tight', sans-serif`;
+      ctx.fillText('Raymarched', rx, cy - (lh * 0.5));
+      ctx.fillText('Claymorphism', rx, cy + (lh * 0.5));
+      ctx.fillText('& Mechanisms', rx, cy + (lh * 1.5));
+
+      if (!textTex) textTex = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, textTex);
+      gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, tc);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    }
+
+    function rsz() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      W = Math.max(1, Math.floor(canvas.clientWidth * dpr));
+      H = Math.max(1, Math.floor(canvas.clientHeight * dpr));
+      canvas.width = W; canvas.height = H;
+      [fboGrad, fboComb, fboShape].forEach(f => { if(f){gl.deleteFramebuffer(f.f);gl.deleteTexture(f.t);} });
+      fboGrad  = mkFB(W, H);
+      fboComb  = mkFB(W, H);
+      fboShape = mkFB(W, H);
+      buildTextTex();
+    }
+
+    let tm = 0, lt = 0;
+    const mx = { x: .5, y: .5, tx: .5, ty: .5 };
+    let scr = 0, rnd = 0, ca = .044;
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    // FPS Meter
+    let frameCount = 0;
+    let lastFpsUpdate = 0;
+    const fpsElem = document.getElementById('fps-display');
+
+    function frame(now) {
+      const dt = Math.min((now - lt) / 1000, .05);
+      lt = now; tm += dt;
+
+      // Update FPS
+      frameCount++;
+      if (now - lastFpsUpdate > 500) {
+        const fps = Math.round((frameCount * 1000) / (now - lastFpsUpdate));
+        fpsElem.textContent = `${fps} FPS`;
+        frameCount = 0;
+        lastFpsUpdate = now;
+      }
+
+      mx.x = lerp(mx.x, mx.tx, .07);
+      mx.y = lerp(mx.y, mx.ty, .07);
+      rnd = lerp(rnd, scr, .09);
+      ca  = lerp(ca, .044, .06);
+
+      gl.viewport(0, 0, W, H);
+
+      // Pass 1: Background OKLab Radial Gradient / Studio Backdrop
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fboGrad.f);
+      gl.useProgram(gP); bq(gP);
+      gl.uniform1f(gU.t, tm);
+      gl.uniform2f(gU.m, mx.x, mx.y);
+      gl.uniform1i(gU.mat, state.mat);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+      // Pass 2: Overlay Typography Canvas
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fboComb.f);
+      gl.useProgram(tP); bq(tP);
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, fboGrad.t);
+      gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, textTex);
+      gl.uniform1i(tU.g, 0); gl.uniform1i(tU.tx, 1);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+      // Pass 3: Raymarch 3D SDF Glass / Clay Shape
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fboShape.f);
+      gl.useProgram(sP); bq(sP);
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, fboComb.t);
+      gl.uniform1i(sU.bg, 0);
+      gl.uniform1f(sU.t, tm);
+      gl.uniform2f(sU.m, mx.x, mx.y);
+      gl.uniform2f(sU.r, W, H);
+      gl.uniform1f(sU.rnd, rnd);
+      gl.uniform1i(sU.shape, state.shape);
+      gl.uniform1i(sU.mat, state.mat);
+      gl.uniform1f(sU.ior, state.ior);
+      gl.uniform1f(sU.disp, state.disp);
+      gl.uniform1f(sU.rotSpd, state.rotSpd);
+      gl.uniform1f(sU.sheen, state.sheen);
+      gl.uniform1f(sU.ao, state.ao);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+      // Pass 4: Chromatic Aberration & Post-Processing
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.useProgram(cP); bq(cP);
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, fboShape.t);
+      gl.uniform1i(cU.tx, 0);
+      gl.uniform1f(cU.t, tm);
+      gl.uniform2f(cU.r, W, H);
+      gl.uniform1f(cU.a, ca);
+      gl.uniform1i(cU.mat, state.mat);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+      requestAnimationFrame(frame);
+    }
+
+    // Interactive Functions
+    function setShape(shapeId, shapeName, btn) {
+      state.shape = shapeId;
+      document.querySelectorAll('.shape-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      document.getElementById('active-shape-indicator').textContent = `Active: ${shapeName}`;
+    }
+
+    function setMaterial(matId, btn) {
+      state.mat = matId;
+      document.querySelectorAll('.mat-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    function updateParam(param, val) {
+      val = parseFloat(val);
+      state[param] = val;
+      if (param === 'rot') document.getElementById('val-rot').textContent = val.toFixed(1) + 'x';
+      if (param === 'sheen') document.getElementById('val-sheen').textContent = val.toFixed(2);
+      if (param === 'ao') document.getElementById('val-ao').textContent = val.toFixed(2);
+      if (param === 'disp') document.getElementById('val-disp').textContent = val.toFixed(3);
+    }
+
+    window.addEventListener('mousemove', e => {
+      const r = canvas.getBoundingClientRect();
+      mx.tx = (e.clientX - r.left) / r.width;
+      mx.ty = 1. - (e.clientY - r.top) / r.height;
+    });
+
+    window.addEventListener('resize', rsz);
+    rsz();
+    requestAnimationFrame(t0 => { lt = t0; requestAnimationFrame(frame); });
+  </script>
+</body>
+</html>
