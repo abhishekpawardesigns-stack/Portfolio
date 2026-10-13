@@ -12,18 +12,21 @@
     <link rel="shortcut icon" href="favicon.ico?v=2">
     <link rel="apple-touch-icon" href="favicon.png?v=2">
 
-    <!-- Fonts: Figtree, Inter Tight & Inter -->
+    <!-- Fonts: Bricolage Grotesque, Figtree, Bricolage Grotesque & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700;800&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Google Material Symbols Outlined & Rounded -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap');
+
         /* Design System Tokens — Portfolio Obsidian Dark Theme */
         :root {
+            --font-heading: 'Bricolage Grotesque', sans-serif !important;
             --bg-base: #000000;
             --bg-card: #0c0d0e;
             --bg-card-hover: #141517;
@@ -54,6 +57,10 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
             line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bricolage Grotesque', sans-serif !important;
         }
 
         /* Top Reading Progress Line */
@@ -115,7 +122,7 @@
         .cs-nav-link-item {
             color: var(--text-muted);
             text-decoration: none;
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 0.9rem;
             font-weight: 600;
             transition: all 0.2s ease;
@@ -129,7 +136,7 @@
             gap: 8px;
             color: var(--text-primary);
             text-decoration: none;
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 0.92rem;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -153,7 +160,7 @@
             text-decoration: none;
             padding: 9px 22px;
             border-radius: 100px;
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 0.88rem;
             font-weight: 700;
             transition: all 0.25s ease;
@@ -357,13 +364,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-weight: 800;
             font-size: 1.1rem;
             flex-shrink: 0;
         }
         .cs-hero-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 3rem;
             font-weight: 800;
             color: var(--text-primary);
@@ -371,7 +378,7 @@
             line-height: 1.1;
         }
         .cs-hero-sub {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 2.1rem; /* ~34px - compact, sleek & fits in 3 lines */
             font-weight: 700;
             color: #ffffff;
@@ -419,7 +426,7 @@
             font-size: 28px;
         }
         .cs-slot-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -479,7 +486,7 @@
             margin-bottom: 2px;
         }
         .cs-meta-value {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.08rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -500,7 +507,7 @@
         }
 
         .cs-section-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 2.2rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -536,7 +543,7 @@
         }
         .cs-focus-num {
             display: inline-block;
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 0.8rem;
             font-weight: 800;
             color: #000000;
@@ -546,7 +553,7 @@
             margin-bottom: 14px;
         }
         .cs-focus-card-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -604,7 +611,7 @@
             border-color: #d5f74c;
         }
         .cs-prob-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -636,7 +643,7 @@
             gap: 24px;
         }
         .cs-friction-col-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -663,7 +670,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
         .cs-solution-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -724,13 +731,13 @@
             font-size: 26px;
         }
         .cs-process-duration {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 0.9rem;
             font-weight: 600;
             color: #d5f74c;
         }
         .cs-process-3col-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.85rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -817,7 +824,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 0.95rem;
             font-weight: 700;
             color: #d5f74c;
@@ -875,7 +882,7 @@
             padding-right: 0;
         }
         .cs-finding-stat {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 3.2rem;
             font-weight: 800;
             color: var(--text-primary);
@@ -886,7 +893,7 @@
             color: #d5f74c;
         }
         .cs-finding-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -975,7 +982,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 2rem;
             font-weight: 900;
             line-height: 1;
@@ -1007,7 +1014,7 @@
             display: none;
         }
         .cs-persona-name-title h3 {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.6rem;
             font-weight: 800;
             color: #ffffff;
@@ -1069,7 +1076,7 @@
             grid-column: 1 / -1;
         }
         .cs-persona-card-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -1229,7 +1236,7 @@
             font-size: 26px;
         }
         .cs-prob-clean-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.15rem;
             font-weight: 700;
             color: #ffffff;
@@ -1283,7 +1290,7 @@
             margin-top: auto;
         }
         .cs-kpi-stat-number {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 4.2rem;
             font-weight: 800;
             color: #ffffff;
@@ -1327,7 +1334,7 @@
             margin-bottom: 16px;
         }
         .cs-empty-slot-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.15rem;
             font-weight: 700;
             color: #ffffff;
@@ -1416,7 +1423,7 @@
             top: 6px;
             left: 50%;
             transform: translateX(-50%);
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 5.8rem;
             font-weight: 900;
             color: rgba(255, 255, 255, 0.035);
@@ -1441,7 +1448,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 100px;
             padding: 10px 20px;
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 0.92rem;
             font-weight: 700;
             color: #ffffff;
@@ -1517,7 +1524,7 @@
             border-color: var(--border-glass-hover);
         }
         .cs-target-stat {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 3.2rem;
             font-weight: 800;
             color: #d5f74c;
@@ -1526,7 +1533,7 @@
             letter-spacing: -0.03em;
         }
         .cs-target-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.12rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -1554,7 +1561,7 @@
             padding: 0;
         }
         .cs-define-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 2.5rem;
             font-weight: 800;
             color: var(--text-primary);
@@ -1667,7 +1674,7 @@
             transform: scale(1.14) translateX(20px) translateY(-6px);
         }
         .cs-phase-name {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: clamp(3.2rem, 6.5vw, 4.8rem);
             font-weight: 900;
             color: #FFFFFF;
@@ -1728,7 +1735,7 @@
         }
 
         .cs-quadrant-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.05rem;
             font-weight: 800;
             color: #FFFFFF;
@@ -1838,7 +1845,7 @@
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 600;
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             transition: all 0.25s ease;
             white-space: nowrap;
         }
@@ -1914,7 +1921,7 @@
             max-width: 760px;
         }
         .cs-onboarding-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 2.4rem;
             font-weight: 700;
             color: #ffffff;
@@ -2192,7 +2199,7 @@
         }
 
         .cs-standalone-title {
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.45rem;
             font-weight: 500;
             color: #ffffff;
@@ -2363,7 +2370,10 @@
     <!-- Full-Bleed Edge-to-Edge Hero Banner Container (Starts Directly Below Fixed Nav Bar) -->
     <div class="cs-fullbleed-hero">
         <!-- Background Hero Product Image -->
-        <img src="images/Hero Image 1.png" alt="HYNO Product Overview Hero Showcase" class="cs-fullbleed-hero-img">
+        <picture>
+            <source srcset="images/Hero_Image_1_hero.webp" type="image/webp">
+            <img src="images/Hero Image 1.png" alt="HYNO Product Overview Hero Showcase" class="cs-fullbleed-hero-img" fetchpriority="high">
+        </picture>
         
         <!-- Dark Fading Gradient Overlay with Compact Top Bar -->
         <div class="cs-fullbleed-hero-overlay">
@@ -2374,7 +2384,7 @@
                     <!-- Left: Official Hyno Logo Image (48px) + Hyno Text (28px, Bold 700, Gap 10px) -->
                     <div class="cs-hero-title-group" style="margin-bottom: 0; display: flex; align-items: center; gap: 10px;">
                         <img src="images/Logos/Hyno_logo.png" alt="Hyno Logo" style="height: 48px; width: auto; display: block; border-radius: 8px;">
-                        <span style="font-family: 'Inter Tight', sans-serif; font-size: 1.75rem; font-weight: 700; color: #ffffff; letter-spacing: -0.02em;">Hyno</span>
+                        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.75rem; font-weight: 700; color: #ffffff; letter-spacing: -0.02em;">Hyno</span>
                     </div>
 
                     <!-- Right: Metadata Pills (Service, Date, Duration) -->
@@ -2404,7 +2414,7 @@
     <main class="cs-container" style="padding-top: 80px;" id="overview">
 
         <!-- Clean Un-Enclosed 72px Monumental Display Headline Statement -->
-        <h2 style="font-family: 'Inter Tight', sans-serif; font-size: 4.5rem; font-weight: 700; color: var(--text-primary); line-height: 1.15; letter-spacing: -0.03em; max-width: 1100px; margin-bottom: 64px;">
+        <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 4.5rem; font-weight: 700; color: var(--text-primary); line-height: 1.15; letter-spacing: -0.03em; max-width: 1100px; margin-bottom: 64px;">
             A unified platform for talent acquisition, candidate vetting, and workforce operations.
         </h2>
 
@@ -2601,27 +2611,27 @@
 
             <div class="cs-target-card-async" style="padding: 32px 36px; margin-top: 28px; display: flex; flex-direction: column; gap: 16px;">
                 <div style="display: flex; align-items: center; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
-                    <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">01</span>
+                    <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">01</span>
                     <span style="font-size: 1.02rem; color: #ffffff; font-weight: 500;">Where in the hiring cycle do you feel you lack data for a decision?</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
-                    <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">02</span>
+                    <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">02</span>
                     <span style="font-size: 1.02rem; color: #ffffff; font-weight: 500;">How many days pass between requirement definition and candidate confirmation?</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
-                    <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">03</span>
+                    <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">03</span>
                     <span style="font-size: 1.02rem; color: #ffffff; font-weight: 500;">What critical context is lost when moving candidate data between platforms?</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
-                    <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">04</span>
+                    <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">04</span>
                     <span style="font-size: 1.02rem; color: #ffffff; font-weight: 500;">What is the productivity impact of manual resume validation?</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
-                    <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">05</span>
+                    <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">05</span>
                     <span style="font-size: 1.02rem; color: #ffffff; font-weight: 500;">What is the project risk of selecting candidates with incomplete vetting?</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 16px;">
-                    <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">06</span>
+                    <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.85rem; font-weight: 700; color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06); padding: 4px 10px; border-radius: 100px;">06</span>
                     <span style="font-size: 1.02rem; color: #ffffff; font-weight: 500;">How many hours/week does your team spend on manual handoffs?</span>
                 </div>
             </div>
@@ -2879,10 +2889,10 @@
                 <div class="cs-target-card-async" style="padding: 34px 32px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
                     <div>
                         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
-                            <span style="background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.16); padding: 6px 14px; border-radius: 100px; font-weight: 700; font-size: 0.82rem; font-family: 'Inter Tight', sans-serif;">CORE AUDIENCE (45%)</span>
+                            <span style="background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.16); padding: 6px 14px; border-radius: 100px; font-weight: 700; font-size: 0.82rem; font-family: 'Bricolage Grotesque', sans-serif;">CORE AUDIENCE (45%)</span>
                             <span style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); font-weight: 600; background: rgba(255, 255, 255, 0.05); padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.08);">15+ yrs exp</span>
                         </div>
-                        <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.85rem; font-weight: 700; color: #ffffff; margin: 0 0 16px 0; line-height: 1.25;">CTOs &amp; VPs of Engineering</h3>
+                        <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.85rem; font-weight: 700; color: #ffffff; margin: 0 0 16px 0; line-height: 1.25;">CTOs &amp; VPs of Engineering</h3>
                         <p style="font-size: 1.02rem; color: var(--text-muted); line-height: 1.7; margin: 0;">Enterprise technology executives in scaling tech organizations who require verified candidate capability reports to eliminate mis-hires.</p>
                     </div>
 
@@ -2903,10 +2913,10 @@
                     <div class="cs-target-card-async" style="padding: 26px 28px; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
                             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-                                <div style="font-family: 'Inter Tight', sans-serif; font-size: 2.4rem; font-weight: 800; color: #ffffff; line-height: 1;">35%</div>
+                                <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.4rem; font-weight: 800; color: #ffffff; line-height: 1;">35%</div>
                                 <span style="background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.16); padding: 4px 12px; border-radius: 100px; font-weight: 600; font-size: 0.78rem;">8–14 yrs exp</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.18rem; font-weight: 700; color: #ffffff; margin: 0 0 8px 0;">Technical Hiring Managers</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.18rem; font-weight: 700; color: #ffffff; margin: 0 0 8px 0;">Technical Hiring Managers</h3>
                             <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Senior engineering architects and leads responsible for conducting deep technical vetting and selecting high-performing talent.</p>
                         </div>
                     </div>
@@ -2915,10 +2925,10 @@
                     <div class="cs-target-card-async" style="padding: 26px 28px; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
                             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-                                <div style="font-family: 'Inter Tight', sans-serif; font-size: 2.4rem; font-weight: 800; color: #ffffff; line-height: 1;">20%</div>
+                                <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.4rem; font-weight: 800; color: #ffffff; line-height: 1;">20%</div>
                                 <span style="background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.16); padding: 4px 12px; border-radius: 100px; font-weight: 600; font-size: 0.78rem;">5–10 yrs exp</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.18rem; font-weight: 700; color: #ffffff; margin: 0 0 8px 0;">Talent Acquisition Leaders</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.18rem; font-weight: 700; color: #ffffff; margin: 0 0 8px 0;">Talent Acquisition Leaders</h3>
                             <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">HR directors and recruiting heads seeking to streamline hiring pipeline latency and remove manual handoff friction.</p>
                         </div>
                     </div>
@@ -3133,7 +3143,7 @@
                                 <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                     <span class="material-symbols-outlined" style="font-size: 20px;">psychology</span>
                                 </div>
-                                <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Intelligent Sourcing &amp; Matching</h3>
+                                <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Intelligent Sourcing &amp; Matching</h3>
                             </div>
                         </div>
                         <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 12px 0;">Empowering teams with natural-language discovery, AI candidate summaries, and "Hyno Signature" matching to cut out manual filtering bottlenecks.</p>
@@ -3150,7 +3160,7 @@
                                 <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                     <span class="material-symbols-outlined" style="font-size: 20px;">monitoring</span>
                                 </div>
-                                <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">End-to-End Pipeline Visibility</h3>
+                                <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">End-to-End Pipeline Visibility</h3>
                             </div>
                         </div>
                         <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 12px 0;">Giving leadership real-time velocity tracking, active candidate oversight, and clear contract timelines in a single place.</p>
@@ -3167,7 +3177,7 @@
                                 <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                     <span class="material-symbols-outlined" style="font-size: 20px;">forum</span>
                                 </div>
-                                <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Smooth Onboarding &amp; Lifecycle Ops</h3>
+                                <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Smooth Onboarding &amp; Lifecycle Ops</h3>
                             </div>
                         </div>
                         <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 12px 0;">Replacing rigid administrative forms with flexible conversational flows while managing active profiles, invoices, and burn-rate transparency.</p>
@@ -3736,7 +3746,7 @@
             
             <!-- Header Block: Title & Narrative Statement -->
             <div style="margin-bottom: 32px;">
-                <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.02em;">
+                <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.02em;">
                     1. Zero-Friction AI Onboarding
                 </h3>
                 <p style="font-size: 1.02rem; color: var(--text-muted); line-height: 1.65; margin: 0; max-width: 860px;">
@@ -3800,7 +3810,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">forum</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Conversational Chat</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Conversational Chat</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Replaces multi-step forms with an interactive chat flow.</p>
@@ -3813,7 +3823,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">keyboard_voice</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Flexible Input</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Flexible Input</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Supports both natural typing and voice activation.</p>
@@ -3826,7 +3836,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">bolt</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Instant Setup</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Instant Setup</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Accelerates the path from login to talent matching.</p>
@@ -3852,7 +3862,7 @@
                 <div class="cs-leadership-top-overlay">
                     
                     <!-- Section Title (Pushed Upwards) -->
-                    <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 10px 0; letter-spacing: -0.02em;">
+                    <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 10px 0; letter-spacing: -0.02em;">
                         2. Built for Leadership Visibility
                     </h3>
                     
@@ -3872,7 +3882,7 @@
                             <div style="width: 30px; height: 30px; border-radius: 8px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0;">
                                 <span class="material-symbols-outlined" style="font-size: 16px;">analytics</span>
                             </div>
-                            <h4 style="font-family: 'Inter Tight', sans-serif; font-size: 1rem; font-weight: 700; color: #ffffff; margin: 0;">Clear Metrics</h4>
+                            <h4 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1rem; font-weight: 700; color: #ffffff; margin: 0;">Clear Metrics</h4>
                         </div>
                         <p style="font-size: 0.86rem; color: var(--text-muted); line-height: 1.45; margin: 0;">
                             Track active candidates, hiring costs, and spending trends instantly.
@@ -3885,7 +3895,7 @@
                             <div style="width: 30px; height: 30px; border-radius: 8px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0;">
                                 <span class="material-symbols-outlined" style="font-size: 16px;">bolt</span>
                             </div>
-                            <h4 style="font-family: 'Inter Tight', sans-serif; font-size: 1rem; font-weight: 700; color: #ffffff; margin: 0;">Quick Actions</h4>
+                            <h4 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1rem; font-weight: 700; color: #ffffff; margin: 0;">Quick Actions</h4>
                         </div>
                         <p style="font-size: 0.86rem; color: var(--text-muted); line-height: 1.45; margin: 0;">
                             Jump straight into pending invoices, payments, and ongoing interviews.
@@ -3906,7 +3916,7 @@
             
             <!-- Header Block: Title & Narrative Statement -->
             <div style="margin-bottom: 32px;">
-                <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.02em;">
+                <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.02em;">
                     3. Curated Talent Discovery
                 </h3>
                 <p style="font-size: 1.02rem; color: var(--text-muted); line-height: 1.65; margin: 0; max-width: 860px;">
@@ -3980,7 +3990,7 @@
             
             <!-- Header Block: Title & Narrative Statement -->
             <div style="margin-bottom: 32px;">
-                <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.02em;">
+                <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.02em;">
                     4. Precision Filtering
                 </h3>
                 <p style="font-size: 1.02rem; color: var(--text-muted); line-height: 1.65; margin: 0; max-width: 860px;">
@@ -4087,7 +4097,7 @@
             
             <!-- Header Block: Title & Narrative Statement -->
             <div style="margin-bottom: 32px;">
-                <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.02em;">
+                <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.02em;">
                     5. Real-Time Interview Progress & Lifecycle
                 </h3>
                 <p style="font-size: 1.02rem; color: var(--text-muted); line-height: 1.65; margin: 0; max-width: 860px;">
@@ -4161,7 +4171,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">checklist</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Request Tracking</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Request Tracking</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Monitor active interview requests, role rates, and round statuses in a single unified dashboard.</p>
@@ -4174,7 +4184,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">transcribe</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Interview Intelligence</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Interview Intelligence</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Review full video recordings alongside real-time timestamped transcripts and AI performance ratings.</p>
@@ -4187,7 +4197,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">send_and_archive</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">One-Click Offers</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">One-Click Offers</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Instantly extend formal offer letters upon round completion without leaving the assessment view.</p>
@@ -4205,7 +4215,7 @@
             
             <!-- Header Block: Title & Designer Case Study Narrative -->
             <div style="margin-bottom: 32px;">
-                <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.02em;">
+                <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.02em;">
                     6. Invoicing & Financial Transparency
                 </h3>
                 <p style="font-size: 1.02rem; color: var(--text-muted); line-height: 1.65; margin: 0; max-width: 860px;">
@@ -4274,7 +4284,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">analytics</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Interactive KPI Filters</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Interactive KPI Filters</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">I designed the top KPI cards (Pending Due, Burn Rate) to act as dynamic 1-click filters, instantly scoping the transaction ledger without page reloads.</p>
@@ -4287,7 +4297,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">receipt_long</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Itemized Rate Breakdowns</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Itemized Rate Breakdowns</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">I introduced a slide-over invoice drawer that pairs contractor timesheets and hourly rates directly with contract compliance validation.</p>
@@ -4300,7 +4310,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">verified</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Dispute-Free Settlements</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Dispute-Free Settlements</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Clear status badges, automated bonus/adjustment line items, and audit-ready download triggers ensure finance and engineering stay aligned.</p>
@@ -4319,7 +4329,7 @@
             <!-- Header Block: Title with Inline Hyno AI Logo & Designer Case Study Narrative -->
             <div style="margin-bottom: 32px;">
                 <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 0 0 14px 0;">
-                    <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0; letter-spacing: -0.02em;">
+                    <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.1rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin: 0; letter-spacing: -0.02em;">
                         7. Embedded AI Architecture
                     </h3>
                     <span style="font-size: 1.8rem; color: rgba(255, 255, 255, 0.3); font-weight: 300; line-height: 1;">—</span>
@@ -4334,8 +4344,8 @@
             <div style="margin: 40px 0 20px 0;">
                 <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 12px;">
                     <div style="display: inline-flex; align-items: center; gap: 10px;">
-                        <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.78rem; font-weight: 700; color: #d5f74c; background: rgba(213, 247, 76, 0.12); border: 1px solid rgba(213, 247, 76, 0.25); padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.06em;">Feature 01</span>
-                        <h4 style="font-family: 'Inter Tight', sans-serif; font-size: 1.45rem; font-weight: 700; color: #ffffff; margin: 0; letter-spacing: -0.01em;">
+                        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.78rem; font-weight: 700; color: #d5f74c; background: rgba(213, 247, 76, 0.12); border: 1px solid rgba(213, 247, 76, 0.25); padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.06em;">Feature 01</span>
+                        <h4 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.45rem; font-weight: 700; color: #ffffff; margin: 0; letter-spacing: -0.01em;">
                             Ambient Conversational Assistant
                         </h4>
                     </div>
@@ -4390,8 +4400,8 @@
             <div style="margin-top: 64px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 12px;">
                     <div style="display: inline-flex; align-items: center; gap: 10px;">
-                        <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.78rem; font-weight: 700; color: #d5f74c; background: rgba(213, 247, 76, 0.12); border: 1px solid rgba(213, 247, 76, 0.25); padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.06em;">Feature 02</span>
-                        <h4 style="font-family: 'Inter Tight', sans-serif; font-size: 1.45rem; font-weight: 700; color: #ffffff; margin: 0; letter-spacing: -0.01em;">
+                        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.78rem; font-weight: 700; color: #d5f74c; background: rgba(213, 247, 76, 0.12); border: 1px solid rgba(213, 247, 76, 0.25); padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.06em;">Feature 02</span>
+                        <h4 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.45rem; font-weight: 700; color: #ffffff; margin: 0; letter-spacing: -0.01em;">
                             AI Semantic Search & Role Matcher
                         </h4>
                     </div>
@@ -4446,8 +4456,8 @@
             <div style="margin-top: 64px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 12px;">
                     <div style="display: inline-flex; align-items: center; gap: 10px;">
-                        <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.78rem; font-weight: 700; color: #d5f74c; background: rgba(213, 247, 76, 0.12); border: 1px solid rgba(213, 247, 76, 0.25); padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.06em;">Feature 03</span>
-                        <h4 style="font-family: 'Inter Tight', sans-serif; font-size: 1.45rem; font-weight: 700; color: #ffffff; margin: 0; letter-spacing: -0.01em;">
+                        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.78rem; font-weight: 700; color: #d5f74c; background: rgba(213, 247, 76, 0.12); border: 1px solid rgba(213, 247, 76, 0.25); padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.06em;">Feature 03</span>
+                        <h4 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.45rem; font-weight: 700; color: #ffffff; margin: 0; letter-spacing: -0.01em;">
                             AI Contextual Summaries &amp; Synthesis
                         </h4>
                     </div>
@@ -4503,7 +4513,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">account_tree</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Lifecycle Continuity</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Lifecycle Continuity</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Data captured during initial conversational intake flows directly into search filters, interview rubrics, and final billing rate cards without duplicate re-entry.</p>
@@ -4516,7 +4526,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">verified</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Empirical Grounding</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Empirical Grounding</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Every AI evaluation is tied to verified technical benchmarks, live session transcripts, and approved contract rates, eliminating black-box hallucinations.</p>
@@ -4529,7 +4539,7 @@
                             <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; color: #ffffff;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">speed</span>
                             </div>
-                            <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Executive Velocity</h3>
+                            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff; margin: 0;">Executive Velocity</h3>
                         </div>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Collapses the end-to-end technical hiring window from weeks to days by removing administrative roadblocks across candidate screening and contract approvals.</p>
@@ -4571,7 +4581,7 @@
                         <div style="font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.45); margin-bottom: 12px;">
                             Hiring Velocity
                         </div>
-                        <div style="font-family: 'Inter Tight', sans-serif; font-size: clamp(2.6rem, 4vw, 3.4rem); font-weight: 800; color: #ffffff; line-height: 1; margin-bottom: 12px; letter-spacing: -0.03em;">
+                        <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2.6rem, 4vw, 3.4rem); font-weight: 800; color: #ffffff; line-height: 1; margin-bottom: 12px; letter-spacing: -0.03em;">
                             58<span style="color: #d5f74c;">%</span>
                         </div>
                         <div style="font-size: 0.95rem; font-weight: 600; color: #ffffff; margin-bottom: 10px;">
@@ -4593,7 +4603,7 @@
                         <div style="font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.45); margin-bottom: 12px;">
                             Technical Signal
                         </div>
-                        <div style="font-family: 'Inter Tight', sans-serif; font-size: clamp(2.6rem, 4vw, 3.4rem); font-weight: 800; color: #ffffff; line-height: 1; margin-bottom: 12px; letter-spacing: -0.03em;">
+                        <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2.6rem, 4vw, 3.4rem); font-weight: 800; color: #ffffff; line-height: 1; margin-bottom: 12px; letter-spacing: -0.03em;">
                             94<span style="color: #d5f74c;">%</span>
                         </div>
                         <div style="font-size: 0.95rem; font-weight: 600; color: #ffffff; margin-bottom: 10px;">
@@ -4615,7 +4625,7 @@
                         <div style="font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.45); margin-bottom: 12px;">
                             Executive Trust
                         </div>
-                        <div style="font-family: 'Inter Tight', sans-serif; font-size: clamp(2.6rem, 4vw, 3.4rem); font-weight: 800; color: #ffffff; line-height: 1; margin-bottom: 12px; letter-spacing: -0.03em;">
+                        <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2.6rem, 4vw, 3.4rem); font-weight: 800; color: #ffffff; line-height: 1; margin-bottom: 12px; letter-spacing: -0.03em;">
                             92<span style="color: #d5f74c;">%</span>
                         </div>
                         <div style="font-size: 0.95rem; font-weight: 600; color: #ffffff; margin-bottom: 10px;">
@@ -4647,7 +4657,7 @@
                 <div class="cs-target-card-async" style="padding: 30px 28px;">
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
                         <span class="material-symbols-outlined" style="font-size: 22px; color: #ffffff;">psychology</span>
-                        <h4 style="font-family: 'Inter Tight', sans-serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; margin: 0;">What We Learned</h4>
+                        <h4 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; margin: 0;">What We Learned</h4>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; margin: 0;">
                         Designing high-density enterprise tools requires treating information density not as clutter, but as clarity. By utilizing progressive disclosure, micro-interactions, and high-contrast telemetry cards, users can navigate complex multi-variable pipelines effortlessly without cognitive fatigue.
@@ -4658,7 +4668,7 @@
                 <div class="cs-target-card-async" style="padding: 30px 28px;">
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
                         <span class="material-symbols-outlined" style="font-size: 22px; color: #ffffff;">auto_awesome</span>
-                        <h4 style="font-family: 'Inter Tight', sans-serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; margin: 0;">Future Horizons</h4>
+                        <h4 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; margin: 0;">Future Horizons</h4>
                     </div>
                     <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; margin: 0;">
                         The architectural foundation established in HYNO opens exciting next steps: automated international tax and compliance validation, smart-contract milestone escrows, and predictive organizational talent graph modeling that forecasts technical hiring needs quarters in advance.
@@ -4673,10 +4683,10 @@
         <section id="thank-you" style="text-align: center; padding: 90px 24px 60px 24px; max-width: 800px; margin: 0 auto;">
             <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); padding: 6px 16px; border-radius: 999px; margin-bottom: 24px;">
                 <svg class="star-icon" viewBox="0 0 480 512" style="width: 12px; height: 12px; fill: #d5f74c;"><path d="M471.99 334.43L336.06 256l135.93-78.43c7.66-4.42 10.28-14.2 5.86-21.86l-32.02-55.43c-4.42-7.65-14.21-10.28-21.87-5.86l-135.93 78.43V16c0-8.84-7.17-16-16.01-16h-64.04c-8.84 0-16.01 7.16-16.01 16v156.86L56.04 94.43c-7.66-4.42-17.45-1.79-21.87 5.86L2.15 155.71c-4.42 7.65-1.8 17.44 5.86 21.86L143.94 256 8.01 334.43c-7.66 4.42-10.28 14.21-5.86 21.86l32.02 55.43c4.42 7.65 14.21 10.27 21.87 5.86l135.93-78.43V496c0 8.84 7.17 16 16.01 16h64.04c8.84 0 16.01-7.16 16.01-16V339.14l135.93 78.43c7.66 4.42 17.45 1.8 21.87-5.86l32.02-55.43c4.42-7.65 1.8-17.43-5.86-21.85z"></path></svg>
-                <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.78rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em;">Case Study Closure</span>
+                <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.78rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em;">Case Study Closure</span>
             </div>
             
-            <h2 style="font-family: 'Inter Tight', sans-serif; font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 800; color: #ffffff; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 24px 0;">
+            <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 800; color: #ffffff; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 24px 0;">
                 Thank You for Coming All the Way Down
             </h2>
             

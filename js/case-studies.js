@@ -54,7 +54,7 @@ const caseStudiesData = {
   'hyno': {
     title: 'HYNO — SaaS Analytics & Hiring Dashboard',
     category: 'UX/UI Design',
-    heroImg: 'images/All Screens/Hero Image 1.png',
+    heroImg: 'images/Hero_Image_1_hero.webp',
     overview: 'Designed an intuitive SaaS recruitment and analytics dashboard for HYNO, featuring active candidate tracking, total spending insights, and real-time candidate onboarding metrics.',
     metrics: [
       { label: 'Hiring Cost Optimization', value: '-10.1%' },
@@ -62,6 +62,18 @@ const caseStudiesData = {
       { label: 'Usability Score', value: '96/100' }
     ],
     deliverables: ['Dashboard UI/UX Design', 'Information Architecture', 'Design System & Micro-interactions']
+  },
+  'zoomart': {
+    title: 'ZooMart — Quick-Commerce Mobile Grocery Experience',
+    category: 'Mobile UX/UI Design',
+    heroImg: 'images/zoomart_card_thumb.webp',
+    overview: 'Engineered an end-to-end quick-commerce mobile grocery shopping experience for ZooMart, focusing on friction-free search, instant categorization, and lightning-fast checkout flows.',
+    metrics: [
+      { label: 'Cart Conversion Lift', value: '+34%' },
+      { label: 'Time to Checkout', value: '42s' },
+      { label: 'Search Usability Rate', value: '98%' }
+    ],
+    deliverables: ['Mobile App Architecture', 'Interactive Design System', 'E-Commerce Checkout Flow']
   },
   'atlanta': {
     title: 'ATLANTA — E-Commerce Architecture',
@@ -331,13 +343,13 @@ function openCaseStudy(id) {
 
   const projectsHtml = data.projects && data.projects.length ? `
     <div style="margin-bottom: 2.25rem;">
-      <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: #ffffff; letter-spacing: -0.02em;">Key Projects &amp; Core Highlights</h3>
+      <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: #ffffff; letter-spacing: -0.02em;">Key Projects &amp; Core Highlights</h3>
       <div style="border: 1px solid transparent; background-image: linear-gradient(#0c0d0f, #0c0d0f), linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 40%, rgba(255, 255, 255, 0) 100%); background-origin: border-box; background-clip: padding-box, border-box; border-radius: 24px; padding: 28px 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);">
         ${data.projects.map((p, idx) => `
           <div style="${idx < data.projects.length - 1 ? 'border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 22px; margin-bottom: 22px;' : ''}">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
               <span style="width: 8px; height: 8px; border-radius: 50%; background: #d5f74c; display: inline-block; flex-shrink: 0;"></span>
-              <h4 style="font-family: 'Inter Tight', sans-serif; font-size: 1.12rem; font-weight: 700; color: #ffffff; margin: 0;">${p.title}</h4>
+              <h4 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.12rem; font-weight: 700; color: #ffffff; margin: 0;">${p.title}</h4>
             </div>
             <p style="color: #9ca3af; font-size: 0.96rem; line-height: 1.7; margin: 0; padding-left: 18px;">${p.description}</p>
           </div>
@@ -348,12 +360,12 @@ function openCaseStudy(id) {
 
   const metricsHtml = data.metrics && data.metrics.length ? `
     <div style="margin-bottom: 2.25rem;">
-      <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: #ffffff; letter-spacing: -0.02em;">Key Metrics &amp; Impact</h3>
+      <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: #ffffff; letter-spacing: -0.02em;">Key Metrics &amp; Impact</h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
         ${data.metrics.map(m => `
           <div style="border: 1px solid transparent; background-image: linear-gradient(#0c0d0f, #0c0d0f), linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 40%, rgba(255, 255, 255, 0) 100%); background-origin: border-box; background-clip: padding-box, border-box; border-radius: 24px; padding: 24px 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; justify-content: space-between;">
             <div style="font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.5); margin-bottom: 10px;">${m.label}</div>
-            <div style="font-family: 'Inter Tight', sans-serif; font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 800; color: #ffffff; line-height: 1; letter-spacing: -0.03em;">
+            <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 800; color: #ffffff; line-height: 1; letter-spacing: -0.03em;">
               ${m.value.replace(/([%+—–-])/g, '<span style="color: #d5f74c;">$1</span>')}
             </div>
           </div>
@@ -364,7 +376,7 @@ function openCaseStudy(id) {
 
   const deliverablesHtml = data.deliverables && data.deliverables.length ? `
     <div style="margin-bottom: 1rem;">
-      <h3 style="font-family: 'Inter Tight', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #ffffff; letter-spacing: -0.02em;">Key Deliverables &amp; Artifacts</h3>
+      <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #ffffff; letter-spacing: -0.02em;">Key Deliverables &amp; Artifacts</h3>
       <div style="display: flex; flex-direction: column; gap: 0.85rem;">
         ${data.deliverables.map(d => `
           <div style="display: flex; align-items: baseline; gap: 12px; color: #e5e7eb; font-size: 0.98rem; line-height: 1.6;">
@@ -380,9 +392,9 @@ function openCaseStudy(id) {
     <div style="margin-bottom: 2rem;">
       <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); padding: 6px 16px; border-radius: 999px; margin-bottom: 16px;">
         <svg class="star-icon" viewBox="0 0 480 512" style="width: 12px; height: 12px; fill: #d5f74c;"><path d="M471.99 334.43L336.06 256l135.93-78.43c7.66-4.42 10.28-14.2 5.86-21.86l-32.02-55.43c-4.42-7.65-14.21-10.28-21.87-5.86l-135.93 78.43V16c0-8.84-7.17-16-16.01-16h-64.04c-8.84 0-16.01 7.16-16.01 16v156.86L56.04 94.43c-7.66-4.42-17.45-1.79-21.87 5.86L2.15 155.71c-4.42 7.65-1.8 17.44 5.86 21.86L143.94 256 8.01 334.43c-7.66 4.42-10.28 14.21-5.86 21.86l32.02 55.43c4.42 7.65 14.21 10.27 21.87 5.86l135.93-78.43V496c0 8.84 7.17 16 16.01 16h64.04c8.84 0 16.01-7.16 16.01-16V339.14l135.93 78.43c7.66 4.42 17.45 1.8 21.87-5.86l32.02-55.43c4.42-7.65 1.8-17.43-5.86-21.85z"></path></svg>
-        <span style="font-family: 'Inter Tight', sans-serif; font-size: 0.78rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em;">${data.category}</span>
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.78rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em;">${data.category}</span>
       </div>
-      <h2 style="font-family: 'Inter Tight', sans-serif; font-size: clamp(2rem, 3.5vw, 2.6rem); font-weight: 800; color: #ffffff; letter-spacing: -0.025em; line-height: 1.15; margin: 0 0 16px 0;">${data.title}</h2>
+      <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2rem, 3.5vw, 2.6rem); font-weight: 800; color: #ffffff; letter-spacing: -0.025em; line-height: 1.15; margin: 0 0 16px 0;">${data.title}</h2>
     </div>
 
     ${heroImgHtml}

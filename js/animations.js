@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   revealAllVisible();
-  window.addEventListener('scroll', revealAllVisible, { passive: true });
   setTimeout(revealAllVisible, 200);
   setTimeout(revealAllVisible, 600);
 
@@ -109,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
     checkToolsInView();
-    window.addEventListener('scroll', checkToolsInView, { passive: true });
   }
 
   /* ==========================================================================

@@ -3,7 +3,10 @@
    Exact Replication of All Sections from https://visualidentity.studio/
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 
 :root {
   /* Visual Identity Studio Palette */
@@ -24,8 +27,10 @@
   --border-dark: rgba(255, 255, 255, 0.1);
   --border-dark-hover: rgba(213, 247, 76, 0.35);
 
-  --font-heading: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Bricolage Grotesque', 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-brand: 'Bricolage Grotesque', sans-serif;
 
   --container-width: 1240px;
   --header-height: 80px;
@@ -110,11 +115,14 @@ img {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .section {
   padding: 7rem 0;
   position: relative;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -166,7 +174,8 @@ img {
   margin-bottom: 1rem;
 }
 
-.section-title span.muted {
+.section-title span.muted,
+.highlights-title span.muted {
   color: var(--text-gray);
 }
 
@@ -205,7 +214,7 @@ img {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: var(--font-heading);
+  font-family: var(--font-brand);
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -772,6 +781,9 @@ img {
   z-index: 1;
   text-decoration: none;
   flex-shrink: 0;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
 }
 
 .behance-action-btn .behance-arrow {
@@ -2393,6 +2405,8 @@ img {
   gap: 2.25rem;
   animation: highlightsScroll 48s linear infinite;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .highlights-marquee-wrapper:hover {
@@ -2409,7 +2423,8 @@ img {
   flex-shrink: 0;
   width: 330px;
   position: relative;
-  perspective: 1000px;
+  contain: layout style;
+  backface-visibility: hidden;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.3s ease;
   cursor: pointer;
   transform-origin: center center;
@@ -2436,8 +2451,10 @@ img {
   padding: 8px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65), 0 2px 6px rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
 }
 
@@ -2474,7 +2491,55 @@ img {
 }
 
 .highlight-card-wrapper:hover .highlight-card-img {
-  transform: scale(1.03);
+  transform: scale(1.04);
+}
+
+/* Funky Handwritten Photo Captions */
+.highlight-photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem 1.15rem 1rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0.92) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  z-index: 5;
+  transition: all 0.35s ease;
+}
+
+.highlight-photo-quote {
+  font-family: 'Caveat', cursive, sans-serif !important;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.22;
+  letter-spacing: 0.015em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 16px rgba(0, 0, 0, 0.8);
+  display: inline-block;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.highlight-card-wrapper:nth-child(7n + 1) .highlight-photo-quote { transform: rotate(-2deg); }
+.highlight-card-wrapper:nth-child(7n + 2) .highlight-photo-quote { transform: rotate(1.8deg); }
+.highlight-card-wrapper:nth-child(7n + 3) .highlight-photo-quote { transform: rotate(-1.5deg); }
+.highlight-card-wrapper:nth-child(7n + 4) .highlight-photo-quote { transform: rotate(2deg); }
+.highlight-card-wrapper:nth-child(7n + 5) .highlight-photo-quote { transform: rotate(-1.8deg); }
+.highlight-card-wrapper:nth-child(7n + 6) .highlight-photo-quote { transform: rotate(1.5deg); }
+.highlight-card-wrapper:nth-child(7n + 7) .highlight-photo-quote { transform: rotate(-1deg); }
+
+.highlight-card-wrapper:hover .highlight-photo-quote {
+  color: var(--accent-lime) !important;
+  transform: rotate(0deg) scale(1.08) !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 24px rgba(213, 247, 76, 0.5);
+}
+
+.highlight-card-wrapper:hover .highlight-photo-caption {
+  padding-bottom: 1.25rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 35%, rgba(0, 0, 0, 0.96) 100%);
 }
 
 /* Light Mode Adaptations */
@@ -2530,6 +2595,180 @@ img {
     gap: 1.5rem;
     animation-duration: 36s;
   }
+}
+
+/* ==========================================================================
+   AMBIENT ORGANIC DOT MATRIX BACKGROUND (Sections Below Hero)
+   Matches high-end AI/product portfolios with subtle faded radial illumination
+   ========================================================================== */
+
+/* Foreground content containers */
+.highlights-container,
+.highlights-marquee-track,
+.horizontal-scroll-viewport,
+.footer-inner,
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-title,
+.section-description,
+.section-tag-group,
+.highlights-header {
+  position: relative;
+  z-index: 2;
+}
+
+/* Base Dot Matrix Token on Pseudo-Elements */
+.highlights-section::after,
+#projects::before,
+#why-us::before,
+#services::before,
+.horizontal-scroll-sticky::before,
+#tools::before,
+#process::before,
+#contact::before,
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
+  background-size: 36px 36px;
+  background-position: center center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Specific Organic Illumination & Feathered Masks per Section */
+
+/* 1. Personal Highlights: Subtle cluster on left & right */
+.highlights-section::after {
+  background-image: 
+    radial-gradient(circle at 18% 30%, rgba(213, 247, 76, 0.065) 0%, transparent 55%),
+    radial-gradient(rgba(255, 255, 255, 0.27) 1.35px, transparent 1.35px);
+  background-size: auto, 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 20% 30%, #ffffff 0%, transparent 75%),
+                      radial-gradient(ellipse 50% 50% at 85% 75%, #ffffff 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 65% 55% at 20% 30%, #ffffff 0%, transparent 75%),
+              radial-gradient(ellipse 50% 50% at 85% 75%, #ffffff 0%, transparent 70%);
+}
+
+/* 2. Selected Projects: Glowing dots at upper right & lower left */
+#projects::before {
+  background-image: 
+    radial-gradient(circle at 82% 20%, rgba(213, 247, 76, 0.065) 0%, transparent 55%),
+    radial-gradient(circle at 12% 85%, rgba(213, 247, 76, 0.05) 0%, transparent 50%),
+    radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
+  background-size: auto, auto, 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 82% 25%, #ffffff 0%, transparent 75%),
+                      radial-gradient(ellipse 55% 50% at 15% 85%, #ffffff 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 65% 55% at 82% 25%, #ffffff 0%, transparent 75%),
+              radial-gradient(ellipse 55% 50% at 15% 85%, #ffffff 0%, transparent 70%);
+}
+
+/* 3. Why Us (Stats Bento): Illumination behind header & top-left stats card */
+#why-us::before {
+  background-image: 
+    radial-gradient(circle at 15% 35%, rgba(213, 247, 76, 0.065) 0%, transparent 60%),
+    radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
+  background-size: auto, 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 15% 30%, #ffffff 0%, transparent 75%),
+                      radial-gradient(ellipse 50% 50% at 88% 70%, #ffffff 0%, transparent 65%);
+  mask-image: radial-gradient(ellipse 65% 55% at 15% 30%, #ffffff 0%, transparent 75%),
+              radial-gradient(ellipse 50% 50% at 88% 70%, #ffffff 0%, transparent 65%);
+}
+
+/* 4. Services (Capabilities): Ambient presence behind accordions */
+#services::before {
+  background-image: 
+    radial-gradient(circle at 75% 30%, rgba(213, 247, 76, 0.06) 0%, transparent 55%),
+    radial-gradient(rgba(255, 255, 255, 0.27) 1.35px, transparent 1.35px);
+  background-size: auto, 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 75% 28%, #ffffff 0%, transparent 75%),
+                      radial-gradient(ellipse 50% 50% at 20% 80%, #ffffff 0%, transparent 65%);
+  mask-image: radial-gradient(ellipse 60% 50% at 75% 28%, #ffffff 0%, transparent 75%),
+              radial-gradient(ellipse 50% 50% at 20% 80%, #ffffff 0%, transparent 65%);
+}
+
+/* 5. Experience Timeline: Soft ambient presence behind timeline track (kept away from top-left Proven Impact & Career Path heading) */
+.horizontal-scroll-sticky::before {
+  background-image: 
+    radial-gradient(circle at 80% 30%, rgba(213, 247, 76, 0.06) 0%, transparent 60%),
+    radial-gradient(circle at 75% 70%, rgba(213, 247, 76, 0.05) 0%, transparent 55%),
+    radial-gradient(rgba(255, 255, 255, 0.26) 1.35px, transparent 1.35px);
+  background-size: auto, auto, 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 82% 32%, #ffffff 0%, transparent 75%),
+                      radial-gradient(ellipse 60% 50% at 65% 75%, #ffffff 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 60% 50% at 82% 32%, #ffffff 0%, transparent 75%),
+              radial-gradient(ellipse 60% 50% at 65% 75%, #ffffff 0%, transparent 70%);
+}
+
+/* 6. Tools & Technologies: Ambient spots behind skills grid */
+#tools::before {
+  background-image: 
+    radial-gradient(circle at 85% 35%, rgba(213, 247, 76, 0.065) 0%, transparent 60%),
+    radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
+  background-size: auto, 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 85% 35%, #ffffff 0%, transparent 75%),
+                      radial-gradient(ellipse 50% 45% at 18% 75%, #ffffff 0%, transparent 65%);
+  mask-image: radial-gradient(ellipse 60% 50% at 85% 35%, #ffffff 0%, transparent 75%),
+              radial-gradient(ellipse 50% 45% at 18% 75%, #ffffff 0%, transparent 65%);
+}
+
+/* 7. Process Section: Asymmetric fade from top-left through to bottom-right */
+#process::before {
+  background-image: 
+    radial-gradient(circle at 20% 25%, rgba(213, 247, 76, 0.06) 0%, transparent 55%),
+    radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
+  background-size: auto, 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 20% 28%, #ffffff 0%, transparent 75%),
+                      radial-gradient(ellipse 55% 50% at 82% 78%, #ffffff 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 60% 50% at 20% 28%, #ffffff 0%, transparent 75%),
+              radial-gradient(ellipse 55% 50% at 82% 78%, #ffffff 0%, transparent 70%);
+}
+
+/* 8. Contact Section: Radial center halo */
+#contact::before {
+  background-image: 
+    radial-gradient(circle at 50% 40%, rgba(213, 247, 76, 0.065) 0%, transparent 65%),
+    radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
+  background-size: auto, 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #ffffff 0%, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #ffffff 0%, transparent 80%);
+}
+
+/* 9. Footer: Subtle top fade */
+.footer {
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1.35px, transparent 1.35px);
+  background-size: 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #ffffff 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #ffffff 0%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Light Theme Adaptations for Ambient Dot Matrix */
+[data-theme="light"] .highlights-section::after,
+[data-theme="light"] #projects::before,
+[data-theme="light"] #why-us::before,
+[data-theme="light"] #services::before,
+[data-theme="light"] .horizontal-scroll-sticky::before,
+[data-theme="light"] #tools::before,
+[data-theme="light"] #process::before,
+[data-theme="light"] #contact::before,
+[data-theme="light"] .footer::before {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(92, 148, 0, 0.035) 0%, transparent 60%),
+    radial-gradient(rgba(0, 0, 0, 0.08) 1.25px, transparent 1.25px);
 }
 
 

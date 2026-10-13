@@ -96,37 +96,57 @@ function initHorizontalScrollTimeline() {
   if (!section || !track) return;
 
   let ticking = false;
+  let sectionTop = 0;
+  let totalScrollable = 0;
+  let maxTranslate = 0;
+
+  function measure() {
+    if (window.innerWidth <= 868) {
+      track.style.transform = 'none';
+      return;
+    }
+    const rect = section.getBoundingClientRect();
+    sectionTop = window.scrollY + rect.top;
+    totalScrollable = section.offsetHeight - window.innerHeight;
+    maxTranslate = track.scrollWidth - window.innerWidth;
+  }
+
+  function update() {
+    if (window.innerWidth <= 868) {
+      track.style.transform = 'none';
+      ticking = false;
+      return;
+    }
+
+    if (totalScrollable <= 0) {
+      ticking = false;
+      return;
+    }
+
+    const scrollOffset = window.scrollY - sectionTop;
+    const progress = Math.max(0, Math.min(1, scrollOffset / totalScrollable));
+    const translateX = -progress * Math.max(0, maxTranslate);
+
+    track.style.transform = `translateX(${translateX}px)`;
+    ticking = false;
+  }
 
   function onScroll() {
     if (!ticking) {
-      requestAnimationFrame(() => {
-        if (window.innerWidth <= 868) {
-          track.style.transform = 'none';
-          ticking = false;
-          return;
-        }
-
-        const rect = section.getBoundingClientRect();
-        const totalScrollable = section.offsetHeight - window.innerHeight;
-        if (totalScrollable <= 0) {
-          ticking = false;
-          return;
-        }
-
-        const progress = Math.max(0, Math.min(1, -rect.top / totalScrollable));
-        const maxTranslate = track.scrollWidth - window.innerWidth;
-        const translateX = -progress * Math.max(0, maxTranslate);
-
-        track.style.transform = `translateX(${translateX}px)`;
-        ticking = false;
-      });
+      requestAnimationFrame(update);
       ticking = true;
     }
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  onScroll();
+  window.addEventListener('resize', () => {
+    measure();
+    update();
+  });
+
+  measure();
+  update();
+  setTimeout(measure, 500);
 }
 
 function stepHorizontalTimeline(direction) {
