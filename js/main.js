@@ -173,7 +173,3 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initHorizontalScrollTimeline();
 });
-
-
-
-

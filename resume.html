@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhishek Pawar — Résumé | Senior UI/UX Designer</title>
+  <meta name="description" content="Resume of Abhishek Pawar, Senior UI/UX Designer & Product Design Specialist with 7+ years of experience across Enterprise, Healthcare, and E-Commerce.">
+
+  <!-- Favicon / Tab Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png?v=2">
+  <link rel="shortcut icon" href="favicon.ico?v=2">
+
+  <!-- Google Fonts: Inter & Bricolage Grotesque -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent-lime: #d5f74c;
+      --accent-lime-hover: #e2fa70;
+      --bg-dark: #000000;
+      --bg-viewer: #0b0c0e;
+      --border-dark: rgba(255, 255, 255, 0.08);
+      --font-heading: 'Bricolage Grotesque', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --paper-width: 820px;
+      --text-main: #1d2129;
+      --text-muted: #555b6d;
+      --text-light: #777e90;
+      --border-subtle: #e5e8ec;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-viewer);
+      color: #ffffff;
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Fixed Glassmorphic Top Toolbar */
+    .resume-nav-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 72px;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .resume-nav-inner {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .resume-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .resume-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    .resume-back-link:hover {
+      color: var(--accent-lime);
+      transform: translateX(-4px);
+    }
+
+    .resume-nav-center {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .resume-title-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      color: #d1d5db;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .resume-title-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-lime);
+      box-shadow: 0 0 8px rgba(213, 247, 76, 0.6);
+    }
+
+    .resume-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-print {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-print:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-download-pdf {
+      background: var(--accent-lime);
+      color: #000000;
+      text-decoration: none;
+      padding: 8px 22px;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 20px rgba(213, 247, 76, 0.25);
+    }
+
+    .btn-download-pdf:hover {
+      background: var(--accent-lime-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(213, 247, 76, 0.45);
+    }
+
+    /* Resume Document Canvas */
+    .resume-viewer-wrapper {
+      position: relative;
+      padding-top: calc(72px + 2.5rem);
+      padding-bottom: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    /* Ambient Soft Feathered Dots behind paper sheets */
+    .resume-viewer-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(213, 247, 76, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(213, 247, 76, 0.04) 0%, transparent 45%),
+        radial-gradient(rgba(255, 255, 255, 0.15) 1.25px, transparent 1.25px);
+      background-size: auto, auto, 36px 36px;
+      -webkit-mask-image: radial-gradient(ellipse 50% 40% at 15% 15%, #ffffff 0%, transparent 75%),
+                          radial-gradient(ellipse 55% 45% at 85% 85%, #ffffff 0%, transparent 75%);
+      mask-image: radial-gradient(ellipse 50% 40% at 15% 15%, #ffffff 0%, transparent 75%),
+                  radial-gradient(ellipse 55% 45% at 85% 85%, #ffffff 0%, transparent 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* A4 White Paper Canvas */
+    .resume-page {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--paper-width);
+      background: #ffffff;
+      color: var(--text-main);
+      padding: 56px 64px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 2px 8px rgba(0, 0, 0, 0.4);
+      border-radius: 4px;
+      font-size: 13.5px;
+      line-height: 1.48;
+    }
+
+    .page-indicator {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-weight: 500;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    /* Header Section */
+    .r-header {
+      margin-bottom: 24px;
+    }
+
+    .r-name {
+      font-size: 30px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 4px;
+      font-family: var(--font-body);
+    }
+
+    .r-role {
+      font-size: 17px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 12px;
+    }
+
+    .r-contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px 20px;
+      font-size: 12.5px;
+      color: #475569;
+    }
+
+    .r-contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .r-contact-label {
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .r-contact-link {
+      color: #0284c7;
+      text-decoration: none;
+    }
+
+    .r-contact-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Summary */
+    .r-section-block {
+      margin-bottom: 24px;
+    }
+
+    .r-section-heading {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: capitalize;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .r-summary-text {
+      font-size: 13px;
+      line-height: 1.55;
+      color: #334155;
+    }
+
+    /* Two-Column Grid */
+    .r-two-col-grid {
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 36px;
+    }
+
+    /* Left Column: Experience */
+    .r-col-left {
+      min-width: 0;
+    }
+
+    /* Right Column: Education & Skills */
+    .r-col-right {
+      min-width: 0;
+    }
+
+    .r-col-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    /* Job Entry */
+    .r-job-entry {
+      margin-bottom: 20px;
+    }
+
+    .r-job-header {
+      margin-bottom: 3px;
+    }
+
+    .r-company {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .r-job-title {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #475569;
+    }
+
+    .r-job-date {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .r-job-bullets {
+      list-style-type: disc;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .r-job-bullets li {
+      font-size: 12.8px;
+      line-height: 1.5;
+      color: #334155;
+    }
+
+    /* Education Item */
+    .r-edu-entry {
+      margin-bottom: 16px;
+    }
+
+    .r-edu-school {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.35;
+      margin-bottom: 2px;
+    }
+
+    .r-edu-degree {
+      font-size: 12.5px;
+      color: #334155;
+      margin-bottom: 2px;
+    }
+
+    .r-edu-date {
+      font-size: 11.5px;
+      color: #64748b;
+    }
+
+    /* Skills Groups */
+    .r-skills-group {
+      margin-bottom: 16px;
+    }
+
+    .r-skills-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 5px;
+    }
+
+    .r-skills-list {
+      font-size: 12.5px;
+      color: #334155;
+      line-height: 1.55;
+    }
+
+    .r-skills-stacked {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 12.5px;
+      color: #334155;
+    }
+
+    /* Print Formatting Rules */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      .resume-nav-header,
+      .resume-viewer-wrapper::before,
+      .page-indicator {
+        display: none !important;
+      }
+
+      .resume-viewer-wrapper {
+        padding: 0 !important;
+        gap: 0 !important;
+      }
+
+      .resume-page {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .resume-page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      @page {
+        size: A4;
+        margin: 14mm 16mm;
+      }
+    }
+
+    /* Mobile Adaptability */
+    @media (max-width: 768px) {
+      .resume-nav-inner {
+        padding: 0 1rem;
+      }
+      .resume-title-badge {
+        display: none;
+      }
+      .resume-page {
+        padding: 36px 24px;
+        border-radius: 0;
+      }
+      .r-two-col-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .btn-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed Top Header Toolbar -->
+  <header class="resume-nav-header">
+    <div class="resume-nav-inner">
+      <div class="resume-nav-left">
+        <a href="index.html" class="resume-back-link">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Portfolio</span>
+        </a>
+      </div>
+
+      <div class="resume-nav-center">
+        <div class="resume-title-badge">
+          <span class="dot"></span>
+          <span>Abhishek Pawar — Résumé.pdf</span>
+        </div>
+      </div>
+
+      <div class="resume-nav-right">
+        <button class="btn-print" onclick="window.print()" title="Print / Save as PDF">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          <span>Print</span>
+        </button>
+
+        <a href="Abhishek_Pawar_Resume.pdf" download="Abhishek_Pawar_Resume.pdf" class="btn-download-pdf">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Download PDF</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Resume Document Canvas (A4 Pages Matching Exact Original Structure) -->
+  <main class="resume-viewer-wrapper">
+
+    <!-- PAGE 1 -->
+    <article class="resume-page" id="page-1">
+      <!-- Header -->
+      <header class="r-header">
+        <h1 class="r-name">Abhishek Pawar</h1>
+        <div class="r-role">Senior UI/UX Designer &amp; Product Design Specialist</div>
+        <div class="r-contact-bar">
+          <div class="r-contact-item">
+            <span class="r-contact-label">Mail Id:</span>
+            <a href="mailto:abhishekpawar.designs@gmail.com" class="r-contact-link">abhishekpawar.designs@gmail.com</a>
+          </div>
+          <div class="r-contact-item">
+            <span class="r-contact-label">Portfolio:</span>
+            <a href="https://abhishekpawar.vercel.app/" target="_blank" rel="noopener noreferrer" class="r-contact-link">https://abhishekpawar.vercel.app/</a>
+          </div>
+          <div class="r-contact-item">
+            <span class="r-contact-label">Contact:</span>
+            <a href="tel:8179830927" class="r-contact-link">8179830927</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Summary -->
+      <section class="r-section-block">
+        <h2 class="r-section-heading">Summary</h2>
+        <p class="r-summary-text">
+          Senior UI/UX Designer with 7+ years of experience designing end-to-end B2B &amp; B2C products across E-Commerce, Healthcare, Enterprise Software, Ed-tech, and Travel. Proven track record of bridging user research with business strategy, building scalable design systems, and leveraging AI-assisted workflows to accelerate product delivery.
+        </p>
+      </section>
+
+      <!-- 2-Column Grid -->
+      <div class="r-two-col-grid">
+        <!-- Left Column: Experience -->
+        <div class="r-col-left">
+          <h2 class="r-col-title">Experience</h2>
+
+          <!-- Job 1 -->
+          <div class="r-job-entry">
+            <div class="r-job-header">
+              <span class="r-company">Tech Mahindra - Microsoft</span>
+              <span class="r-job-title"> / Sr. UI/UX Designer</span>
+            </div>
+            <div class="r-job-date">Jan 26 - Sep 26 (Full Time)</div>
+            <ul class="r-job-bullets">
+              <li>Redesigned the navigation and core seller experience for Microsoft Commerce Insights, including designing AI Copilot flows to automate complex data searches.</li>
+              <li>Built interactive prototypes to test workflows with product and engineering teams, and ran a comprehensive UX audit for the MSCD self-serve platform.</li>
+              <li>Integrated AI tools into design workflows, cutting design execution effort by 30–40% and speeding up iteration cycles by 25%.</li>
+            </ul>
+          </div>
+
+          <!-- Job 2 -->
+          <div class="r-job-entry">
+            <div class="r-job-header">
+              <span class="r-company">Trackmind</span>
+              <span class="r-job-title"> / Sr. UI/UX Designer</span>
+            </div>
+            <div class="r-job-date">Feb 25 - Jan 26 (Full Time)</div>
+            <ul class="r-job-bullets">
+              <li>Led the 0-to-1 design of a clinical web dashboard, setting up workflows and component systems for practitioners managing end-to-end maternal care plans.</li>
+              <li>Designed an AI mobile app for clients to log daily health routines and follow personalized care regimens.</li>
+              <li>Revamped the pre-onboarding questionnaire flow from scratch, cutting client intake time by 25% across platforms.</li>
+            </ul>
+          </div>
+
+          <!-- Job 3 -->
+          <div class="r-job-entry">
+            <div class="r-job-header">
+              <span class="r-company">Hownow</span>
+              <span class="r-job-title"> / Product Designer</span>
+            </div>
+            <div class="r-job-date">Aug 24 - Jan 25 (Contract)</div>
+            <ul class="r-job-bullets">
+              <li>Created a universal search with category and community filters, speeding up course discovery by 35%.</li>
+              <li>Mapped the user journeys and wire-framed a manager evaluation flow, making post-course feedback smooth and structured for both sides.</li>
+            </ul>
+          </div>
+
+          <!-- Job 4 (Starts on Page 1) -->
+          <div class="r-job-entry" style="margin-bottom: 0;">
+            <div class="r-job-header">
+              <span class="r-company">Hyno Technologies &amp; Co</span>
+              <span class="r-job-title"> / UI/UX Designer</span>
+            </div>
+            <div class="r-job-date">Oct 22 - Aug 24 (Full Time)</div>
+          </div>
+        </div>
+
+        <!-- Right Column: Education & Skills -->
+        <div class="r-col-right">
+          <h2 class="r-col-title">Education</h2>
+
+          <div class="r-edu-entry">
+            <div class="r-edu-school">Geethanjali College of Engineering and Technology</div>
+            <div class="r-edu-degree">Bachelors in Computer Science</div>
+            <div class="r-edu-date">Jun 2013 – Jun 2017</div>
+          </div>
+
+          <div class="r-edu-entry" style="margin-bottom: 24px;">
+            <div class="r-edu-school">Leapfrog</div>
+            <div class="r-edu-degree">UX/UI Design Bootcamp</div>
+            <div class="r-edu-date">Jun 2018 – Oct 2018</div>
+          </div>
+
+          <h2 class="r-col-title" style="margin-bottom: 14px;">Skills</h2>
+
+          <div class="r-skills-group">
+            <div class="r-skills-title">Core Design</div>
+            <div class="r-skills-stacked">
+              <div>Product Architecture</div>
+              <div>Interaction Design</div>
+              <div>Visual Design</div>
+              <div>Information Architecture</div>
+              <div>Wireframing</div>
+              <div>Interactive Prototyping</div>
+            </div>
+          </div>
+
+          <div class="r-skills-group">
+            <div class="r-skills-title">Research &amp; Strategy</div>
+            <div class="r-skills-stacked">
+              <div>User Research</div>
+              <div>Usability Testing</div>
+              <div>Heuristic Evaluation</div>
+              <div>Customer Journey Mapping</div>
+              <div>Design Thinking</div>
+              <div>Accessibility (WCAG)</div>
+            </div>
+          </div>
+
+          <div class="r-skills-group">
+            <div class="r-skills-title">Systems &amp; Scale</div>
+            <div class="r-skills-list">
+              Design Systems &amp; Governance, Token Architecture, Data-Driven Design, AI-Assisted Workflows
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-indicator">Page 1 of 2</div>
+    </article>
+
+    <!-- PAGE 2 -->
+    <article class="resume-page" id="page-2">
+      <div class="r-two-col-grid">
+        <!-- Left Column: Continued Experience -->
+        <div class="r-col-left">
+          <!-- Job 4 Continued Bullets -->
+          <div class="r-job-entry" style="margin-bottom: 20px;">
+            <ul class="r-job-bullets">
+              <li>Redesigned core B2B hiring flows and dashboards, cutting candidate time-to-hire by 58% across the platform.</li>
+              <li>Built the initial concept and booking flows for an educational trip marketplace, letting schools compare and book local camps, museum tours, and guides in one place.</li>
+              <li>Shipped interactive components and layout patterns that drove a 60% bump in platform engagement.</li>
+            </ul>
+          </div>
+
+          <!-- Job 5 -->
+          <div class="r-job-entry">
+            <div class="r-job-header">
+              <span class="r-company">eAbyas Info Solutions</span>
+              <span class="r-job-title"> / UI/UX Designer</span>
+            </div>
+            <div class="r-job-date">Jul 20 – Oct 22 (Full Time)</div>
+            <ul class="r-job-bullets">
+              <li>Redesigned the MHOW Indian Army website from scratch, updating the structure and overall visual style.</li>
+              <li>Handled day-to-day graphic design and interface screens across multiple client web projects.</li>
+            </ul>
+          </div>
+
+          <!-- Job 6 -->
+          <div class="r-job-entry">
+            <div class="r-job-header">
+              <span class="r-company">BilwamIndia Technologies Pvt. Ltd</span>
+              <span class="r-job-title"> / UI/UX Designer</span>
+            </div>
+            <div class="r-job-date">Jul 18 – Jul 20 (Full Time)</div>
+            <ul class="r-job-bullets">
+              <li>Interviewed internal stakeholders and users to find drop-off points, then restructured the company website navigation using card sorting to present services clearly.</li>
+              <li>Redesigned the cab service mobile app to make it responsive, lightweight, and easy to use across Android and iOS.</li>
+              <li>Overhauled a travel and tour web app, fixing responsive layouts and booking screens across mobile and desktop.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Column: Tools -->
+        <div class="r-col-right">
+          <div class="r-skills-group" style="margin-bottom: 24px;">
+            <h2 class="r-col-title" style="margin-bottom: 10px;">Tools</h2>
+            <div class="r-skills-list">
+              Figma, FigJam, Miro, Framer, Balsamiq, Sketch, Illustrator, Photoshop
+            </div>
+          </div>
+
+          <div class="r-skills-group">
+            <h2 class="r-col-title" style="margin-bottom: 10px;">AI &amp; Dev Tools</h2>
+            <div class="r-skills-list">
+              Cursor, VS Code, Antigravity, Github, Copilot
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-indicator">Page 2 of 2</div>
+    </article>
+
+  </main>
+
+</body>
+</html>

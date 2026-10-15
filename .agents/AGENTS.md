@@ -5,8 +5,16 @@
 - The 3D geometric glass star refraction, chromatic aberration tilt, and radial background gradients in the Hero section are **PERMANENTLY LOCKED** and must remain unchanged in all future edits.
 - Only text overlay strings inside `buildTextTex()` may be updated upon explicit user instruction.
 
-## 🎨 HARD RULE 2: DESIGN SYSTEM TOKENS & STYLE PARITY
-- **Palette**: Obsidian Dark `#000000` base, Card `#0c0d0e`, Hover `#141517`, Electric Lime Accent `#d5f74c` / `#d6fc3a`.
-- **Typography**: `Inter Tight` for display headings and hero typography; `Inter` for body copy.
-- **Iconography**: Spinning Star-of-Life SVG icon preceding all section header tags.
-- **Components**: Glassmorphic sticky header, infinite logo marquee ticker, 3-column 1:1 project grid with slide-over drawer, 4-card stats bento grid, 3 nested pricing accordions, horizontal scrollable timeline slider, and direct contacts form.
+## 🛑 HARD RULE 2: DESIGN PRESERVATION & LOCK
+- **DO NOT TOUCH OR MODIFY THE EXISTING DESIGN AT ANY COST**.
+- Never change colors, typography, margins, padding, layout structures, or animations without explicit instruction from the user.
+- Consult **`docs/DESIGN.md`** as the single source of truth for all design system tokens.
+
+## 🗺️ HARD RULE 3: ARCHITECTURAL & FLOW INTEGRITY
+- Consult **`docs/FLOW.md`** before making any page or routing changes.
+- **Content Partitioning**:
+  - `index.html` Section 2 (`#about`) has **ONLY** the 2 teaser paragraphs, the `Know More About Me` button, and the carousel.
+  - `about.html` contains the full 5-paragraph story, the bold concluding quote in double inverted commas, and the transparent carousel.
+- **Carousel Rules**:
+  - Tilted cards require top clearance (`padding-top: 3.25rem`) to prevent cutoffs.
+  - Carousels have `background: transparent !important;` and no top divider line (`border-top: none`).

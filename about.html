@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me — Abhishek Pawar | Staff / Lead Product Designer</title>
+  <meta name="description" content="Before I designed interfaces, I wrote the code that powered them. The story, craft philosophy, and product journey of Abhishek Pawar.">
+
+  <!-- Favicon / Tab Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png?v=2">
+  <link rel="shortcut icon" href="favicon.ico?v=2">
+  <link rel="apple-touch-icon" href="favicon.png?v=2">
+
+  <!-- Fonts: Bricolage Grotesque & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter+Tight:ital,wght@0,300..800;1,300..800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Shared Design System Tokens -->
+  <link rel="stylesheet" href="css/design-system.css">
+
+  <style>
+    :root {
+      --font-heading: 'Bricolage Grotesque', sans-serif !important;
+      --accent-lime: #d5f74c;
+      --accent-lime-hover: #e2fa70;
+      --bg-dark: #000000;
+      --bg-card: #0c0d0e;
+      --bg-card-hover: #141517;
+      --border-dark: rgba(255, 255, 255, 0.08);
+      --border-lime: rgba(213, 247, 76, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #ffffff;
+      font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
+      overflow-x: hidden;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Full-Width Sticky Top Header Navigation (Exact Parity with hyno-case-study.html) */
+    .cs-nav-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 0;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .cs-nav-inner {
+      width: 100%;
+      max-width: var(--container-width, 1240px);
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cs-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cs-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .cs-back-link:hover {
+      color: var(--accent-lime);
+      transform: translateX(-4px);
+    }
+
+    .cs-nav-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .cs-nav-cta {
+      background: var(--accent-lime);
+      color: #000000;
+      text-decoration: none;
+      padding: 9px 22px;
+      border-radius: 100px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .cs-nav-cta:hover {
+      transform: translateY(-1px);
+      background: var(--accent-lime-hover);
+      box-shadow: 0 0 15px rgba(213, 247, 76, 0.4);
+    }
+
+    /* Page Content Layout (Full Width Container matching site tokens) */
+    .about-page-wrapper {
+      position: relative;
+      z-index: 1;
+      padding-top: calc(76px + 3.5rem);
+      padding-bottom: 2rem;
+      width: 100%;
+    }
+
+    /* Ambient Organic Feathered Dot Matrix (Soft localized halos at top-left and bottom carousel area) */
+    .about-page-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 18% 20%, rgba(213, 247, 76, 0.055) 0%, transparent 48%),
+        radial-gradient(circle at 78% 88%, rgba(213, 247, 76, 0.05) 0%, transparent 45%),
+        radial-gradient(rgba(255, 255, 255, 0.18) 1.25px, transparent 1.25px);
+      background-size: auto, auto, 36px 36px;
+      -webkit-mask-image: radial-gradient(ellipse 42% 30% at 18% 20%, #ffffff 0%, transparent 75%),
+                          radial-gradient(ellipse 55% 35% at 78% 88%, #ffffff 0%, transparent 75%);
+      mask-image: radial-gradient(ellipse 42% 30% at 18% 20%, #ffffff 0%, transparent 75%),
+                  radial-gradient(ellipse 55% 35% at 78% 88%, #ffffff 0%, transparent 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .about-content-container {
+      width: 100%;
+      max-width: var(--container-width, 1240px);
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Hero Heading */
+    .about-hero-title {
+      font-family: 'Bricolage Grotesque', sans-serif !important;
+      font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-top: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .about-hero-title .muted {
+      color: #7b8089;
+      font-weight: 600;
+    }
+
+    /* Story Paragraphs — Full Width & Easy to Read */
+    .about-story-article {
+      display: flex;
+      flex-direction: column;
+      gap: 1.65rem;
+      margin-bottom: 1.5rem;
+      width: 100%;
+    }
+
+    .about-article-p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #b0b5c0;
+      max-width: 100%;
+      margin: 0;
+    }
+
+    .about-article-p.lead {
+      font-size: 1.35rem;
+      color: #ffffff;
+      font-weight: 500;
+      line-height: 1.7;
+    }
+
+    .about-article-p em {
+      color: #ffffff;
+      font-style: italic;
+    }
+
+    /* Bold, Bigger Conclusion in Double Inverted Commas, Heading Font, NO Bounding Box, NO Separation Line */
+    .about-hero-quote {
+      font-family: 'Bricolage Grotesque', sans-serif !important;
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+      color: #ffffff;
+      margin-top: 2rem;
+      margin-bottom: 3.5rem;
+      width: 100%;
+      max-width: 100%;
+      background: none !important;
+      border: none !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+    }
+
+    /* Photo Carousel Track (Edge-to-Edge, Directly Below without Divider Line) */
+    .about-page-wrapper .highlights-marquee-track {
+      margin-top: 0;
+      padding-top: 3.25rem;
+      padding-bottom: 3.5rem;
+      border-top: none !important;
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+
+    .about-page-wrapper .highlights-marquee-wrapper {
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-Width Sticky Top Header Navigation (Exact Parity with hyno-case-study.html) -->
+  <header class="cs-nav-header">
+    <div class="cs-nav-inner">
+      <div class="cs-nav-left">
+        <a href="index.html#about" class="cs-back-link">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Portfolio</span>
+        </a>
+      </div>
+
+      <div class="cs-nav-right">
+        <a href="index.html#contact" class="cs-nav-cta">Let's Connect</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Narrative Section -->
+  <main class="about-page-wrapper">
+    <div class="about-content-container">
+
+      <!-- Section Tag Pill -->
+      <div class="section-tag-group">
+        <svg class="star-icon" viewBox="0 0 480 512"><path d="M471.99 334.43L336.06 256l135.93-78.43c7.66-4.42 10.28-14.2 5.86-21.86l-32.02-55.43c-4.42-7.65-14.21-10.28-21.87-5.86l-135.93 78.43V16c0-8.84-7.17-16-16.01-16h-64.04c-8.84 0-16.01 7.16-16.01 16v156.86L56.04 94.43c-7.66-4.42-17.45-1.79-21.87 5.86L2.15 155.71c-4.42 7.65-1.8 17.44 5.86 21.86L143.94 256 8.01 334.43c-7.66 4.42-10.28 14.21-5.86 21.86l32.02 55.43c4.42 7.65 14.21 10.27 21.87 5.86l135.93-78.43V496c0 8.84 7.17 16 16.01 16h64.04c8.84 0 16.01-7.16 16.01-16V339.14l135.93 78.43c7.66 4.42 17.45 1.8 21.87-5.86l32.02-55.43c4.42-7.65 1.8-17.43-5.86-21.85z"></path></svg>
+        <span class="section-tag-text">About Me</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="about-hero-title">
+        Before I designed interfaces,<br>
+        <span class="muted">I wrote the code that powered them.</span>
+      </h1>
+
+      <!-- Full Story Narrative (Full Width) -->
+      <article class="about-story-article">
+        <p class="about-article-p lead">
+          I didn’t wake up one day and decide to become a product designer. I actually started my career on the other side of the fence: writing code as a UI developer.
+        </p>
+
+        <p class="about-article-p">
+          Back then, our team was constantly bumping up against weird product walls. We were writing clean code, but users kept bouncing. The existing website couldn’t clearly explain what the business actually did, design fundamentals were being tossed out the window, and nobody seemed to know why people were dropping off. Instead of just grumbling about confusing specs in our backlog, I got curious: <em>Why build something perfectly if nobody can figure out how to use it?</em>
+        </p>
+
+        <p class="about-article-p">
+          I put my hand up to tackle my first redesign right there at my first company. The goal wasn’t to make it look fancy; it was simply to get visitors to understand the product. That first project hooked me on the why behind interfaces.
+        </p>
+
+        <p class="about-article-p">
+          From there, curiosity turned into craft. In my next role, I left front-end handoff behind and went all-in on design—mastering Figma, running scrappy user interviews, deconstructing competitor products, and building reusable component systems so our teams didn't keep reinventing the wheel.
+        </p>
+
+        <p class="about-article-p">
+          By the time I stepped into my next role, I was taking complete ownership: taking three distinct software products from a blank whiteboard all the way to production. Having written code myself, I never designed in an ivory tower—I designed things that made sense to real users and could actually be built by the engineers in the room.
+        </p>
+
+        <!-- Bold, Bigger Conclusion in Double Inverted Commas, Heading Font, NO Bounding Box -->
+        <p class="about-hero-quote">
+          “Eight years in, the foundation is still simple: design things that solve real problems, and can actually be built by the team in the room.”
+        </p>
+      </article>
+
+    </div>
+
+    <!-- Sliding Photo Carousel (Directly Below, No Divider Line) -->
+    <div class="highlights-marquee-track">
+      <div class="highlights-marquee-wrapper">
+        <!-- Set 1: All 7 Personal Photos with Wholesome Captions -->
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 1">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_5681.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Arms wide open to the world 🏙️✨”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 2">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_7128.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Slow mornings &amp; warm coffee brews ☕🌿”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 3">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_7627.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Finding calm by the water’s edge 🌊🪨”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 4">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_7464.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Riding high above the treetops 😎🚠”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 5">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_7488.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Where the ocean meets the endless sky ☁️🌊”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 6">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_7692.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Salt in the air &amp; lightness in the soul 🏖️☀️”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 7">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_8713.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Purely happy in the present moment 😄✨”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Set 2: Duplicate for Seamless Infinite Loop -->
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 1">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_5681.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Arms wide open to the world 🏙️✨”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 2">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_7128.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Slow mornings &amp; warm coffee brews ☕🌿”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 3">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_7627.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Finding calm by the water’s edge 🌊🪨”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 4">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_7464.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Riding high above the treetops 😎🚠”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 5">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_7488.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Where the ocean meets the endless sky ☁️🌊”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 6">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_7692.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Salt in the air &amp; lightness in the soul 🏖️☀️”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-card-wrapper" tabindex="0" role="article" aria-label="Personal highlight 7">
+          <div class="highlight-card">
+            <div class="highlight-card-inner">
+              <img src="images/Me/Personal/opt_IMG_8713.webp" alt="Abhishek Pawar - Personal Snapshot" class="highlight-card-img" loading="lazy" decoding="async" />
+              <div class="highlight-photo-caption">
+                <span class="highlight-photo-quote">“Purely happy in the present moment 😄✨”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-copyright">
+        © 2026 Abhishek Pawar. All rights reserved.
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html#about" class="footer-link">About</a></li>
+        <li><a href="index.html#projects" class="footer-link">Projects</a></li>
+        <li><a href="index.html#why-us" class="footer-link">How I Work</a></li>
+        <li><a href="index.html#services" class="footer-link">Services</a></li>
+        <li><a href="index.html#experience" class="footer-link">Experience</a></li>
+        <li><a href="index.html#tools" class="footer-link">Tools</a></li>
+        <li><a href="index.html#process" class="footer-link">My Process</a></li>
+        <li><a href="index.html#contact" class="footer-link">Contacts</a></li>
+        <li><a href="https://www.behance.net/abhishek_pawar" target="_blank" rel="noopener noreferrer" class="footer-link" style="color: var(--accent-lime);">Behance ↗</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

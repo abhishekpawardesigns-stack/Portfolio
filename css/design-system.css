@@ -246,8 +246,9 @@ img {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2.25rem;
+  gap: clamp(1.15rem, 1.8vw, 2.25rem);
   list-style: none;
+  white-space: nowrap;
 }
 
 .nav-link {
@@ -2369,12 +2370,132 @@ img {
   margin-bottom: 0;
 }
 
+/* About Me Narrative Story (Full Width Layout) */
+.about-story-fullwidth {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-story-p {
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--text-gray);
+  margin: 0;
+  max-width: 100%;
+}
+
+.about-story-p.lead {
+  font-size: 1.18rem;
+  color: var(--text-white);
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.about-story-p em {
+  color: var(--text-white);
+  font-style: italic;
+}
+
+.about-story-p.callout {
+  padding-top: 0.5rem;
+  border-top: none;
+  font-size: 1.1rem;
+  color: var(--text-white);
+}
+
+.about-story-p .accent-text {
+  color: var(--accent-lime);
+  font-weight: 600;
+}
+
+/* Bold, Bigger Conclusion Quote in Heading Font, NO Bounding Box, NO Separation Line */
+.about-hero-quote {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin-top: 1.75rem;
+  margin-bottom: 2.25rem;
+  width: 100%;
+  max-width: 100%;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.about-cta-container {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.about-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--accent-lime);
+  color: var(--bg-dark) !important;
+  font-family: var(--font-heading);
+  font-size: 0.925rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none !important;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.about-cta-btn:hover {
+  background-color: var(--accent-lime-hover);
+  color: var(--bg-dark) !important;
+  transform: translateY(-2px);
+}
+
+.about-cta-btn:active {
+  transform: translateY(0);
+}
+
+.about-cta-icon {
+  display: inline-block;
+  font-size: 1rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-extended-content {
+  display: none;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.about-extended-content.expanded {
+  display: flex !important;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Continuous Infinite Marquee Track */
 .highlights-marquee-track {
   overflow: hidden;
   width: 100%;
   position: relative;
-  padding: 2rem 0 3.25rem;
+  padding: 3rem 0 3.5rem;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 .highlights-marquee-track::before,
@@ -2642,16 +2763,14 @@ img {
 
 /* Specific Organic Illumination & Feathered Masks per Section */
 
-/* 1. Personal Highlights: Subtle cluster on left & right */
+/* 1. About Me (Highlights Section): Subtle, soft localized organic halo (NOT screen-wide or fixed) */
 .highlights-section::after {
   background-image: 
-    radial-gradient(circle at 18% 30%, rgba(213, 247, 76, 0.065) 0%, transparent 55%),
-    radial-gradient(rgba(255, 255, 255, 0.27) 1.35px, transparent 1.35px);
+    radial-gradient(circle at 18% 25%, rgba(213, 247, 76, 0.055) 0%, transparent 48%),
+    radial-gradient(rgba(255, 255, 255, 0.16) 1.25px, transparent 1.25px);
   background-size: auto, 36px 36px;
-  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 20% 30%, #ffffff 0%, transparent 75%),
-                      radial-gradient(ellipse 50% 50% at 85% 75%, #ffffff 0%, transparent 70%);
-  mask-image: radial-gradient(ellipse 65% 55% at 20% 30%, #ffffff 0%, transparent 75%),
-              radial-gradient(ellipse 50% 50% at 85% 75%, #ffffff 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 42% 32% at 18% 25%, #ffffff 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 42% 32% at 18% 25%, #ffffff 0%, transparent 75%);
 }
 
 /* 2. Selected Projects: Glowing dots at upper right & lower left */
