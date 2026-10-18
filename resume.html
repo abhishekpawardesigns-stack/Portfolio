@@ -55,7 +55,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 72px;
+      height: 80px;
       z-index: 1000;
       background: rgba(0, 0, 0, 0.88);
       backdrop-filter: blur(20px);
@@ -109,23 +109,14 @@
     .resume-title-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 6px 14px;
+      padding: 6px 16px;
       border-radius: 100px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       color: #d1d5db;
       font-weight: 500;
       letter-spacing: 0.01em;
-    }
-
-    .resume-title-badge .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent-lime);
-      box-shadow: 0 0 8px rgba(213, 247, 76, 0.6);
     }
 
     .resume-nav-right {
@@ -138,50 +129,56 @@
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.16);
       color: #ffffff;
-      padding: 8px 18px;
-      border-radius: 100px;
+      padding: 0.8rem 1.6rem;
+      border-radius: 9999px;
       font-family: var(--font-heading);
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.925rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      justify-content: center;
+      gap: 0.5rem;
+      line-height: 1.2;
       transition: all 0.25s ease;
     }
 
     .btn-print:hover {
       background: rgba(255, 255, 255, 0.15);
       border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
     .btn-download-pdf {
       background: var(--accent-lime);
-      color: #000000;
+      color: var(--bg-dark, #000000);
       text-decoration: none;
-      padding: 8px 22px;
-      border-radius: 100px;
+      padding: 0.8rem 1.6rem;
+      border-radius: 9999px;
       font-family: var(--font-heading);
-      font-size: 0.88rem;
+      font-size: 0.925rem;
       font-weight: 700;
+      letter-spacing: -0.01em;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 0.5rem;
+      line-height: 1.2;
       transition: all 0.25s ease;
-      box-shadow: 0 0 20px rgba(213, 247, 76, 0.25);
+      box-shadow: none;
     }
 
     .btn-download-pdf:hover {
       background: var(--accent-lime-hover);
       transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(213, 247, 76, 0.45);
+      box-shadow: none;
     }
 
     /* Resume Document Canvas */
     .resume-viewer-wrapper {
       position: relative;
-      padding-top: calc(72px + 2.5rem);
+      padding-top: calc(80px + 2.5rem);
       padding-bottom: 4rem;
       display: flex;
       flex-direction: column;
@@ -499,7 +496,6 @@
 
       <div class="resume-nav-center">
         <div class="resume-title-badge">
-          <span class="dot"></span>
           <span>Abhishek Pawar — Résumé.pdf</span>
         </div>
       </div>
