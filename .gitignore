@@ -8,5 +8,6 @@ recovery-codes.txt
 .DS_Store
 Thumbs.db
 
-# Temp scripts
+# Temp scripts & test files
 scripts/
+test.html
