@@ -2,175 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How I Work · Interactive 3D Showcase | Abhishek Pawar</title>
-  <meta name="description" content="Good design isn't just tidy screens. It's untangling messy systems. Interactive 3D showcase by Abhishek Pawar.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=no">
+  <title>Less Chaos. More Clarity. Better Products. · 3D Monoliths | Abhishek Pawar</title>
+  <meta name="description" content="A scroll-driven 3D spatial journey across 5 floating obsidian mountain monoliths exploring Abhishek Pawar's design philosophy and workflow.">
 
-  <!-- Google Fonts: Bricolage Grotesque & Inter -->
+  <!-- Google Fonts: Bricolage Grotesque, Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Shared Design System Tokens -->
-  <link rel="stylesheet" href="css/design-system.css">
+  <!-- Google Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 
   <style>
+    /* ==========================================================================
+       DESIGN SYSTEM TOKENS & BASE RESETS
+       ========================================================================== */
     :root {
-      --accent-lime: #d5f74c;
-      --accent-lime-hover: #e2fa70;
-      --accent-lime-glow: rgba(213, 247, 76, 0.35);
+      color-scheme: dark;
       --bg-dark: #000000;
-      --bg-card: rgba(14, 15, 17, 0.85);
-      --border-glass: rgba(255, 255, 255, 0.12);
-      --border-lime: rgba(213, 247, 76, 0.4);
+      --accent-lime: #D5F74C;
+      --accent-lime-dim: rgba(213, 247, 76, 0.15);
+      --accent-lime-glow: rgba(213, 247, 76, 0.4);
+
+      --text-white: #FFFFFF;
+      --text-gray: #94A3B8;
+      --text-muted: #556275;
+
+      --border-dark: rgba(255, 255, 255, 0.08);
+      --border-lime: rgba(213, 247, 76, 0.35);
+
+      --font-heading: 'Bricolage Grotesque', sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      background-color: var(--bg-dark);
-      color: #ffffff;
-      font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
-      overflow-x: hidden;
-      min-height: 100vh;
-      line-height: 1.5;
-    }
-
-    /* Subdued dotted matrix background */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: 
-        radial-gradient(circle at 80% 20%, rgba(213, 247, 76, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 20% 80%, rgba(213, 247, 76, 0.04) 0%, transparent 45%),
-        radial-gradient(rgba(255, 255, 255, 0.22) 1.2px, transparent 1.2px);
-      background-size: auto, auto, 34px 34px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Glassmorphic Sticky Header with Back Button */
-    .test-header {
-      position: fixed;
-      top: 0;
-      left: 0;
+    html, body {
       width: 100%;
-      height: 72px;
-      z-index: 100;
-      background: rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-    }
-
-    .test-header-inner {
-      width: 100%;
-      max-width: var(--container-width, 1240px);
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .test-header-left {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .back-home-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.55rem 1.15rem;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: var(--radius-pill, 9999px);
-      color: #ffffff;
-      font-size: 0.85rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.25s ease;
-    }
-
-    .back-home-btn:hover {
-      background: rgba(213, 247, 76, 0.12);
-      border-color: var(--accent-lime);
-      color: var(--accent-lime);
-      transform: translateX(-3px);
-    }
-
-    .brand-id {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      color: #ffffff;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: -0.01em;
-      text-decoration: none;
-    }
-
-    .prototype-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.4rem 0.9rem;
-      border-radius: var(--radius-pill, 9999px);
-      background: rgba(213, 247, 76, 0.08);
-      border: 1px solid rgba(213, 247, 76, 0.25);
-      color: var(--accent-lime);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .prototype-badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent-lime);
-      box-shadow: 0 0 10px var(--accent-lime);
-      animation: pulseDot 2s infinite;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
-    }
-
-    /* Scroll Experience Container (6 Stages = 600vh) */
-    .scroll-experience-container {
-      position: relative;
-      height: 600vh;
-      width: 100%;
-    }
-
-    /* Pinned Fullscreen Stage */
-    .sticky-stage {
-      position: sticky;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      height: 100%;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      z-index: 10;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+      color-scheme: dark;
+      scrollbar-color: rgba(255, 255, 255, 0.28) #000000;
+      scrollbar-width: thin;
     }
 
-    /* Fullscreen WebGL Canvas for 3D Rotating Glass Star */
-    #test-webgl-canvas {
+    * {
+      scrollbar-color: rgba(255, 255, 255, 0.28) #000000;
+      scrollbar-width: thin;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px !important;
+      height: 6px !important;
+      background-color: #000000 !important;
+    }
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-track-piece {
+      background: #000000 !important;
+      background-color: #000000 !important;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.28) !important;
+      border-radius: 9999px !important;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.5) !important;
+    }
+    ::-webkit-scrollbar-corner {
+      background: #000000 !important;
+    }
+
+    /* ==========================================================================
+       BACKGROUND SHOOTING STARS CANVAS & SPACE VIGNETTE
+       ========================================================================== */
+    #space-canvas {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -179,47 +95,122 @@
       pointer-events: none;
     }
 
-    /* Foreground Content Layout */
-    .stage-content-grid {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: var(--container-width, 1240px);
-      height: 100%;
-      margin: 0 auto;
-      padding: 6.5rem 2rem 3rem 2rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 4.5rem;
+    .space-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: radial-gradient(circle at 62% 64%, transparent 26%, rgba(0, 0, 0, 0.9) 100%);
       pointer-events: none;
     }
 
-    /* Left Side: Editorial & Intro */
-    .stage-left-panel {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      pointer-events: auto;
-      max-width: 540px;
+    /* Ambient faint nebula glow behind the mountain depth */
+    .ambient-depth-glow {
+      position: absolute;
+      width: 900px;
+      height: 900px;
+      top: 65%;
+      left: 68%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(213, 247, 76, 0.045) 0%, rgba(14, 20, 28, 0.08) 50%, transparent 75%);
+      border-radius: 50%;
+      filter: blur(85px);
+      z-index: 3;
+      pointer-events: none;
     }
 
-    /* Section Tag Pill (1:1 Homepage Parity) */
+    /* ==========================================================================
+       TOP NAVIGATION BAR
+       ========================================================================== */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 72px;
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: var(--text-white);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 0.5rem 1.15rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-dark);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .nav-back-btn:hover {
+      background: rgba(213, 247, 76, 0.1);
+      border-color: var(--border-lime);
+      color: var(--accent-lime);
+      transform: translateX(-3px);
+    }
+
+    .nav-back-btn .material-symbols-outlined {
+      font-size: 1.1rem;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-back-btn:hover .material-symbols-outlined {
+      transform: translateX(-2px);
+    }
+
+    /* ==========================================================================
+       SPLIT SCREEN ARCHITECTURE: LEFT EDITORIAL PANEL + RIGHT 3D STAGE
+       ========================================================================== */
+    .split-layout-container {
+      position: absolute;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* --------------------------------------------------------------------------
+       LEFT PANEL: BIG HEADING & SUPPORTING STATEMENT (TOP-LEFT)
+       -------------------------------------------------------------------------- */
+    .left-editorial-panel {
+      width: 44vw;
+      height: 100vh;
+      padding: 7.5rem 3.5rem 3rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* CRITICAL: ensures pill and content hug width */
+      justify-content: flex-start;
+      z-index: 30;
+      pointer-events: none;
+    }
+
     .section-tag-group {
-      display: inline-flex !important;
+      display: inline-flex;
+      align-self: flex-start; /* Strictly hugs content */
+      width: fit-content;
+      max-width: fit-content;
       align-items: center;
       gap: 0.6rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
       background: rgba(213, 247, 76, 0.08);
       border: 1px solid rgba(213, 247, 76, 0.25);
       border-radius: 100px;
       padding: 8px 18px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      width: fit-content !important;
-      max-width: fit-content !important;
-      align-self: flex-start !important;
     }
 
     .star-icon {
@@ -227,7 +218,6 @@
       height: 18px;
       fill: var(--accent-lime);
       animation: spinStar 12s linear infinite;
-      flex-shrink: 0;
     }
 
     @keyframes spinStar {
@@ -236,902 +226,828 @@
     }
 
     .section-tag-text {
-      font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
+      font-family: var(--font-body);
       font-size: 0.95rem;
       font-weight: 500;
       color: var(--accent-lime);
       text-transform: capitalize;
       letter-spacing: 0.02em;
-      line-height: 1.2;
-      white-space: nowrap;
     }
 
-    .stage-title {
-      font-family: 'Bricolage Grotesque', sans-serif !important;
-      font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+    .left-main-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 3.8vw, 3.4rem);
       font-weight: 700;
-      line-height: 1.14;
+      line-height: 1.12;
       letter-spacing: -0.03em;
-      color: #ffffff;
-      margin-bottom: 1.35rem;
+      color: var(--text-white);
+      margin-bottom: 1.25rem;
+      max-width: 520px;
     }
 
-    .stage-title .muted {
-      color: #7b8089;
-      font-weight: 600;
+    .left-main-heading span.muted {
+      color: var(--text-gray);
+      font-weight: 400;
     }
 
-    .stage-description {
-      font-size: 1.05rem;
-      color: #a1a5b0;
-      line-height: 1.65;
+    .left-supporting-statement {
+      font-size: 1.02rem;
+      line-height: 1.68;
+      color: var(--text-gray);
+      max-width: 460px;
       margin-bottom: 2rem;
     }
 
-    /* Right Side: Open Space Metric Stage (Shifted to Far Right) */
-    .stage-right-panel {
+    /* --------------------------------------------------------------------------
+       RIGHT STAGE: 3D MOUNTAIN ARCHIPELAGO (PUSHED RIGHT & LOWERED)
+       -------------------------------------------------------------------------- */
+    .right-mountain-stage {
+      width: 56vw;
+      height: 100vh;
       position: relative;
-      height: 100%;
-      align-self: stretch;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-end;
-      padding-top: 2rem;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+      perspective-origin: 50% 64%;
+      overflow: visible;
       pointer-events: none;
     }
 
-    /* Open Space Metric Container (Positioned on the Right) */
-    .card-slot {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-      min-height: 240px;
-      margin-left: auto;
-      pointer-events: auto;
-      z-index: 20;
-    }
-
-    .explanation-card {
+    /* 3D Depth Rig: lowered to 68% so mountains sit comfortably low */
+    .depth-stage-rig {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      padding: 0;
-      box-shadow: none;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(18px);
-      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  visibility 0.4s ease;
-    }
-
-    .explanation-card.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .card-metric-block {
+      top: 68%;
+      left: 48%;
+      width: 0;
+      height: 0;
       display: flex;
-      align-items: baseline;
-      gap: 0.85rem;
-      margin-bottom: 0.85rem;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      pointer-events: none;
     }
 
-    .card-metric-label {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(1.4rem, 2.2vw, 1.95rem);
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.2;
-      letter-spacing: -0.025em;
-      margin: 0;
+    /* Mountain Node: large 700px scale */
+    .mountain-monolith-node {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      will-change: transform, opacity, filter;
+      pointer-events: none;
     }
 
-    .metric-accent-inline {
-      color: var(--accent-lime);
-      font-weight: 800;
-      margin-right: 0.45rem;
-      text-shadow: 0 0 24px rgba(213, 247, 76, 0.30);
-    }
-
-    .card-text {
-      color: #a8adb8;
-      font-size: 1.02rem;
-      line-height: 1.62;
-      max-width: 480px;
-    }
-
-    .card-text + .card-text {
-      margin-top: 0.75rem;
-    }
-
-    /* Section 2: 3D Spatial Exploration & Asset Benchmark */
-    .spatial-showcase-section {
-      position: relative;
-      background: #000000;
-      padding: 7rem 2rem 8rem 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      z-index: 20;
-    }
-
-    .spatial-showcase-container {
-      max-width: var(--container-width, 1240px);
-      margin: 0 auto;
-    }
-
-    .spatial-header {
-      margin-bottom: 3.5rem;
-      max-width: 800px;
-    }
-
-    .spatial-title {
-      font-family: 'Bricolage Grotesque', sans-serif !important;
-      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      color: #ffffff;
-      margin-bottom: 1.25rem;
-    }
-
-    .spatial-title .muted {
-      color: #7b8089;
-      font-weight: 600;
-    }
-
-    .spatial-subtitle {
-      font-size: 1.05rem;
-      color: #a1a5b0;
-      line-height: 1.65;
-    }
-
-    .spatial-mountain-card {
-      position: relative;
-      background: rgba(14, 15, 17, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      transition: border-color 0.3s ease, transform 0.3s ease;
-    }
-
-    .spatial-mountain-card:hover {
-      border-color: rgba(213, 247, 76, 0.35);
-      transform: translateY(-2px);
-    }
-
-    .spatial-image-frame {
-      position: relative;
-      width: 100%;
-      height: clamp(380px, 58vh, 680px);
-      overflow: hidden;
-      background: #050505;
-    }
-
-    .spatial-mountain-img {
+    /* The Rock Image: solid obsidian stone, NO green border, NO hover effect */
+    .rock-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
-      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      object-fit: contain;
+      filter: drop-shadow(0 30px 55px rgba(0, 0, 0, 0.98));
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
     }
 
-    .spatial-mountain-card:hover .spatial-mountain-img {
-      transform: scale(1.025);
+    /* Gentle zero-g continuous breathing motion */
+    .breathe-pod-0 { animation: floatBreathe 9s ease-in-out infinite alternate; }
+    .breathe-pod-1 { animation: floatBreathe 8.2s ease-in-out infinite alternate-reverse; }
+    .breathe-pod-2 { animation: floatBreathe 10s ease-in-out infinite alternate; }
+    .breathe-pod-3 { animation: floatBreathe 8.8s ease-in-out infinite alternate-reverse; }
+    .breathe-pod-4 { animation: floatBreathe 9.5s ease-in-out infinite alternate; }
+
+    @keyframes floatBreathe {
+      0% { transform: translateY(-7px); }
+      100% { transform: translateY(7px); }
     }
 
-    .spatial-img-overlay {
+    /* ==========================================================================
+       FLOATING MONOLITH ANNOTATION CARDS & STRAIGHT GRADIENT LEADER LINE
+       ========================================================================== */
+    .annotations-layer {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.35) 60%, rgba(14, 15, 17, 0.95) 100%);
+      width: 100%;
+      height: 100%;
       pointer-events: none;
+      z-index: 25;
     }
 
-    .spatial-badge-float {
+    .leader-annotation-wrapper {
       position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.55rem 1.1rem;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(213, 247, 76, 0.3);
-      border-radius: var(--radius-pill, 9999px);
-      color: var(--accent-lime);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      z-index: 5;
-    }
-
-    .spatial-badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent-lime);
-      box-shadow: 0 0 10px var(--accent-lime);
-      animation: pulseDot 2s infinite;
-    }
-
-    .spatial-card-meta {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      padding: 1.75rem 2.25rem;
-      background: rgba(10, 11, 13, 0.9);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .meta-item {
+      top: 11.4rem; /* Exactly matches uppermost tip of .left-main-heading on the left (183px) */
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
-    }
-
-    .meta-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: #6b7280;
-      text-transform: uppercase;
-    }
-
-    .meta-value {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #ffffff;
-      letter-spacing: -0.01em;
-    }
-
-    @media (max-width: 840px) {
-      .spatial-card-meta {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-        padding: 1.5rem;
-      }
-    }
-
-    @media (max-width: 540px) {
-      .spatial-card-meta {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Atmospheric Bottom Fade-Out (Seamlessly fades section to 0 / black for homepage integration) */
-    .stage-bottom-fade {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 240px;
-      background: linear-gradient(to bottom, 
-        rgba(0, 0, 0, 0) 0%, 
-        rgba(0, 0, 0, 0.40) 35%, 
-        rgba(0, 0, 0, 0.85) 75%, 
-        #000000 100%);
+      align-items: flex-start; /* STRICTLY LEFT-ALIGNED */
       pointer-events: none;
-      z-index: 15;
+      opacity: 0;
+      z-index: 25;
+      transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Bottom Floating Scroll Tracker */
-    .scroll-instruction {
-      position: absolute;
+    .leader-annotation-wrapper.active {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      transition: opacity 0.35s ease 0.05s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+    }
+
+    /* Clean Floating Text Block (COMPLETELY LEFT-ALIGNED) */
+    .floating-text-block {
+      text-align: left; /* STRICTLY LEFT-ALIGNED */
+      width: 440px;
+      pointer-events: none;
+    }
+
+    .text-main-heading {
+      font-family: var(--font-heading);
+      font-size: 1.95rem;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--text-white);
+      margin-bottom: 0.45rem;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95);
+    }
+
+    .text-supporting-desc {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--text-gray);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+    }
+
+    /* Straight gradient line: fading top, strong middle, fading bottom touching mountain */
+    .straight-gradient-leader-line {
+      width: 1.5px;
+      height: 48px; /* Connects smoothly from text block down to mountain ridge */
+      margin-left: 2px;
+      margin-top: 0.75rem;
+      background: linear-gradient(to bottom, 
+        rgba(213, 247, 76, 0) 0%, 
+        rgba(213, 247, 76, 0.88) 35%, 
+        rgba(213, 247, 76, 0.88) 65%, 
+        rgba(213, 247, 76, 0) 100%
+      );
+      box-shadow: 0 0 8px rgba(213, 247, 76, 0.35);
+    }
+
+    /* ==========================================================================
+       BOTTOM HUD: SCROLL INSTRUCTIONS & PROGRESS
+       ========================================================================== */
+    .bottom-hud-bar {
+      position: fixed;
       bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 3.5rem;
+      right: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .scroll-hint-wrapper {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      background: rgba(14, 15, 17, 0.75);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: var(--radius-pill, 9999px);
-      padding: 0.55rem 1.4rem;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: #d1d5db;
-      z-index: 30;
-      pointer-events: none;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
     }
 
-    .scroll-arrow-anim {
+    .mouse-scroll-indicator {
+      width: 20px;
+      height: 32px;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .mouse-wheel-dot {
+      width: 3px;
+      height: 6px;
+      background: var(--accent-lime);
+      border-radius: 2px;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: mouseSlide 1.8s infinite ease-in-out;
+    }
+
+    @keyframes mouseSlide {
+      0% { transform: translate(-50%, 0); opacity: 1; }
+      75% { transform: translate(-50%, 9px); opacity: 0; }
+      100% { transform: translate(-50%, 0); opacity: 0; }
+    }
+
+    /* Progress Track Line */
+    .progress-track {
+      width: 220px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.08);
+      position: relative;
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-lime);
+      box-shadow: 0 0 10px var(--accent-lime);
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stage-counter-text {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-gray);
+      letter-spacing: 0.08em;
+    }
+
+    .stage-counter-text span.highlight {
       color: var(--accent-lime);
-      animation: bounceDown 1.8s infinite;
+      font-weight: 600;
     }
 
-    @keyframes bounceDown {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(4px); }
-    }
-
-    /* Mobile / Tablet Responsive Adjustments */
-    @media (max-width: 960px) {
-      .stage-content-grid {
-        grid-template-columns: 1fr;
-        padding-top: 5.5rem;
-        gap: 1.5rem;
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .split-layout-container {
+        flex-direction: column;
       }
-      .stage-left-panel {
-        max-width: 100%;
+      .left-editorial-panel {
+        width: 100vw;
+        height: auto;
+        padding: 5.5rem 1.75rem 1rem;
       }
-      .stage-right-panel {
-        align-items: center;
-        padding-top: 0;
+      .left-main-heading {
+        font-size: 1.95rem;
       }
-      .card-slot {
-        max-width: 100%;
-        min-height: 240px;
+      .left-supporting-statement {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      .right-mountain-stage {
+        width: 100vw;
+        height: 60vh;
+      }
+      .depth-stage-rig {
+        top: 56%;
+        left: 50%;
+      }
+      .mountain-monolith-node {
+        width: 440px;
+        height: 440px;
+      }
+      .floating-text-block {
+        width: 320px;
+      }
+      .text-main-heading {
+        font-size: 1.65rem;
+      }
+      .leader-annotation-wrapper {
+        top: 1.5rem;
+      }
+      .bottom-hud-bar {
+        left: 1.5rem;
+        right: 1.5rem;
+        bottom: 1.25rem;
+      }
+      .progress-track {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Glassmorphic Header with Home Navigation -->
-  <header class="test-header">
-    <div class="test-header-inner">
-      <div class="test-header-left">
-        <a href="index.html" class="back-home-btn" title="Return to Portfolio Homepage">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-          <span>Back to Home</span>
-        </a>
+  <!-- Minimalist Shooting Stars & Dust Canvas -->
+  <canvas id="space-canvas"></canvas>
 
-        <a href="index.html" class="brand-id">
-          <span>ABHISHEK PAWAR</span>
-        </a>
-      </div>
+  <!-- Deep space vignette -->
+  <div class="space-vignette"></div>
 
-      <div class="prototype-badge">
-        <span class="prototype-badge-dot"></span>
-        <span>Interactive 3D Stage Lab</span>
-      </div>
-    </div>
+  <!-- Ambient Depth Glow behind mountains -->
+  <div class="ambient-depth-glow"></div>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-nav">
+    <a href="index.html" class="nav-back-btn" id="backToPortfolio">
+      <span class="material-symbols-outlined">arrow_back</span>
+      <span>Back to Portfolio</span>
+    </a>
   </header>
 
-  <!-- 4-Stage Scroll-Driven Experience Container (400vh) -->
-  <main class="scroll-experience-container" id="scroll-track">
-    <div class="sticky-stage">
+  <!-- Split Screen Layout: Left Editorial + Right 3D Mountain Stage -->
+  <div class="split-layout-container">
+    
+    <!-- LEFT PANEL: Large Headline & Supporting Copy -->
+    <div class="left-editorial-panel">
+      <div class="section-tag-group">
+        <svg class="star-icon" viewBox="0 0 480 512"><path d="M471.99 334.43L336.06 256l135.93-78.43c7.66-4.42 10.28-14.2 5.86-21.86l-32.02-55.43c-4.42-7.65-14.21-10.28-21.87-5.86l-135.93 78.43V16c0-8.84-7.17-16-16.01-16h-64.04c-8.84 0-16.01 7.16-16.01 16v156.86L56.04 94.43c-7.66-4.42-17.45-1.79-21.87 5.86L2.15 155.71c-4.42 7.65-1.8 17.44 5.86 21.86L143.94 256 8.01 334.43c-7.66 4.42-10.28 14.21-5.86 21.86l32.02 55.43c4.42 7.65 14.21 10.27 21.87 5.86l135.93-78.43V496c0 8.84 7.17 16 16.01 16h64.04c8.84 0 16.01-7.16 16.01-16V339.14l135.93 78.43c7.66 4.42 17.45 1.8 21.87-5.86l32.02-55.43c4.42-7.65 1.8-17.43-5.86-21.85z"></path></svg>
+        <span class="section-tag-text">My Process</span>
+      </div>
 
-      <!-- 3D WebGL Canvas (Right-Bottom Anchored Tilted Rotating Glass Star) -->
-      <canvas id="test-webgl-canvas"></canvas>
+      <h1 class="left-main-heading">
+        Less Chaos. More Clarity.<br><span class="muted">Better Products.</span>
+      </h1>
 
-      <!-- Foreground Interactive UI Layer -->
-      <div class="stage-content-grid">
+      <p class="left-supporting-statement">
+        There's no magic formula behind my process. Just curiosity, practical thinking, the right tools, and a healthy amount of collaboration. Here's how I bring it all together.
+      </p>
+    </div>
 
-        <!-- Left Side: Section Intro -->
-        <div class="stage-left-panel">
-          <div class="section-tag-group">
-            <svg class="star-icon" viewBox="0 0 480 512"><path d="M471.99 334.43L336.06 256l135.93-78.43c7.66-4.42 10.28-14.2 5.86-21.86l-32.02-55.43c-4.42-7.65-14.21-10.28-21.87-5.86l-135.93 78.43V16c0-8.84-7.17-16-16.01-16h-64.04c-8.84 0-16.01 7.16-16.01 16v156.86L56.04 94.43c-7.66-4.42-17.45-1.79-21.87 5.86L2.15 155.71c-4.42 7.65-1.8 17.44 5.86 21.86L143.94 256 8.01 334.43c-7.66 4.42-10.28 14.21-5.86 21.86l32.02 55.43c4.42 7.65 14.21 10.27 21.87 5.86l135.93-78.43V496c0 8.84 7.17 16 16.01 16h64.04c8.84 0 16.01-7.16 16.01-16V339.14l135.93 78.43c7.66 4.42 17.45 1.8 21.87-5.86l32.02-55.43c4.42-7.65 1.8-17.43-5.86-21.85z"></path></svg>
-            <span class="section-tag-text">How I Work</span>
+    <!-- RIGHT STAGE: 3D Mountain Monoliths (Pushed right & lowered) -->
+    <div class="right-mountain-stage" id="rightStage">
+      
+      <!-- Stationary Annotations Layer (Never scales or zooms with 3D rocks; pure fade-in/out) -->
+      <div class="annotations-layer">
+        
+        <!-- ANNOTATION 01: SMARTER WORKFLOWS -->
+        <div class="leader-annotation-wrapper active" id="annot0">
+          <div class="floating-text-block">
+            <h2 class="text-main-heading">Smarter Workflows</h2>
+            <p class="text-supporting-desc">
+              I use AI to speed up repetitive tasks, explore ideas, and catch things I might otherwise miss. That leaves more room for the decisions that actually need a designer.
+            </p>
           </div>
-
-          <h1 class="stage-title">
-            Good design isn't just tidy screens. <span class="muted">It's untangling messy systems.</span>
-          </h1>
-
-          <p class="stage-description">
-            Over the years, my work has moved way past pushing buttons in Figma. I dive into legacy workflows, bridge the gap with engineering, and use AI practically to move from problem to production-ready design without wasted cycles.
-          </p>
+          <div class="straight-gradient-leader-line"></div>
         </div>
 
-        <!-- Right Side: Open Space Metric Stage -->
-        <div class="stage-right-panel">
-          <div class="card-slot">
-
-            <!-- Pillar 01: AI-Accelerated Workflows -->
-            <div class="explanation-card active" id="card-0">
-              <div class="card-metric-block">
-                <h3 class="card-metric-label">AI-Accelerated Workflows</h3>
-              </div>
-              <p class="card-text">
-                I don’t use AI to replace critical thinking—I use it to eliminate grunt work.
-              </p>
-              <p class="card-text">
-                Whether it’s generating realistic datasets so tables don’t just say “Lorem Ipsum,” pressure-testing edge cases, or speeding through discovery synthesis, it lets me move from an abstract problem to a tangible, testable prototype in a fraction of the time.
-              </p>
-            </div>
-
-            <!-- Pillar 02: Untangling Complex Flows -->
-            <div class="explanation-card" id="card-1">
-              <div class="card-metric-block">
-                <h3 class="card-metric-label">Untangling Complex Flows</h3>
-              </div>
-              <p class="card-text">
-                My favorite projects are usually the ones others find overwhelming: data-heavy dashboards, multi-layered filters, and enterprise workflows with endless states.
-              </p>
-              <p class="card-text">
-                I like taking something tangled and intimidating, stripping away the visual noise, and turning it into an interface where users can do their jobs without second-guessing every click.
-              </p>
-            </div>
-
-            <!-- Pillar 03: Production-Ready Design Systems -->
-            <div class="explanation-card" id="card-2">
-              <div class="card-metric-block">
-                <h3 class="card-metric-label">Production-Ready Design Systems</h3>
-              </div>
-              <p class="card-text">
-                I’ve watched too many beautiful UI kits die because developers couldn’t realistically build them.
-              </p>
-              <p class="card-text">
-                When I build components, tokens, and layouts, I structure them around how code is actually written. It keeps the design scalable, cuts down on handoff misunderstandings, and means engineers don't have to redesign my work in the PR.
-              </p>
-            </div>
-
-            <!-- Pillar 04: Heuristic Audits & Problem Hunting -->
-            <div class="explanation-card" id="card-3">
-              <div class="card-metric-block">
-                <h3 class="card-metric-label">Heuristic Audits &amp; Problem Hunting</h3>
-              </div>
-              <p class="card-text">
-                Before I redesign a single screen, I tear the existing experience apart to see where things are actually breaking down.
-              </p>
-              <p class="card-text">
-                I look for the clunky transitions, the misleading microcopy, and the dead ends users silently struggle with. Fixing those hidden friction points often creates more real impact than a complete visual overhaul ever could.
-              </p>
-            </div>
-
-            <!-- Pillar 05: Engineering & Feasibility Alignment -->
-            <div class="explanation-card" id="card-4">
-              <div class="card-metric-block">
-                <h3 class="card-metric-label">Engineering &amp; Feasibility Alignment</h3>
-              </div>
-              <p class="card-text">
-                Design doesn’t live in a vacuum. Throughout my career, I’ve worked closely with engineering from day one—talking through API limits, technical debt, and database structures.
-              </p>
-              <p class="card-text">
-                Understanding what's expensive to build versus what's simple allows me to design solutions that survive development and ship on schedule.
-              </p>
-            </div>
-
-            <!-- Pillar 06: Full-Cycle Product Ownership -->
-            <div class="explanation-card" id="card-5">
-              <div class="card-metric-block">
-                <h3 class="card-metric-label">Full-Cycle Product Ownership</h3>
-              </div>
-              <p class="card-text">
-                I’ve spent years seeing products through their entire journey—starting from ambiguous whiteboard conversations, moving through rough wireframes and high-fidelity polish, all the way to watching real people use what we built.
-              </p>
-              <p class="card-text">
-                I care just as much about whether a feature solves a genuine problem post-launch as I do about how clean it looks on day one.
-              </p>
-            </div>
-
+        <!-- ANNOTATION 02: BETTER TOGETHER -->
+        <div class="leader-annotation-wrapper" id="annot1">
+          <div class="floating-text-block">
+            <h2 class="text-main-heading">Better Together</h2>
+            <p class="text-supporting-desc">
+              Good ideas get better when different perspectives come together. I involve product and engineering early so we're solving the same problem, not working in separate directions.
+            </p>
           </div>
+          <div class="straight-gradient-leader-line"></div>
+        </div>
+
+        <!-- ANNOTATION 03: PEOPLE FIRST -->
+        <div class="leader-annotation-wrapper" id="annot2">
+          <div class="floating-text-block">
+            <h2 class="text-main-heading">People First</h2>
+            <p class="text-supporting-desc">
+              Before jumping into solutions, I try to understand what people are struggling with and why. The goal isn't to design more screens, but to make their experience genuinely easier.
+            </p>
+          </div>
+          <div class="straight-gradient-leader-line"></div>
+        </div>
+
+        <!-- ANNOTATION 04: INTENTIONAL DESIGN -->
+        <div class="leader-annotation-wrapper" id="annot3">
+          <div class="floating-text-block">
+            <h2 class="text-main-heading">Intentional Design</h2>
+            <p class="text-supporting-desc">
+              I love beautiful interfaces, but I don't follow trends just because they look good. Every layout, interaction, and visual detail should have a reason to exist.
+            </p>
+          </div>
+          <div class="straight-gradient-leader-line"></div>
+        </div>
+
+        <!-- ANNOTATION 05: REAL IMPACT -->
+        <div class="leader-annotation-wrapper" id="annot4">
+          <div class="floating-text-block">
+            <h2 class="text-main-heading">Real Impact</h2>
+            <p class="text-supporting-desc">
+              A polished design is only part of the job. What matters is whether it solves the original problem and what we can learn from how people actually use it.
+            </p>
+          </div>
+          <div class="straight-gradient-leader-line"></div>
         </div>
 
       </div>
 
-      <!-- Atmospheric Bottom Fade-Out Gradient (Smoothly dissolves into pitch black / 0 at the bottom) -->
-      <div class="stage-bottom-fade"></div>
+      <!-- 3D Mountain Rig (Spatial scaling & camera fly-by applies strictly to rocks) -->
+      <div class="depth-stage-rig" id="stageRig">
 
-      <!-- Scroll Down Guide Indicator -->
-      <div class="scroll-instruction">
-        <span>Scroll to rotate hands &amp; explore how I work</span>
-        <span class="scroll-arrow-anim">↓</span>
+        <!-- MOUNTAIN 01 -->
+        <div class="mountain-monolith-node" id="node0">
+          <div class="breathe-pod-0">
+            <img src="images/rock-1.png" alt="Floating Obsidian Mountain - Smarter Workflows" class="rock-img" />
+          </div>
+        </div>
+
+        <!-- MOUNTAIN 02 -->
+        <div class="mountain-monolith-node" id="node1">
+          <div class="breathe-pod-1">
+            <img src="images/rock-2.png" alt="Floating Obsidian Mountain - Better Together" class="rock-img" />
+          </div>
+        </div>
+
+        <!-- MOUNTAIN 03 -->
+        <div class="mountain-monolith-node" id="node2">
+          <div class="breathe-pod-2">
+            <img src="images/rock-3.png" alt="Floating Obsidian Mountain - People First" class="rock-img" />
+          </div>
+        </div>
+
+        <!-- MOUNTAIN 04 -->
+        <div class="mountain-monolith-node" id="node3">
+          <div class="breathe-pod-3">
+            <img src="images/rock-4.png" alt="Floating Obsidian Mountain - Intentional Design" class="rock-img" />
+          </div>
+        </div>
+
+        <!-- MOUNTAIN 05 -->
+        <div class="mountain-monolith-node" id="node4">
+          <div class="breathe-pod-4">
+            <img src="images/rock-5.png" alt="Floating Obsidian Mountain - Real Impact" class="rock-img" />
+          </div>
+        </div>
+
       </div>
 
     </div>
-  </main>
 
-  <!-- Section 2: 3D Visualization & Spatial Asset Showcase -->
-  <section class="spatial-showcase-section" id="spatial-lab">
-    <div class="spatial-showcase-container">
-      <div class="spatial-header">
-        <div class="section-tag-group">
-          <svg class="star-icon" viewBox="0 0 480 512"><path d="M471.99 334.43L336.06 256l135.93-78.43c7.66-4.42 10.28-14.2 5.86-21.86l-32.02-55.43c-4.42-7.65-14.21-10.28-21.87-5.86l-135.93 78.43V16c0-8.84-7.17-16-16.01-16h-64.04c-8.84 0-16.01 7.16-16.01 16v156.86L56.04 94.43c-7.66-4.42-17.45-1.79-21.87 5.86L2.15 155.71c-4.42 7.65-1.8 17.44 5.86 21.86L143.94 256 8.01 334.43c-7.66 4.42-10.28 14.21-5.86 21.86l32.02 55.43c4.42 7.65 14.21 10.27 21.87 5.86l135.93-78.43V496c0 8.84 7.17 16 16.01 16h64.04c8.84 0 16.01-7.16 16.01-16V339.14l135.93 78.43c7.66 4.42 17.45 1.8 21.87-5.86l32.02-55.43c4.42-7.65 1.8-17.43-5.86-21.85z"></path></svg>
-          <span class="section-tag-text">3D Spatial Exploration</span>
-        </div>
-        <h2 class="spatial-title">Precision 3D Terrain <span class="muted">&amp; Spatial Asset Benchmarks</span></h2>
-        <p class="spatial-subtitle">
-          Benchmarking high-fidelity geometric modeling, volumetric atmospheric lighting, and topographic contour styling engineered for next-generation spatial experiences.
-        </p>
-      </div>
+  </div>
 
-      <div class="spatial-mountain-card">
-        <div class="spatial-image-frame">
-          <img src="images/3D/mountain_3d_render.jpg" alt="3D Obsidian Mountain Peak with Electric Lime Contour Lines" class="spatial-mountain-img" loading="lazy">
-          <div class="spatial-img-overlay"></div>
-          <div class="spatial-badge-float">
-            <span class="spatial-badge-dot"></span>
-            <span>3D Volumetric Mesh · Topographic Specular</span>
-          </div>
-        </div>
-        <div class="spatial-card-meta">
-          <div class="meta-item">
-            <span class="meta-label">GEOMETRY SPEC</span>
-            <span class="meta-value">Faceted Obsidian Rockface</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">LIGHTING MODEL</span>
-            <span class="meta-value">Volumetric Mist &amp; Rim Glow</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">ACCENT SYSTEM</span>
-            <span class="meta-value" style="color: var(--accent-lime);">Electric Lime #d5f74c</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">APPLICATION</span>
-            <span class="meta-value">Spatial UI / 3D Elevation Map</span>
-          </div>
-        </div>
+  <!-- Bottom Navigation & Scroll Indicator HUD -->
+  <div class="bottom-hud-bar">
+    <div class="scroll-hint-wrapper">
+      <div class="mouse-scroll-indicator">
+        <div class="mouse-wheel-dot"></div>
       </div>
+      <span>One Scroll per Monolith · Scroll to Advance</span>
     </div>
-  </section>
 
-  <!-- WebGL 3D Rotating Glass Star with Gradient Active Hand Shader -->
+    <!-- Progress Track Bar -->
+    <div class="progress-track">
+      <div class="progress-bar-fill" id="progressBarFill"></div>
+    </div>
+
+    <div class="stage-counter-text">
+      MONOLITH <span class="highlight" id="stageCounterText">01</span> / 05
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CONTINUOUS VECTOR TRAJECTORY & STRICT 1-SCROLL-PER-MOUNTAIN ENGINE
+       ========================================================================== -->
   <script>
-    const canvas = document.getElementById('test-webgl-canvas');
-    const gl = canvas.getContext('webgl2', { alpha: true, antialias: true });
+    (() => {
+      const nodes = [
+        document.getElementById('node0'),
+        document.getElementById('node1'),
+        document.getElementById('node2'),
+        document.getElementById('node3'),
+        document.getElementById('node4')
+      ];
 
-    if (!gl) {
-      console.warn("WebGL2 not supported on this device.");
-    }
+      const annotations = [
+        document.getElementById('annot0'),
+        document.getElementById('annot1'),
+        document.getElementById('annot2'),
+        document.getElementById('annot3'),
+        document.getElementById('annot4')
+      ];
 
-    const VS = `#version 300 es
-    in vec2 aPos;
-    out vec2 vUv;
-    void main() {
-      vUv = aPos * 0.5 + 0.5;
-      gl_Position = vec4(aPos, 0.0, 1.0);
-    }`;
+      const progressFill = document.getElementById('progressBarFill');
+      const stageCounter = document.getElementById('stageCounterText');
 
-    // Fragment Shader: 3D Raymarched 8-point Matte Star Wheel
-    // Positioned in bottom-right quadrant, pushed down for generous airy breathing room
-    // Slanted in its X-axis facing towards the user (~24 deg pitch)
-    // Hand-centric subtle Electric Lime activation: entire active hand illuminates subtly as it takes the top apex
-    // Solid opaque tactile matte gray finish across all inactive hands
-    const FS = `#version 300 es
-    precision highp float;
-    precision highp int;
+      // CONTINUOUS UNBENDING DIRECTIONAL FLIGHT VECTORS:
+      // X(rel) = rel * dirX, Y(rel) = rel * dirY
+      const FLIGHT_VECTORS = [
+        { dirX: -140, dirY: -30 }, // Mountain 0
+        { dirX: 180,  dirY: -35 }, // Mountain 1
+        { dirX: -170, dirY: -40 }, // Mountain 2
+        { dirX: 160,  dirY: -45 }, // Mountain 3
+        { dirX: -130, dirY: -50 }  // Mountain 4
+      ];
 
-    in vec2 vUv;
-    uniform float uT;
-    uniform float uAngle;
-    uniform vec2 uR;
-    out vec4 fC;
+      const TOTAL_STAGES = 5;
+      let currentStageIndex = 0;
+      let targetProgress = 0.0;
+      let currentProgress = 0.0;
 
-    const float PI = 3.14159265359;
+      // ======================================================================
+      // BULLETPROOF STEPPING ENGINE (1 SCROLL = EXACTLY 1 MOUNTAIN)
+      // Works reliably on all input devices:
+      // - Standard mouse wheel (notched or continuous: delta ~1-12)
+      // - Trackpads (kinetic inertial momentum swipes)
+      // - Touch swipes & keyboard navigation
+      //
+      // Guarantees:
+      // 1. NEVER gets stuck or permanently locked (fixed 420ms cooldown)
+      // 2. Sensitive to ANY intentional mouse notch (absDelta >= 0.2)
+      // 3. Absorbs trackpad inertia tail during cooldown to prevent double-skipping
+      // ======================================================================
+      let isCooldown = false;
+      let cooldownTimer = null;
 
-    mat3 rX(float a){ float c = cos(a), s = sin(a); return mat3(1.0, 0.0, 0.0, 0.0, c, s, 0.0, -s, c); }
-    mat3 rZ(float a){ float c = cos(a), s = sin(a); return mat3(c, s, 0.0, -s, c, 0.0, 0.0, 0.0, 1.0); }
+      function goToStage(newIndex) {
+        if (newIndex < 0 || newIndex >= TOTAL_STAGES) return false;
+        if (newIndex === currentStageIndex) return false;
+        currentStageIndex = newIndex;
+        targetProgress = currentStageIndex;
 
-    float bx(vec3 p, vec3 b) {
-      vec3 d = abs(p) - b;
-      return length(max(d, 0.0)) + min(max(d.x, max(d.y, d.z)), 0.0);
-    }
+        stageCounter.textContent = `0${currentStageIndex + 1}`;
+        return true;
+      }
 
-    // 8-pointed geometric star model
-    float mr(vec3 p) {
-      vec3 b = vec3(0.11, 0.85, 0.16);
-      float r = bx(p, b);
-      r = min(r, bx(rZ(PI * 0.25) * p, b));
-      r = min(r, bx(rZ(PI * 0.50) * p, b));
-      r = min(r, bx(rZ(PI * 0.75) * p, b));
-      return r;
-    }
+      function triggerCooldown(duration = 420) {
+        isCooldown = true;
+        if (cooldownTimer) clearTimeout(cooldownTimer);
+        cooldownTimer = setTimeout(() => {
+          isCooldown = false;
+        }, duration);
+      }
 
-    // Slant on X-axis: tilted back ~24 degrees, facing directly towards viewer
-    const float SLANT_X = 0.42;
-    const float SCALE = 0.88;
+      window.addEventListener('wheel', (e) => {
+        e.preventDefault();
 
-    float sdf(vec3 p, vec2 starCtr) {
-      vec3 p_rel = p - vec3(starCtr, 0.0);
-      // Undo X-axis slant to evaluate in star's local plane
-      vec3 p_star = rX(-SLANT_X) * p_rel / SCALE;
-      // Spin around the star's face normal (Z-axis)
-      vec3 q = rZ(-uAngle) * p_star;
-      return (mr(q) - 0.014) * SCALE;
-    }
+        const delta = e.deltaY;
+        const absDelta = Math.abs(delta);
 
-    vec3 nm(vec3 p, vec2 starCtr) {
-      const float h = 0.0012;
-      const vec2 k = vec2(1.0, -1.0);
-      return normalize(
-        k.xyy * sdf(p + k.xyy * h, starCtr) +
-        k.yyx * sdf(p + k.yyx * h, starCtr) +
-        k.yxy * sdf(p + k.yxy * h, starCtr) +
-        k.xxx * sdf(p + k.xxx * h, starCtr)
-      );
-    }
+        // Filter out microscopic floating point jitter
+        if (absDelta < 0.2) return;
 
-    uvec2 pcg(uvec2 v) {
-      v = v * 1664525u + 1013904223u;
-      v.x += v.y * v.y * 1664525u + 1013904223u;
-      v.y += v.x * v.x * 1664525u + 1013904223u;
-      v ^= v >> 16u;
-      v.x += v.y * v.y * 1664525u + 1013904223u;
-      v.y += v.x * v.x * 1664525u + 1013904223u;
-      return v;
-    }
+        const dir = delta > 0 ? 1 : -1;
 
-    float hsh(vec2 p) {
-      uvec2 v = floatBitsToUint(p);
-      v = pcg(v);
-      return float(v.x ^ v.y) / 4294967295.0;
-    }
-
-    vec4 march(vec3 ro, vec3 rd, vec2 starCtr) {
-      float t = 0.5;
-      float hit = 0.0;
-      vec3 p = vec3(0.0);
-
-      for (int i = 0; i < 75; i++) {
-        p = ro + rd * t;
-        float d = sdf(p, starCtr);
-        if (d < 0.0015) {
-          hit = 1.0;
-          break;
+        // While in cooldown, absorb momentum/extra wheel notches so exactly 1 mountain steps per deliberate action
+        if (isCooldown) {
+          return;
         }
-        t += d;
-        if (t > 7.0) break;
-      }
 
-      if (hit == 0.0) return vec4(0.0);
+        // Advance or backtrack exactly 1 stage
+        const nextStage = currentStageIndex + dir;
+        if (nextStage >= 0 && nextStage < TOTAL_STAGES) {
+          goToStage(nextStage);
+          triggerCooldown(420);
+        }
+      }, { passive: false });
 
-      vec3 n = nm(p, starCtr);
+      // Mobile / Tablet Touch Swipe Controller (1 Swipe = 1 Mountain)
+      let touchStartY = 0;
+      let touchStartX = 0;
+      let touchGestureActive = false;
 
-      // Coordinates in the star's own rotating model frame
-      vec3 p_rel = p - vec3(starCtr, 0.0);
-      vec3 p_star = rX(-SLANT_X) * p_rel / SCALE;
-      vec3 q = rZ(-uAngle) * p_star;
+      window.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          touchStartY = e.touches[0].clientY;
+          touchStartX = e.touches[0].clientX;
+          touchGestureActive = true;
+        }
+      }, { passive: true });
 
-      // Identify which specific hand of the star this fragment belongs to
-      // 8 arms spaced at multiples of PI * 0.25 (k = 0, 1, 2, ..., 7)
-      float phi = atan(q.y, q.x); // [-PI, PI] in star local frame
-      float armFloat = floor(phi / (PI * 0.25) + 0.5);
-      int armK = int(mod(mod(armFloat, 8.0) + 8.0, 8.0));
+      window.addEventListener('touchend', (e) => {
+        if (!touchGestureActive || !e.changedTouches || e.changedTouches.length !== 1) return;
+        touchGestureActive = false;
+        const deltaY = touchStartY - e.changedTouches[0].clientY;
+        const deltaX = touchStartX - e.changedTouches[0].clientX;
 
-      // Calculate which single arm is currently active (closest to the top apex PI * 0.5)
-      float activeFloat = floor((1.57079632679 - uAngle) / (PI * 0.25) + 0.5);
-      int activeK = int(mod(mod(activeFloat, 8.0) + 8.0, 8.0));
+        if (Math.abs(deltaY) > 35 && Math.abs(deltaY) > Math.abs(deltaX) && !isCooldown) {
+          if (deltaY > 0) {
+            if (currentStageIndex < TOTAL_STAGES - 1) {
+              goToStage(currentStageIndex + 1);
+              triggerCooldown(420);
+            }
+          } else {
+            if (currentStageIndex > 0) {
+              goToStage(currentStageIndex - 1);
+              triggerCooldown(420);
+            }
+          }
+        }
+      }, { passive: true });
 
-      // STRICT SINGLE HAND ISOLATION:
-      // If this fragment belongs to any arm other than activeK, green is strictly 0.0!
-      // Guarantees that only ONE hand can ever be green, never two!
-      float greenFactor = 0.0;
-      if (armK == activeK) {
-        float armWorldAngle = float(activeK) * (PI * 0.25) + uAngle;
-        float apexDiff = abs(mod(armWorldAngle - 1.57079632679 + PI, 2.0 * PI) - PI);
-        
-        // Bell curve intensity as the active arm rotates through the top apex
-        float handIntensity = smoothstep(PI * 0.22, 0.0, apexDiff);
-        
-        // Subtle radial gradient along the active arm: hub stays dark charcoal, outer tip gets gentle green
-        float r = length(q.xy);
-        float alongArm = smoothstep(0.38, 0.84, r);
-        greenFactor = handIntensity * alongArm;
-      }
+      // Keyboard Arrow Controller
+      window.addEventListener('keydown', (e) => {
+        if (isCooldown) return;
 
-      // Premium Matte Obsidian Base Palette (Darker, Richer Charcoal)
-      vec3 matteDark = vec3(0.048, 0.052, 0.058); // Richer, darker obsidian charcoal
-      vec3 limeAccent = vec3(0.835, 0.969, 0.298); // Electric Lime #d5f74c
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+          if (currentStageIndex < TOTAL_STAGES - 1) {
+            e.preventDefault();
+            goToStage(currentStageIndex + 1);
+            triggerCooldown(380);
+          }
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          if (currentStageIndex > 0) {
+            e.preventDefault();
+            goToStage(currentStageIndex - 1);
+            triggerCooldown(380);
+          }
+        }
+      });
 
-      // Understated, subtle satin green tint (refined, calm brand accent)
-      vec3 activeGreen = mix(matteDark, limeAccent, 0.22);
-      vec3 albedo = mix(matteDark, activeGreen, greenFactor);
+      // ======================================================================
+      // 60FPS / 120FPS 3D RENDER LOOP — UNBENDING STRAIGHT-LINE VECTOR PATHS
+      // ======================================================================
+      function render3DLoop() {
+        requestAnimationFrame(render3DLoop);
 
-      // Key Light from top-left front
-      vec3 l1 = normalize(vec3(-0.45, 0.80, -1.2));
-      float diff1 = max(dot(n, l1), 0.0);
-      float wrapDiff1 = pow(diff1 * 0.60 + 0.40, 2.0);
-
-      // Fill Light from bottom-right front
-      vec3 l2 = normalize(vec3(0.60, -0.40, -0.9));
-      float diff2 = max(dot(n, l2), 0.0) * 0.25;
-
-      // Satin Specular Sheen (broad, soft matte reflection, NOT glossy glass)
-      vec3 v = -rd;
-      vec3 h1 = normalize(l1 + v);
-      float sheen1 = pow(max(dot(n, h1), 0.0), 16.0) * 0.18;
-
-      vec3 h2 = normalize(l2 + v);
-      float sheen2 = pow(max(dot(n, h2), 0.0), 10.0) * 0.08;
-
-      // Soft Velvet / Fabric Fresnel Rim
-      float ndotv = max(dot(n, v), 0.0);
-      float rim = pow(1.0 - ndotv, 3.2) * 0.25;
-      vec3 rimCol = mix(vec3(0.18, 0.20, 0.22), limeAccent * 0.30, greenFactor);
-
-      // Soft, gentle luminescence along the active hand (whisper of light, no harsh neon)
-      vec3 emissive = limeAccent * pow(greenFactor, 2.5) * 0.08;
-
-      // Composite final solid matte color
-      vec3 ambient = vec3(0.020, 0.022, 0.026);
-      vec3 color = ambient * albedo * 1.5
-                 + albedo * (wrapDiff1 * 0.75 + diff2)
-                 + sheen1 * mix(vec3(0.45, 0.48, 0.54), limeAccent * 0.35, greenFactor)
-                 + sheen2 * vec3(0.22)
-                 + rim * rimCol
-                 + emissive;
-
-      // Subtle dither to prevent banding
-      color += (hsh(gl_FragCoord.xy) - 0.5) / 255.0;
-
-      return vec4(color, 1.0);
-    }
-
-    void main() {
-      vec2 uv = (gl_FragCoord.xy - 0.5 * uR.xy) / uR.y;
-      float aspect = uR.x / uR.y;
-
-      // Anchor in Bottom-Right quadrant, pushed down by an additional ~35-40px
-      // Leaving generous airy space in the upper half for open typography
-      vec2 starCtr = vec2(aspect > 1.0 ? 0.38 * aspect : 0.0, aspect > 1.0 ? -0.52 : -0.64);
-
-      // Camera ray setup (at z = 0, p.xy matches uv)
-      vec3 ro = vec3(0.0, 0.0, -2.5);
-      vec3 rd = normalize(vec3(uv, 2.5));
-
-      fC = march(ro, rd, starCtr);
-
-      // Atmospheric fade-to-zero at bottom edge:
-      // uv.y ranges from -0.50 (bottom of screen) to +0.50 (top)
-      // Dissolves the wheel hands smoothly into pitch-black void before reaching the bottom
-      float bottomFade = smoothstep(-0.50, -0.30, uv.y);
-      fC.rgb *= bottomFade;
-      fC.a *= bottomFade;
-    }`;
-
-    function createShader(gl, type, source) {
-      const shader = gl.createShader(type);
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error("Shader compile error:", gl.getShaderInfoLog(shader));
-        gl.deleteShader(shader);
-        return null;
-      }
-      return shader;
-    }
-
-    const vs = createShader(gl, gl.VERTEX_SHADER, VS);
-    const fs = createShader(gl, gl.FRAGMENT_SHADER, FS);
-    const prog = gl.createProgram();
-    gl.attachShader(prog, vs);
-    gl.attachShader(prog, fs);
-    gl.linkProgram(prog);
-
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-      console.error("Program link error:", gl.getProgramInfoLog(prog));
-    }
-
-    const posBuf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
-      -1, -1,  1, -1, -1,  1,
-      -1,  1,  1, -1,  1,  1
-    ]), gl.STATIC_DRAW);
-
-    const aPosLoc = gl.getAttribLocation(prog, 'aPos');
-    const uTLoc = gl.getUniformLocation(prog, 'uT');
-    const uAngleLoc = gl.getUniformLocation(prog, 'uAngle');
-    const uRLoc = gl.getUniformLocation(prog, 'uR');
-
-    let W = 0, H = 0;
-    function resizeCanvas() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      W = Math.max(1, Math.floor(window.innerWidth * dpr));
-      H = Math.max(1, Math.floor(window.innerHeight * dpr));
-      canvas.width = W;
-      canvas.height = H;
-      gl.viewport(0, 0, W, H);
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    // Scroll & Stage Progression Management
-    // 6 stages (0, 1, 2, 3, 4, 5), each stage maps to a hand rotation of 45 deg (PI * 0.25)
-    let currentScrollProgress = 0;
-    let targetAngle = 0;
-    let currentAngle = 0;
-    let activeStageIndex = 0;
-
-    const cards = [
-      document.getElementById('card-0'),
-      document.getElementById('card-1'),
-      document.getElementById('card-2'),
-      document.getElementById('card-3'),
-      document.getElementById('card-4'),
-      document.getElementById('card-5')
-    ];
-
-    function updateActiveStage(newIndex) {
-      if (newIndex === activeStageIndex && cards[newIndex] && cards[newIndex].classList.contains('active')) return;
-      activeStageIndex = newIndex;
-
-      // Update card visibility
-      cards.forEach((card, idx) => {
-        if (!card) return;
-        if (idx === newIndex) {
-          card.classList.add('active');
+        // Fluid critically-damped spring interpolation
+        const diff = targetProgress - currentProgress;
+        if (Math.abs(diff) < 0.001) {
+          currentProgress = targetProgress;
         } else {
-          card.classList.remove('active');
+          currentProgress += diff * 0.11;
         }
-      });
-    }
 
-    // Smooth stage click jump
-    window.scrollToStage = function(stageIdx) {
-      const scrollTrack = document.getElementById('scroll-track');
-      const trackTop = scrollTrack.offsetTop;
-      const trackHeight = scrollTrack.offsetHeight - window.innerHeight;
-      const targetScroll = trackTop + (stageIdx / 5) * trackHeight;
-      window.scrollTo({
-        top: targetScroll,
-        behavior: 'smooth'
-      });
-    };
+        // Update progress bar fill
+        const progressPct = (currentProgress / (TOTAL_STAGES - 1)) * 100;
+        progressFill.style.width = `${progressPct.toFixed(2)}%`;
 
-    window.addEventListener('scroll', () => {
-      const scrollTrack = document.getElementById('scroll-track');
-      const trackTop = scrollTrack.offsetTop;
-      const trackHeight = scrollTrack.offsetHeight - window.innerHeight;
-      const scrollY = window.scrollY;
+        // Position ALL 5 MOUNTAINS simultaneously along their straight 3D flight paths!
+        nodes.forEach((node, i) => {
+          // rel: relative position to camera focus (0 = in focus)
+          const rel = i - currentProgress;
+          const vec = FLIGHT_VECTORS[i];
 
-      const progress = Math.max(0, Math.min(1, (scrollY - trackTop) / Math.max(1, trackHeight)));
-      currentScrollProgress = progress;
+          // SINGLE CONTINUOUS LINEAR TRAJECTORY:
+          // X(rel) = rel * dirX, Y(rel) = rel * dirY
+          const posX = rel * vec.dirX;
+          const posY = rel * vec.dirY;
 
-      // 6 stages over 0.0 to 1.0 progress:
-      // Stages 0, 1, 2, 3, 4, 5
-      const rawStage = progress * 5;
-      const stageIdx = Math.max(0, Math.min(5, Math.round(rawStage)));
+          let z = 0;
+          let scale = 1.0;
+          let opacity = 1.0;
+          let blur = 0;
 
-      // Rotate by 45 degrees (PI * 0.25) per stage across 6 stages (5 transitions = PI * 1.25)
-      targetAngle = progress * (Math.PI * 1.25);
+          if (rel <= 0) {
+            // MOUNTAIN IS IN FOCUS OR FLYING PAST CAMERA (rel: 0 down to -1)
+            const passed = Math.abs(rel);
+            z = passed * 860;
+            scale = 1.0 + passed * 1.5;
+            opacity = Math.max(0, 1.0 - passed * 1.5);
+            blur = passed * 10;
+          } else {
+            // MOUNTAIN IS IN BACKGROUND GLIDING TOWARDS FOCUS (rel: +1 to +4)
+            z = -rel * 450;
+            scale = Math.max(0.18, 1.0 / (1.0 + rel * 0.42));
 
-      updateActiveStage(stageIdx);
-    }, { passive: true });
+            if (rel <= 1.0) {
+              opacity = 0.82 + (1.0 - rel) * 0.18;
+              blur = rel * 3.5;
+            } else if (rel <= 2.0) {
+              opacity = 0.55 + (2.0 - rel) * 0.27;
+              blur = 3.5 + (rel - 1.0) * 3.5;
+            } else if (rel <= 3.0) {
+              opacity = 0.38 + (3.0 - rel) * 0.17;
+              blur = 7.0 + (rel - 2.0) * 3.0;
+            } else {
+              opacity = 0.22;
+              blur = 10.0;
+            }
+          }
 
-    // Animation Loop
-    let lt = performance.now();
-    let time = 0;
+          // Apply 3D Transform to Mountain
+          node.style.transform = `translate3d(${posX.toFixed(1)}px, ${posY.toFixed(1)}px, ${z.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+          node.style.opacity = opacity.toFixed(3);
+          node.style.filter = blur > 0.4 ? `blur(${blur.toFixed(1)}px)` : 'none';
+          node.style.visibility = opacity <= 0.01 ? 'hidden' : 'visible';
 
-    function render(now) {
-      requestAnimationFrame(render);
-      const dt = Math.min((now - lt) / 1000, 0.05);
-      lt = now;
-      time += dt;
+          // Update Leader Line & Text annotation for active mountain:
+          // Immediately fades out as scroll starts away from still position,
+          // and only fades in once the incoming mountain has arrived and settled into still position.
+          const annot = annotations[i];
+          if (annot) {
+            const distToFocus = Math.abs(rel);
+            if (distToFocus < 0.22) {
+              annot.classList.add('active');
+            } else {
+              annot.classList.remove('active');
+            }
+          }
+        });
+      }
+      render3DLoop();
 
-      // Smooth damped rotation to targetAngle
-      currentAngle += (targetAngle - currentAngle) * 0.12;
+      // ======================================================================
+      // 2–3 SHOOTING STARS PER SECOND — ALL TOP-RIGHT TO BOTTOM-LEFT
+      // Uniform diagonal angle (~38 deg) from right top corner to left bottom
+      // ======================================================================
+      const canvas = document.getElementById('space-canvas');
+      const ctx = canvas.getContext('2d');
 
-      gl.useProgram(prog);
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
 
-      gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
-      gl.enableVertexAttribArray(aPosLoc);
-      gl.vertexAttribPointer(aPosLoc, 2, gl.FLOAT, false, 0, 0);
+      // Subtle ambient static background stars
+      const staticStars = [];
+      const numStars = 65;
+      for (let s = 0; s < numStars; s++) {
+        staticStars.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          r: Math.random() * 0.9 + 0.3,
+          baseAlpha: Math.random() * 0.42 + 0.14,
+          pulseSpeed: Math.random() * 0.012 + 0.005,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
 
-      gl.uniform1f(uTLoc, time);
-      gl.uniform1f(uAngleLoc, currentAngle);
-      gl.uniform2f(uRLoc, W, H);
+      // Dynamic Shooting Star Array
+      const shootingStars = [];
 
-      gl.clearColor(0, 0, 0, 0);
-      gl.clear(gl.COLOR_BUFFER_BIT);
+      function spawnMeteor() {
+        // ALWAYS from Right Top Corner to Left Bottom Corner:
+        // angle: 36 deg to 42 deg
+        const angleDeg = Math.random() * 6 + 36;
+        const angleRad = (Math.PI / 180) * angleDeg;
 
-      gl.drawArrays(gl.TRIANGLES, 0, 6);
-    }
-    requestAnimationFrame(render);
+        // Start coordinates: originating in the upper-right hemisphere
+        // X spans from 30% to 110% of canvas width (starts off-screen right or upper-right)
+        const startX = Math.random() * (canvas.width * 0.75) + (canvas.width * 0.35);
+        // Y spans from -40 to 40% of canvas height
+        const startY = Math.random() * (canvas.height * 0.45) - 30;
+
+        const isMicro = Math.random() < 0.4;
+        const length = isMicro ? (Math.random() * 30 + 45) : (Math.random() * 65 + 75);
+        const speed = isMicro ? (Math.random() * 6 + 14) : (Math.random() * 5 + 11);
+
+        // Direction: STRICTLY top-right to bottom-left (-cos, +sin)
+        shootingStars.push({
+          x: startX,
+          y: startY,
+          len: length,
+          speed: speed,
+          dx: -Math.cos(angleRad) * speed,
+          dy: Math.sin(angleRad) * speed,
+          life: 0,
+          maxLife: Math.random() * 24 + 20,
+          isMicro: isMicro
+        });
+      }
+
+      // Spawn 2 to 3 shooting stars per second:
+      // Spawning on a tight random interval of 300ms to 480ms gives average 2.5 stars/second!
+      function scheduleMeteors() {
+        spawnMeteor();
+        const nextDelay = Math.random() * 180 + 300; // 300ms - 480ms
+        setTimeout(scheduleMeteors, nextDelay);
+      }
+      scheduleMeteors();
+
+      function renderSpace() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw Tiny Static Stars
+        staticStars.forEach(st => {
+          st.phase += st.pulseSpeed;
+          const alpha = st.baseAlpha * (0.7 + 0.3 * Math.sin(st.phase));
+          ctx.beginPath();
+          ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(2)})`;
+          ctx.fill();
+        });
+
+        // Draw Active Meteors (All Top-Right to Bottom-Left)
+        for (let i = shootingStars.length - 1; i >= 0; i--) {
+          const ss = shootingStars[i];
+          ss.x += ss.dx;
+          ss.y += ss.dy;
+          ss.life++;
+
+          const progress = ss.life / ss.maxLife;
+          const currentAlpha = Math.sin(progress * Math.PI) * (ss.isMicro ? 0.75 : 0.9);
+
+          const tailX = ss.x - (ss.dx / ss.speed) * ss.len;
+          const tailY = ss.y - (ss.dy / ss.speed) * ss.len;
+
+          const grad = ctx.createLinearGradient(ss.x, ss.y, tailX, tailY);
+          grad.addColorStop(0, `rgba(255, 255, 255, ${currentAlpha})`);
+          grad.addColorStop(0.35, `rgba(213, 247, 76, ${currentAlpha * 0.65})`);
+          grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+          ctx.beginPath();
+          ctx.moveTo(ss.x, ss.y);
+          ctx.lineTo(tailX, tailY);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = ss.isMicro ? 1.0 : 1.35;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+
+          // Luminous pinpoint head
+          ctx.beginPath();
+          ctx.arc(ss.x, ss.y, ss.isMicro ? 0.8 : 1.15, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha * 0.98})`;
+          ctx.fill();
+
+          if (ss.life >= ss.maxLife) {
+            shootingStars.splice(i, 1);
+          }
+        }
+
+        requestAnimationFrame(renderSpace);
+      }
+      renderSpace();
+
+    })();
   </script>
+
 </body>
 </html>

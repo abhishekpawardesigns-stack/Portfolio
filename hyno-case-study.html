@@ -850,72 +850,50 @@
             margin-top: 28px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
-        .cs-findings-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0;
-        }
-        .cs-finding-item {
+        .cs-findings-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            padding: 32px 40px;
         }
-        .cs-finding-item:nth-child(1) {
-            padding-top: 0;
-            padding-left: 0;
-            border-right: 1px solid var(--border-glass);
+        .cs-finding-row {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 48px;
+            padding: 28px 0;
             border-bottom: 1px solid var(--border-glass);
+            align-items: flex-start;
         }
-        .cs-finding-item:nth-child(2) {
+        .cs-finding-row:first-child {
             padding-top: 0;
-            padding-right: 0;
-            border-bottom: 1px solid var(--border-glass);
         }
-        .cs-finding-item:nth-child(3) {
+        .cs-finding-row:last-child {
+            border-bottom: none;
             padding-bottom: 0;
-            padding-left: 0;
-            border-right: 1px solid var(--border-glass);
-        }
-        .cs-finding-item:nth-child(4) {
-            padding-bottom: 0;
-            padding-right: 0;
-        }
-        .cs-finding-stat {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            line-height: 1;
-            letter-spacing: -0.03em;
-        }
-        .cs-finding-stat span.highlight {
-            color: #d5f74c;
         }
         .cs-finding-title {
             font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.05rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-top: 6px;
+            line-height: 1.35;
+            letter-spacing: -0.015em;
+            margin: 0;
         }
         .cs-finding-desc {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.65;
         }
-        @media (max-width: 768px) {
-            .cs-findings-grid {
+        @media (max-width: 860px) {
+            .cs-finding-row {
                 grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 22px 0;
             }
-            .cs-finding-item {
-                padding: 24px 0 !important;
-                border-right: none !important;
-                border-bottom: 1px solid var(--border-glass) !important;
+            .cs-finding-title {
+                font-size: 1.15rem;
             }
-            .cs-finding-item:last-child {
-                border-bottom: none !important;
-                padding-bottom: 0 !important;
+            .cs-finding-desc {
+                font-size: 0.95rem;
             }
         }
 
@@ -2448,37 +2426,38 @@
             </div>
         </section>
 
-        <!-- 4. Section: The Problem Statement -->
+        <!-- 4. Section: The Problem -->
         <section class="cs-section-card">
             <div class="cs-section-tag-group">
                 <svg class="star-icon" viewBox="0 0 480 512"><path d="M471.99 334.43L336.06 256l135.93-78.43c7.66-4.42 10.28-14.2 5.86-21.86l-32.02-55.43c-4.42-7.65-14.21-10.28-21.87-5.86l-135.93 78.43V16c0-8.84-7.17-16-16.01-16h-64.04c-8.84 0-16.01 7.16-16.01 16v156.86L56.04 94.43c-7.66-4.42-17.45-1.79-21.87 5.86L2.15 155.71c-4.42 7.65-1.8 17.44 5.86 21.86L143.94 256 8.01 334.43c-7.66 4.42-10.28 14.21-5.86 21.86l32.02 55.43c4.42 7.65 14.21 10.27 21.87 5.86l135.93-78.43V496c0 8.84 7.17 16 16.01 16h64.04c8.84 0 16.01-7.16 16.01-16V339.14l135.93 78.43c7.66 4.42 17.45 1.8 21.87-5.86l32.02-55.43c4.42-7.65 1.8-17.43-5.86-21.85z"></path></svg>
-                <span class="cs-section-tag-text">The Problem Statement</span>
+                <span class="cs-section-tag-text">The Problem</span>
             </div>
-            <h2 class="cs-section-title">The Problem Statement:</h2>
+            <h2 class="cs-section-title">The Problem:</h2>
 
-            <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px;">The reliance on manual, fragmented workflows creates a "Black Box" hiring environment, where leaders lack the verifiable evidence needed to make high-confidence talent decisions.</p>
+            <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px;">When I started working on Hyno, I looked at how businesses hired remote talent and managed candidates throughout the process.</p>
+            <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px;">I found that hiring involved a lot of back-and-forth. Businesses needed to review candidate profiles, check how well their skills matched project requirements, and coordinate interviews across different stages. Keeping everything organised wasn't easy.</p>
 
             <div class="cs-prob-clean-grid">
                 <div class="cs-prob-clean-card">
                     <div class="cs-prob-clean-icon">
                         <span class="material-symbols-outlined">verified_user</span>
                     </div>
-                    <h3 class="cs-prob-clean-title">Verified Capability Gap</h3>
-                    <p class="cs-prob-clean-desc">The industry lacks a centralized system, making it impossible to verify candidate compliance against specific, complex project requirements.</p>
+                    <h3 class="cs-prob-clean-title">Finding the Right Candidates</h3>
+                    <p class="cs-prob-clean-desc">I wanted to make it easier for businesses to review candidate profiles and understand whether their skills matched the requirements of a project.</p>
                 </div>
                 <div class="cs-prob-clean-card">
                     <div class="cs-prob-clean-icon">
                         <span class="material-symbols-outlined">grid_view</span>
                     </div>
-                    <h3 class="cs-prob-clean-title">Fragmented Information</h3>
-                    <p class="cs-prob-clean-desc">Manual handoffs cause loss of critical details. This forces leadership to make major hiring decisions using incomplete data.</p>
+                    <h3 class="cs-prob-clean-title">Keeping Everything in One Place</h3>
+                    <p class="cs-prob-clean-desc">Candidate information and hiring updates were spread across different stages. I saw an opportunity to bring these details together so businesses could keep track of candidates more easily.</p>
                 </div>
                 <div class="cs-prob-clean-card">
                     <div class="cs-prob-clean-icon">
                         <span class="material-symbols-outlined">hub</span>
                     </div>
-                    <h3 class="cs-prob-clean-title">No Centralized Source</h3>
-                    <p class="cs-prob-clean-desc">Leaders lack a single, reliable place to discover top talent, forcing them to jump between tools and manage fragmented workflows.</p>
+                    <h3 class="cs-prob-clean-title">Making Hiring Easier to Manage</h3>
+                    <p class="cs-prob-clean-desc">Reviewing profiles was only one part of the process. Businesses also needed to manage their decisions and coordinate interviews, so I wanted to make the overall experience simpler and more organised.</p>
                 </div>
             </div>
         </section>
@@ -2647,26 +2626,22 @@
             <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7;">To understand why our delivery was failing, we stepped directly into the shoes of our decision-makers. We moved past internal assumptions to map their actual journey and identify exactly where they were hitting walls during the selection process. These are the critical friction points we uncovered:</p>
 
             <div class="cs-findings-card">
-                <div class="cs-findings-grid">
-                    <div class="cs-finding-item">
-                        <div class="cs-finding-stat">75<span class="highlight">%</span></div>
-                        <div class="cs-finding-title">Decision-Making "Blackout"</div>
-                        <div class="cs-finding-desc">Hiring managers lack the verifiable evidence needed for confident, final-stage selections.</div>
+                <div class="cs-findings-list">
+                    <div class="cs-finding-row">
+                        <div class="cs-finding-title">Hiring Process Challenges</div>
+                        <div class="cs-finding-desc">Stakeholder discussions highlighted challenges in managing the hiring process.<br>The opportunity was to make the workflow easier to follow and manage.</div>
                     </div>
-                    <div class="cs-finding-item">
-                        <div class="cs-finding-stat">5.5 <span class="highlight">Days</span></div>
-                        <div class="cs-finding-title">Pipeline Latency Delay</div>
-                        <div class="cs-finding-desc">Lost time due to manual coordination and context-switching between disconnected platforms.</div>
+                    <div class="cs-finding-row">
+                        <div class="cs-finding-title">Lengthy Hiring Process</div>
+                        <div class="cs-finding-desc">Hiring involved multiple stages, from reviewing candidate profiles to coordinating interviews.<br>This created an opportunity to simplify candidate review and hiring coordination.</div>
                     </div>
-                    <div class="cs-finding-item">
-                        <div class="cs-finding-stat">4.2 <span class="highlight">Handoffs</span></div>
-                        <div class="cs-finding-title">Average Data Decay</div>
-                        <div class="cs-finding-desc">Critical candidate context is lost during manual handoffs, degrading the quality of the final hire.</div>
+                    <div class="cs-finding-row">
+                        <div class="cs-finding-title">Multiple Handoffs Across Hiring Stages</div>
+                        <div class="cs-finding-desc">The hiring workflow involved multiple handoffs between stages, making candidate progress harder to track.<br>A centralised dashboard could help businesses manage candidate progress and coordination more easily.</div>
                     </div>
-                    <div class="cs-finding-item">
-                        <div class="cs-finding-stat">12+ <span class="highlight">Hours</span></div>
-                        <div class="cs-finding-title">Weekly Administrative Drain</div>
-                        <div class="cs-finding-desc">Time spent on manual status updates rather than strategic talent vetting.</div>
+                    <div class="cs-finding-row">
+                        <div class="cs-finding-title">Time-Consuming Hiring Coordination</div>
+                        <div class="cs-finding-desc">Stakeholder discussions highlighted the time and effort involved in coordinating candidate reviews, interviews, and hiring stages.<br>The opportunity was to simplify these tasks and make candidate progress easier to manage in one place.</div>
                     </div>
                 </div>
             </div>

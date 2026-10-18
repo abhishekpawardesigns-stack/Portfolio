@@ -9,6 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 
 :root {
+  color-scheme: dark;
   /* Visual Identity Studio Palette */
   --bg-dark: #000000;
   --bg-section-alt: #000000;
@@ -80,6 +81,36 @@ html {
   color: var(--text-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
+  scrollbar-color: rgba(255, 255, 255, 0.28) #000000;
+  scrollbar-width: thin;
+}
+
+* {
+  scrollbar-color: rgba(255, 255, 255, 0.28) #000000;
+  scrollbar-width: thin;
+}
+
+/* Minimalist Dark Scrollbar (Zero white strip; dark black track with unobtrusive translucent handle) */
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+  background-color: #000000 !important;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.28) !important;
+  border-radius: 9999px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+::-webkit-scrollbar-corner {
+  background: #000000 !important;
 }
 
 body {
@@ -2744,7 +2775,6 @@ img {
 /* Base Dot Matrix Token on Pseudo-Elements */
 .highlights-section::after,
 #projects::before,
-#why-us::before,
 #services::before,
 .horizontal-scroll-sticky::before,
 #tools::before,
@@ -2756,7 +2786,7 @@ img {
   inset: 0;
   background-image: radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
   background-size: 36px 36px;
-  background-position: center center;
+  background-position: center top;
   pointer-events: none;
   z-index: 0;
 }
@@ -2769,33 +2799,23 @@ img {
     radial-gradient(circle at 18% 25%, rgba(213, 247, 76, 0.055) 0%, transparent 48%),
     radial-gradient(rgba(255, 255, 255, 0.16) 1.25px, transparent 1.25px);
   background-size: auto, 36px 36px;
+  background-position: center top;
   -webkit-mask-image: radial-gradient(ellipse 42% 32% at 18% 25%, #ffffff 0%, transparent 75%);
   mask-image: radial-gradient(ellipse 42% 32% at 18% 25%, #ffffff 0%, transparent 75%);
 }
 
-/* 2. Selected Projects: Glowing dots at upper right & lower left */
+/* 2. Selected Projects: Glowing dots at upper right & lower left with smooth fade-out before bottom divider */
 #projects::before {
   background-image: 
     radial-gradient(circle at 82% 20%, rgba(213, 247, 76, 0.065) 0%, transparent 55%),
-    radial-gradient(circle at 12% 85%, rgba(213, 247, 76, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 12% 64%, rgba(213, 247, 76, 0.05) 0%, transparent 50%),
     radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
   background-size: auto, auto, 36px 36px;
-  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 82% 25%, #ffffff 0%, transparent 75%),
-                      radial-gradient(ellipse 55% 50% at 15% 85%, #ffffff 0%, transparent 70%);
-  mask-image: radial-gradient(ellipse 65% 55% at 82% 25%, #ffffff 0%, transparent 75%),
-              radial-gradient(ellipse 55% 50% at 15% 85%, #ffffff 0%, transparent 70%);
-}
-
-/* 3. Why Us (Stats Bento): Illumination behind header & top-left stats card */
-#why-us::before {
-  background-image: 
-    radial-gradient(circle at 15% 35%, rgba(213, 247, 76, 0.065) 0%, transparent 60%),
-    radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
-  background-size: auto, 36px 36px;
-  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 15% 30%, #ffffff 0%, transparent 75%),
-                      radial-gradient(ellipse 50% 50% at 88% 70%, #ffffff 0%, transparent 65%);
-  mask-image: radial-gradient(ellipse 65% 55% at 15% 30%, #ffffff 0%, transparent 75%),
-              radial-gradient(ellipse 50% 50% at 88% 70%, #ffffff 0%, transparent 65%);
+  background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 65% 45% at 82% 25%, #ffffff 0%, transparent 75%),
+                      radial-gradient(ellipse 50% 36% at 15% 64%, #ffffff 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 65% 45% at 82% 25%, #ffffff 0%, transparent 75%),
+              radial-gradient(ellipse 50% 36% at 15% 64%, #ffffff 0%, transparent 70%);
 }
 
 /* 4. Services (Capabilities): Ambient presence behind accordions */

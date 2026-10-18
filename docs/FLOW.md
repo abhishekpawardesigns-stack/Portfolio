@@ -13,10 +13,10 @@ Portfolio/
 │   ├── #about                  # About Me: 2 opening paragraphs + "Know More About Me" CTA + Photo Carousel
 │   ├── #why-us                 # How I Work: 3D interactive wheel + Scroll-docking capability cards
 │   ├── #projects               # Selected Work: 3-column grid + Slide-over Drawer modal
-│   ├── #services               # Capabilities & Pricing Accordions
+│   ├── #services               # [ARCHIVED / HIDDEN] Capabilities & Pricing Accordions
 │   ├── #experience             # Horizontal scroll-driven career timeline
 │   ├── #tools                  # Core design, AI & dev tools bento grid
-│   ├── #process                # 4-stage end-to-end design process
+│   ├── #process                # 5-stage 3D Obsidian Mountain Monoliths ("My Process")
 │   └── #contact                # Contact channels & available lead roles footer
 │
 ├── about.html                  # Dedicated About Me Narrative Page

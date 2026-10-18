@@ -30,8 +30,42 @@
     @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap');
 
     :root {
+      color-scheme: dark;
       --font-heading: 'Bricolage Grotesque', sans-serif !important;
       --font-brand: 'Bricolage Grotesque', sans-serif !important;
+    }
+
+    html, body {
+      color-scheme: dark;
+      scrollbar-color: rgba(255, 255, 255, 0.28) #000000;
+      scrollbar-width: thin;
+    }
+
+    * {
+      scrollbar-color: rgba(255, 255, 255, 0.28) #000000;
+      scrollbar-width: thin;
+    }
+
+    /* Minimalist Dark Scrollbar (Zero white strip; dark black track with unobtrusive translucent handle) */
+    ::-webkit-scrollbar {
+      width: 6px !important;
+      height: 6px !important;
+      background-color: #000000 !important;
+    }
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-track-piece {
+      background: #000000 !important;
+      background-color: #000000 !important;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.28) !important;
+      border-radius: 9999px !important;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.5) !important;
+    }
+    ::-webkit-scrollbar-corner {
+      background: #000000 !important;
     }
 
     .brand-logo, .brand-logo span {
@@ -390,13 +424,14 @@
       position: absolute;
       inset: 0;
       background-image: 
-        radial-gradient(circle at 15% 35%, rgba(213, 247, 76, 0.065) 0%, transparent 60%),
+        radial-gradient(circle at 15% 42%, rgba(213, 247, 76, 0.065) 0%, transparent 60%),
         radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
       background-size: auto, 36px 36px;
-      -webkit-mask-image: radial-gradient(ellipse 65% 55% at 15% 30%, #ffffff 0%, transparent 75%),
-                          radial-gradient(ellipse 50% 50% at 88% 70%, #ffffff 0%, transparent 65%);
-      mask-image: radial-gradient(ellipse 65% 55% at 15% 30%, #ffffff 0%, transparent 75%),
-                  radial-gradient(ellipse 50% 50% at 88% 70%, #ffffff 0%, transparent 65%);
+      background-position: center top;
+      -webkit-mask-image: radial-gradient(ellipse 65% 45% at 15% 42%, #ffffff 0%, transparent 75%),
+                          radial-gradient(ellipse 50% 45% at 88% 70%, #ffffff 0%, transparent 65%);
+      mask-image: radial-gradient(ellipse 65% 45% at 15% 42%, #ffffff 0%, transparent 75%),
+                  radial-gradient(ellipse 50% 45% at 88% 70%, #ffffff 0%, transparent 65%);
       pointer-events: none;
       z-index: 0;
     }
@@ -607,6 +642,324 @@
         min-height: 240px;
       }
     }
+
+    /* ==========================================================================
+       SECTION 6: 3D OBSIDIAN MOUNTAIN MONOLITHS ("MY PROCESS")
+       Aligned 1:1 with Homepage 1240px Design System Container & Section Paddings
+       ========================================================================== */
+    .monolith-scroll-section {
+      position: relative;
+      height: 500vh;
+      width: 100%;
+      background: #000000;
+      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .monolith-sticky-stage {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background: #000000;
+      z-index: 10;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    /* Ambient left void dot matrix with organic lime glow (harmonizing with other sections) */
+    .monolith-sticky-stage::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 22% 62%, rgba(213, 247, 76, 0.065) 0%, transparent 55%),
+        radial-gradient(rgba(255, 255, 255, 0.28) 1.35px, transparent 1.35px);
+      background-size: auto, 36px 36px;
+      background-position: center top;
+      -webkit-mask-image: radial-gradient(ellipse 55% 42% at 22% 62%, #ffffff 0%, transparent 75%);
+      mask-image: radial-gradient(ellipse 55% 42% at 22% 62%, #ffffff 0%, transparent 75%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Ambient canvas & space vignette */
+    #monolith-space-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .monolith-space-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: radial-gradient(circle at 65% 58%, transparent 30%, rgba(0, 0, 0, 0.92) 100%);
+      pointer-events: none;
+    }
+
+    .monolith-ambient-depth-glow {
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      top: 55%;
+      left: 70%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(213, 247, 76, 0.045) 0%, rgba(14, 20, 28, 0.08) 50%, transparent 75%);
+      border-radius: 50%;
+      filter: blur(85px);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Stage Content Grid: 1:1 Spacing with 1240px Container & 7.5rem Header Clearance */
+    .monolith-stage-content-grid {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: var(--container-width, 1240px);
+      height: 100%;
+      margin: 0 auto;
+      padding: 7.5rem 2rem 3rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: flex-start;
+      gap: 4.5rem;
+      pointer-events: none;
+    }
+
+    /* Left Side: Editorial & Intro */
+    .monolith-left-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      pointer-events: auto;
+      max-width: 540px;
+    }
+
+    .monolith-left-panel .section-tag-group {
+      display: inline-flex;
+      align-self: flex-start;
+      width: fit-content !important;
+      max-width: fit-content !important;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+      background: rgba(213, 247, 76, 0.08);
+      border: 1px solid rgba(213, 247, 76, 0.25);
+      border-radius: 100px;
+      padding: 8px 18px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .monolith-main-heading {
+      font-family: var(--font-heading, 'Bricolage Grotesque', sans-serif) !important;
+      font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.14;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 1.35rem;
+    }
+
+    .monolith-main-heading span.muted {
+      color: #7b8089;
+      font-weight: 600;
+    }
+
+    .monolith-supporting-statement {
+      font-size: 1.05rem;
+      color: #a1a5b0;
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    /* Right 3D Stage */
+    .monolith-right-stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+      perspective-origin: 50% 50%;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    /* 3D Depth Rig: lowered to 76% so mountains sit comfortably below the text */
+    .monolith-depth-rig {
+      position: absolute;
+      top: 76%;
+      left: 48%;
+      width: 0;
+      height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      pointer-events: none;
+    }
+
+    /* Mountain node: 700px majestic presence matching test.html */
+    .monolith-node {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      pointer-events: none;
+    }
+
+    .monolith-rock-img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.95));
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+      transform: translateZ(0);
+    }
+
+    /* Breathing animations */
+    .monolith-breathe-0 { animation: monolithFloatBreathe 9s ease-in-out infinite alternate; }
+    .monolith-breathe-1 { animation: monolithFloatBreathe 8.2s ease-in-out infinite alternate-reverse; }
+    .monolith-breathe-2 { animation: monolithFloatBreathe 10s ease-in-out infinite alternate; }
+    .monolith-breathe-3 { animation: monolithFloatBreathe 8.8s ease-in-out infinite alternate-reverse; }
+    .monolith-breathe-4 { animation: monolithFloatBreathe 9.5s ease-in-out infinite alternate; }
+
+    @keyframes monolithFloatBreathe {
+      0% { transform: translateY(-6px); }
+      100% { transform: translateY(6px); }
+    }
+
+    /* Stationary annotations layer */
+    .monolith-annotations-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 25;
+    }
+
+    /* Floating annotation cards: stationary layer, shifted 35px upwards away from mountain peak */
+    .monolith-leader-wrapper {
+      position: absolute;
+      top: calc(3.7rem - 35px); /* Shifted 35px upwards to provide comfortable clearance above mountain peak */
+      left: 50%;
+      transform: translateX(-50%) translateY(14px) translateZ(30px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 25;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.4s ease;
+    }
+
+    .monolith-leader-wrapper.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0) translateZ(30px);
+    }
+
+    .monolith-text-block {
+      text-align: left;
+      width: 420px;
+      max-width: 85vw;
+      pointer-events: none;
+    }
+
+    .monolith-text-title {
+      font-family: var(--font-heading, 'Bricolage Grotesque', sans-serif) !important;
+      font-size: clamp(1.4rem, 2.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      color: #ffffff;
+      margin-bottom: 0.45rem;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95);
+    }
+
+    .monolith-text-desc {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #a8adb8;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+    }
+
+    /* Longer white gradient leader line connecting toward mountain */
+    .monolith-leader-line {
+      width: 1.5px;
+      height: 50px;
+      margin-left: 2px;
+      margin-top: 0.75rem;
+      background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.9) 25%, 
+        rgba(255, 255, 255, 0.9) 75%, 
+        rgba(255, 255, 255, 0) 100%
+      );
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
+    }
+
+    @media (max-width: 960px) {
+      .monolith-stage-content-grid {
+        grid-template-columns: 1fr;
+        padding-top: 5.5rem;
+        gap: 2rem;
+        height: auto;
+      }
+      .monolith-left-panel {
+        max-width: 100%;
+      }
+      .monolith-right-stage {
+        width: 100%;
+        height: 50vh;
+      }
+      .monolith-depth-rig {
+        top: 60%;
+        left: 50%;
+      }
+      .monolith-node {
+        width: 380px;
+        height: 380px;
+      }
+      .monolith-text-block {
+        width: 300px;
+      }
+      .monolith-text-title {
+        font-size: 1.5rem;
+      }
+      .monolith-leader-wrapper {
+        top: 1rem;
+      }
+      .monolith-leader-line {
+        height: 40px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -631,11 +984,12 @@
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#why-us" class="nav-link">How I Work</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
+          <!-- <li><a href="#services" class="nav-link">Services</a></li> -->
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#tools" class="nav-link">Tools</a></li>
           <li><a href="#process" class="nav-link">My Process</a></li>
           <li><a href="#contact" class="nav-link">Contacts</a></li>
+          <li><a href="test.html" class="nav-link">Test</a></li>
         </ul>
       </nav>
 
@@ -1094,7 +1448,9 @@
           </h2>
 
           <p class="wheel-stage-description">
-            Over the years, my work has moved way past pushing buttons in Figma. I dive into legacy workflows, bridge the gap with engineering, and use AI practically to move from problem to production-ready design without wasted cycles.
+            I've spent enough time in Figma to know that moving rectangles around is the easy part. The interesting stuff happens when workflows get messy, requirements keep changing, and a seemingly simple feature turns into twenty different edge cases.
+            <br><br>
+            That's the part I enjoy. Figuring out what matters, making sense of the chaos, and turning complicated problems into products that feel surprisingly simple.
           </p>
         </div>
 
@@ -1102,81 +1458,81 @@
         <div class="wheel-stage-right-panel">
           <div class="wheel-card-slot">
 
-            <!-- Pillar 01: AI-Accelerated Workflows -->
+            <!-- Pillar 01: Making Complex Things Feel Simple -->
             <div class="wheel-card active" id="wheel-card-0">
               <div class="wheel-card-header">
-                <h3 class="wheel-card-title">AI-Accelerated Workflows</h3>
+                <h3 class="wheel-card-title">Making Complex Things Feel Simple</h3>
               </div>
               <p class="wheel-card-text">
-                I don’t use AI to replace critical thinking—I use it to eliminate grunt work.
+                Give me a dashboard with fifteen filters, confusing navigation, and a workflow nobody wants to touch. I'll happily dig into it.
               </p>
               <p class="wheel-card-text">
-                Whether it’s generating realistic datasets so tables don’t just say “Lorem Ipsum,” pressure-testing edge cases, or speeding through discovery synthesis, it lets me move from an abstract problem to a tangible, testable prototype in a fraction of the time.
+                I enjoy finding the logic beneath the mess and making complicated experiences feel effortless.
               </p>
             </div>
 
-            <!-- Pillar 02: Untangling Complex Flows -->
+            <!-- Pillar 02: Design That Developers Won't Hate -->
             <div class="wheel-card" id="wheel-card-1">
               <div class="wheel-card-header">
-                <h3 class="wheel-card-title">Untangling Complex Flows</h3>
+                <h3 class="wheel-card-title">Design That Developers Won't Hate</h3>
               </div>
               <p class="wheel-card-text">
-                My favorite projects are usually the ones others find overwhelming: data-heavy dashboards, multi-layered filters, and enterprise workflows with endless states.
+                A beautiful design means very little if it falls apart during development.
               </p>
               <p class="wheel-card-text">
-                I like taking something tangled and intimidating, stripping away the visual noise, and turning it into an interface where users can do their jobs without second-guessing every click.
+                I like bringing engineering into the conversation early, understanding what's practical, and finding solutions that work beyond Figma.
               </p>
             </div>
 
-            <!-- Pillar 03: Production-Ready Design Systems -->
+            <!-- Pillar 03: AI Does the Heavy Lifting. I Do the Thinking. -->
             <div class="wheel-card" id="wheel-card-2">
               <div class="wheel-card-header">
-                <h3 class="wheel-card-title">Production-Ready Design Systems</h3>
+                <h3 class="wheel-card-title">AI Does the Heavy Lifting. I Do the Thinking.</h3>
               </div>
               <p class="wheel-card-text">
-                I’ve watched too many beautiful UI kits die because developers couldn’t realistically build them.
+                I'm all for working smarter, especially when AI can take repetitive work off my plate.
               </p>
               <p class="wheel-card-text">
-                When I build components, tokens, and layouts, I structure them around how code is actually written. It keeps the design scalable, cuts down on handoff misunderstandings, and means engineers don't have to redesign my work in the PR.
+                From exploring ideas to testing edge cases, I use it to spend less time on busywork and more time solving actual problems.
               </p>
             </div>
 
-            <!-- Pillar 04: Heuristic Audits & Problem Hunting -->
+            <!-- Pillar 04: Components With a Purpose -->
             <div class="wheel-card" id="wheel-card-3">
               <div class="wheel-card-header">
-                <h3 class="wheel-card-title">Heuristic Audits &amp; Problem Hunting</h3>
+                <h3 class="wheel-card-title">Components With a Purpose</h3>
               </div>
               <p class="wheel-card-text">
-                Before I redesign a single screen, I tear the existing experience apart to see where things are actually breaking down.
+                I don't build design systems just to have a perfectly organised Figma library.
               </p>
               <p class="wheel-card-text">
-                I look for the clunky transitions, the misleading microcopy, and the dead ends users silently struggle with. Fixing those hidden friction points often creates more real impact than a complete visual overhaul ever could.
+                I build reusable components and patterns that help products stay consistent as they grow and make life easier for everyone building them.
               </p>
             </div>
 
-            <!-- Pillar 05: Engineering & Feasibility Alignment -->
+            <!-- Pillar 05: Finding the Problems Nobody Asked About -->
             <div class="wheel-card" id="wheel-card-4">
               <div class="wheel-card-header">
-                <h3 class="wheel-card-title">Engineering &amp; Feasibility Alignment</h3>
+                <h3 class="wheel-card-title">Finding the Problems Nobody Asked About</h3>
               </div>
               <p class="wheel-card-text">
-                Design doesn’t live in a vacuum. Throughout my career, I’ve worked closely with engineering from day one—talking through API limits, technical debt, and database structures.
+                Sometimes the biggest UX problem isn't the screen everyone wants redesigned.
               </p>
               <p class="wheel-card-text">
-                Understanding what's expensive to build versus what's simple allows me to design solutions that survive development and ship on schedule.
+                It's the confusing label, the unnecessary step, or that one interaction users keep getting stuck on. I enjoy finding those little things before jumping into solutions.
               </p>
             </div>
 
-            <!-- Pillar 06: Full-Cycle Product Ownership -->
+            <!-- Pillar 06: From Messy Briefs to Meaningful Products -->
             <div class="wheel-card" id="wheel-card-5">
               <div class="wheel-card-header">
-                <h3 class="wheel-card-title">Full-Cycle Product Ownership</h3>
+                <h3 class="wheel-card-title">From Messy Briefs to Meaningful Products</h3>
               </div>
               <p class="wheel-card-text">
-                I’ve spent years seeing products through their entire journey—starting from ambiguous whiteboard conversations, moving through rough wireframes and high-fidelity polish, all the way to watching real people use what we built.
+                Not every project starts with a clear problem statement and a perfectly written PRD. Most don't.
               </p>
               <p class="wheel-card-text">
-                I care just as much about whether a feature solves a genuine problem post-launch as I do about how clean it looks on day one.
+                I enjoy working through the ambiguity, connecting user needs with business goals, and staying involved as ideas turn into real experiences.
               </p>
             </div>
 
@@ -1197,10 +1553,14 @@
     </div>
   </section>
 
-  <!-- Section 4: Services Matrix & Accordions -->
+  <!-- ==========================================================================
+       [ARCHIVED / HIDDEN SECTION: WHAT I DO (Services Matrix & Accordions)]
+       Preserved for instant revival whenever required.
+       To revive this section, simply remove the comment tags around this block.
+       ========================================================================== -->
+  <!--
   <section class="section" id="services">
     <div class="container">
-      <!-- Section Header -->
       <div class="reveal">
         <div class="section-tag-group">
           <svg class="star-icon" viewBox="0 0 480 512"><path d="M471.99 334.43L336.06 256l135.93-78.43c7.66-4.42 10.28-14.2 5.86-21.86l-32.02-55.43c-4.42-7.65-14.21-10.28-21.87-5.86l-135.93 78.43V16c0-8.84-7.17-16-16.01-16h-64.04c-8.84 0-16.01 7.16-16.01 16v156.86L56.04 94.43c-7.66-4.42-17.45-1.79-21.87 5.86L2.15 155.71c-4.42 7.65-1.8 17.44 5.86 21.86L143.94 256 8.01 334.43c-7.66 4.42-10.28 14.21-5.86 21.86l32.02 55.43c4.42 7.65 14.21 10.27 21.87 5.86l135.93-78.43V496c0 8.84 7.17 16 16.01 16h64.04c8.84 0 16.01-7.16 16.01-16V339.14l135.93 78.43c7.66 4.42 17.45 1.8 21.87-5.86l32.02-55.43c4.42-7.65 1.8-17.43-5.86-21.85z"></path></svg>
@@ -1211,10 +1571,8 @@
         <p class="section-description" style="max-width: 100%;">Strategic product design leadership, scalable design systems, and end-to-end interface engineering tailored to elevate velocity and user adoption.</p>
       </div>
 
-      <!-- Full-Width Nested Accordions -->
       <div class="accordion-wrapper reveal">
 
-        <!-- Card 01 (Default Open) -->
         <div class="accordion-item open" id="accordion-1">
           <div class="accordion-header" onclick="toggleAccordion('accordion-1')">
             <h3 class="accordion-title">
@@ -1245,7 +1603,6 @@
           </div>
         </div>
 
-        <!-- Card 02 -->
         <div class="accordion-item" id="accordion-2">
           <div class="accordion-header" onclick="toggleAccordion('accordion-2')">
             <h3 class="accordion-title">
@@ -1276,7 +1633,6 @@
           </div>
         </div>
 
-        <!-- Card 03 -->
         <div class="accordion-item" id="accordion-3">
           <div class="accordion-header" onclick="toggleAccordion('accordion-3')">
             <h3 class="accordion-title">
@@ -1310,6 +1666,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- Section 5: Experience (Scroll-Driven Pinned Horizontal Timeline) -->
   <section class="horizontal-scroll-section" id="experience">
@@ -1545,8 +1902,148 @@
     </div>
   </section>
 
-  <!-- Section 6: Process ("My Process") -->
-  <section class="section" id="process" style="border-bottom: 1px solid var(--border-dark);">
+  <!-- Section 6: Process ("My Process" 3D Mountain Monoliths) -->
+  <section class="monolith-scroll-section" id="process">
+    <div class="monolith-sticky-stage">
+      
+      <!-- Minimalist Shooting Stars & Dust Canvas -->
+      <canvas id="monolith-space-canvas"></canvas>
+
+      <!-- Deep space vignette -->
+      <div class="monolith-space-vignette"></div>
+
+      <!-- Ambient Depth Glow behind mountains -->
+      <div class="monolith-ambient-depth-glow"></div>
+
+      <!-- Split Screen Layout: Left Editorial + Right 3D Mountain Stage (1:1 with 1240px Container) -->
+      <div class="monolith-stage-content-grid">
+        
+        <!-- LEFT PANEL: Large Headline & Supporting Copy -->
+        <div class="monolith-left-panel">
+          <div class="section-tag-group">
+            <svg class="star-icon" viewBox="0 0 480 512"><path d="M471.99 334.43L336.06 256l135.93-78.43c7.66-4.42 10.28-14.2 5.86-21.86l-32.02-55.43c-4.42-7.65-14.21-10.28-21.87-5.86l-135.93 78.43V16c0-8.84-7.17-16-16.01-16h-64.04c-8.84 0-16.01 7.16-16.01 16v156.86L56.04 94.43c-7.66-4.42-17.45-1.79-21.87 5.86L2.15 155.71c-4.42 7.65-1.8 17.44 5.86 21.86L143.94 256 8.01 334.43c-7.66 4.42-10.28 14.21-5.86 21.86l32.02 55.43c4.42 7.65 14.21 10.27 21.87 5.86l135.93-78.43V496c0 8.84 7.17 16 16.01 16h64.04c8.84 0 16.01-7.16 16.01-16V339.14l135.93 78.43c7.66 4.42 17.45 1.8 21.87-5.86l32.02-55.43c4.42-7.65 1.8-17.43-5.86-21.85z"></path></svg>
+            <span class="section-tag-text">My Process</span>
+          </div>
+
+          <h2 class="monolith-main-heading">
+            Less Chaos. More Clarity.<br><span class="muted">Better Products.</span>
+          </h2>
+
+          <p class="monolith-supporting-statement">
+            There's no magic formula behind my process. Just curiosity, practical thinking, the right tools, and a healthy amount of collaboration. Here's how I bring it all together.
+          </p>
+        </div>
+
+        <!-- RIGHT STAGE: 3D Mountain Monoliths (Pushed right & lowered) -->
+        <div class="monolith-right-stage" id="monolithRightStage">
+          
+          <!-- Stationary Annotations Layer (Never scales or zooms with 3D rocks; pure fade-in/out) -->
+          <div class="monolith-annotations-layer">
+            
+            <!-- ANNOTATION 01: SMARTER WORKFLOWS -->
+            <div class="monolith-leader-wrapper active" id="monolith-annot0">
+              <div class="monolith-text-block">
+                <h3 class="monolith-text-title">Smarter Workflows</h3>
+                <p class="monolith-text-desc">
+                  I use AI to speed up repetitive tasks, explore ideas, and catch things I might otherwise miss. That leaves more room for the decisions that actually need a designer.
+                </p>
+              </div>
+              <div class="monolith-leader-line"></div>
+            </div>
+
+            <!-- ANNOTATION 02: BETTER TOGETHER -->
+            <div class="monolith-leader-wrapper" id="monolith-annot1">
+              <div class="monolith-text-block">
+                <h3 class="monolith-text-title">Better Together</h3>
+                <p class="monolith-text-desc">
+                  Good ideas get better when different perspectives come together. I involve product and engineering early so we're solving the same problem, not working in separate directions.
+                </p>
+              </div>
+              <div class="monolith-leader-line"></div>
+            </div>
+
+            <!-- ANNOTATION 03: PEOPLE FIRST -->
+            <div class="monolith-leader-wrapper" id="monolith-annot2">
+              <div class="monolith-text-block">
+                <h3 class="monolith-text-title">People First</h3>
+                <p class="monolith-text-desc">
+                  Before jumping into solutions, I try to understand what people are struggling with and why. The goal isn't to design more screens, but to make their experience genuinely easier.
+                </p>
+              </div>
+              <div class="monolith-leader-line"></div>
+            </div>
+
+            <!-- ANNOTATION 04: INTENTIONAL DESIGN -->
+            <div class="monolith-leader-wrapper" id="monolith-annot3">
+              <div class="monolith-text-block">
+                <h3 class="monolith-text-title">Intentional Design</h3>
+                <p class="monolith-text-desc">
+                  I love beautiful interfaces, but I don't follow trends just because they look good. Every layout, interaction, and visual detail should have a reason to exist.
+                </p>
+              </div>
+              <div class="monolith-leader-line"></div>
+            </div>
+
+            <!-- ANNOTATION 05: REAL IMPACT -->
+            <div class="monolith-leader-wrapper" id="monolith-annot4">
+              <div class="monolith-text-block">
+                <h3 class="monolith-text-title">Real Impact</h3>
+                <p class="monolith-text-desc">
+                  A polished design is only part of the job. What matters is whether it solves the original problem and what we can learn from how people actually use it.
+                </p>
+              </div>
+              <div class="monolith-leader-line"></div>
+            </div>
+
+          </div>
+
+          <!-- 3D Mountain Rig (Spatial scaling & camera fly-by applies strictly to the mountain rocks) -->
+          <div class="monolith-depth-rig" id="monolithStageRig">
+
+            <!-- MOUNTAIN 01 -->
+            <div class="monolith-node" id="monolith-node0">
+              <div class="monolith-breathe-0">
+                <img src="images/rock-1.png" alt="Floating Obsidian Mountain - Smarter Workflows" class="monolith-rock-img" />
+              </div>
+            </div>
+
+            <!-- MOUNTAIN 02 -->
+            <div class="monolith-node" id="monolith-node1">
+              <div class="monolith-breathe-1">
+                <img src="images/rock-2.png" alt="Floating Obsidian Mountain - Better Together" class="monolith-rock-img" />
+              </div>
+            </div>
+
+            <!-- MOUNTAIN 03 -->
+            <div class="monolith-node" id="monolith-node2">
+              <div class="monolith-breathe-2">
+                <img src="images/rock-3.png" alt="Floating Obsidian Mountain - People First" class="monolith-rock-img" />
+              </div>
+            </div>
+
+            <!-- MOUNTAIN 04 -->
+            <div class="monolith-node" id="monolith-node3">
+              <div class="monolith-breathe-3">
+                <img src="images/rock-4.png" alt="Floating Obsidian Mountain - Intentional Design" class="monolith-rock-img" />
+              </div>
+            </div>
+
+            <!-- MOUNTAIN 05 -->
+            <div class="monolith-node" id="monolith-node4">
+              <div class="monolith-breathe-4">
+                <img src="images/rock-5.png" alt="Floating Obsidian Mountain - Real Impact" class="monolith-rock-img" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6 (Archived Bento): Process ("My Process" - Hidden) -->
+  <section class="section" id="process-old-bento" style="display: none !important;">
     <div class="container">
       <div class="process-header-wrap reveal">
         <div class="process-header-left">
@@ -1732,7 +2229,7 @@
         <li><a href="#about" class="footer-link">About</a></li>
         <li><a href="#projects" class="footer-link">Projects</a></li>
         <li><a href="#why-us" class="footer-link">How I Work</a></li>
-        <li><a href="#services" class="footer-link">Services</a></li>
+        <!-- <li><a href="#services" class="footer-link">Services</a></li> -->
         <li><a href="#experience" class="footer-link">Experience</a></li>
         <li><a href="#tools" class="footer-link">Tools</a></li>
         <li><a href="#process" class="footer-link">My Process</a></li>
@@ -2361,6 +2858,238 @@
         lastTime = t0;
         requestAnimationFrame(renderWheel);
       });
+    })();
+  </script>
+
+  <!-- ==========================================================================
+       SECTION 6: 3D OBSIDIAN MOUNTAIN MONOLITHS ENGINE ("MY PROCESS")
+       ========================================================================== -->
+  <script>
+    (() => {
+      const monolithSection = document.getElementById('process');
+      if (!monolithSection) return;
+
+      const nodes = [
+        document.getElementById('monolith-node0'),
+        document.getElementById('monolith-node1'),
+        document.getElementById('monolith-node2'),
+        document.getElementById('monolith-node3'),
+        document.getElementById('monolith-node4')
+      ];
+
+      const annotations = [
+        document.getElementById('monolith-annot0'),
+        document.getElementById('monolith-annot1'),
+        document.getElementById('monolith-annot2'),
+        document.getElementById('monolith-annot3'),
+        document.getElementById('monolith-annot4')
+      ];
+
+      // Unbending straight 3D flight trajectories (identical to test.html)
+      const FLIGHT_VECTORS = [
+        { dirX: -140, dirY: -30 }, // Mountain 0
+        { dirX: 180,  dirY: -35 }, // Mountain 1
+        { dirX: -170, dirY: -40 }, // Mountain 2
+        { dirX: 160,  dirY: -45 }, // Mountain 3
+        { dirX: -130, dirY: -50 }  // Mountain 4
+      ];
+
+      const TOTAL_STAGES = 5;
+      let targetProgress = 0.0;
+      let currentProgress = 0.0;
+      let activeAnnotIndex = -1;
+      let isMonolithInView = false;
+
+      function updateMonolithAnnotations(prog) {
+        const targetIdx = Math.max(0, Math.min(4, Math.round(prog)));
+        if (targetIdx !== activeAnnotIndex) {
+          activeAnnotIndex = targetIdx;
+          annotations.forEach((annot, idx) => {
+            if (!annot) return;
+            if (idx === targetIdx) {
+              annot.classList.add('active');
+            } else {
+              annot.classList.remove('active');
+            }
+          });
+        }
+      }
+
+      function onMonolithScroll() {
+        if (!monolithSection) return;
+        const rect = monolithSection.getBoundingClientRect();
+        const trackHeight = monolithSection.offsetHeight - window.innerHeight;
+        const scrolledInside = -rect.top;
+        const progress = Math.max(0, Math.min(1, scrolledInside / Math.max(1, trackHeight)));
+        targetProgress = progress * 4.0;
+      }
+
+      window.addEventListener('scroll', onMonolithScroll, { passive: true });
+      window.addEventListener('resize', onMonolithScroll, { passive: true });
+      onMonolithScroll();
+
+      // IntersectionObserver optimization: pause 3D render loop & meteors when section is out of viewport
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            isMonolithInView = entry.isIntersecting;
+            if (entry.isIntersecting) {
+              onMonolithScroll();
+            }
+          });
+        }, { rootMargin: '150px 0px 150px 0px' });
+        observer.observe(monolithSection);
+      } else {
+        isMonolithInView = true;
+      }
+
+      // Shooting stars canvas
+      const canvas = document.getElementById('monolith-space-canvas');
+      let ctx = null;
+      const shootingStars = [];
+
+      if (canvas) {
+        ctx = canvas.getContext('2d');
+        function resizeCanvas() {
+          if (!monolithSection) return;
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        function spawnMeteor() {
+          if (!isMonolithInView) return;
+          const angleDeg = Math.random() * 6 + 36;
+          const angleRad = (Math.PI / 180) * angleDeg;
+          const startX = Math.random() * (canvas.width * 0.75) + (canvas.width * 0.35);
+          const startY = Math.random() * (canvas.height * 0.45) - 30;
+
+          const isMicro = Math.random() < 0.4;
+          const length = isMicro ? (Math.random() * 30 + 45) : (Math.random() * 65 + 75);
+          const speed = isMicro ? (Math.random() * 6 + 14) : (Math.random() * 5 + 11);
+
+          shootingStars.push({
+            x: startX,
+            y: startY,
+            len: length,
+            speed: speed,
+            dx: -Math.cos(angleRad) * speed,
+            dy: Math.sin(angleRad) * speed,
+            life: 0,
+            maxLife: Math.random() * 24 + 20,
+            isMicro: isMicro
+          });
+        }
+
+        function scheduleMeteors() {
+          spawnMeteor();
+          const nextDelay = Math.random() * 180 + 300;
+          setTimeout(scheduleMeteors, nextDelay);
+        }
+        scheduleMeteors();
+      }
+
+      function renderShootingStars() {
+        if (!ctx || !canvas) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = shootingStars.length - 1; i >= 0; i--) {
+          const ss = shootingStars[i];
+          ss.x += ss.dx;
+          ss.y += ss.dy;
+          ss.life++;
+
+          const progress = ss.life / ss.maxLife;
+          const currentAlpha = Math.sin(progress * Math.PI) * (ss.isMicro ? 0.75 : 0.9);
+
+          const tailX = ss.x - (ss.dx / ss.speed) * ss.len;
+          const tailY = ss.y - (ss.dy / ss.speed) * ss.len;
+
+          const grad = ctx.createLinearGradient(ss.x, ss.y, tailX, tailY);
+          grad.addColorStop(0, `rgba(255, 255, 255, ${currentAlpha})`);
+          grad.addColorStop(0.35, `rgba(213, 247, 76, ${currentAlpha * 0.65})`);
+          grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+          ctx.beginPath();
+          ctx.moveTo(ss.x, ss.y);
+          ctx.lineTo(tailX, tailY);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = ss.isMicro ? 1.0 : 1.35;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(ss.x, ss.y, ss.isMicro ? 0.8 : 1.15, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha * 0.98})`;
+          ctx.fill();
+
+          if (ss.life >= ss.maxLife) {
+            shootingStars.splice(i, 1);
+          }
+        }
+      }
+
+      function renderMonolith3DLoop() {
+        requestAnimationFrame(renderMonolith3DLoop);
+        if (!isMonolithInView) return;
+
+        // Smooth damped follow to targetProgress (identical to Section 4 renderWheel)
+        const diff = targetProgress - currentProgress;
+        if (Math.abs(diff) < 0.0005) {
+          currentProgress = targetProgress;
+        } else {
+          currentProgress += diff * 0.12;
+        }
+
+        // Synchronize active text card & leader line to current physical stage
+        updateMonolithAnnotations(currentProgress);
+
+        // Position ALL 5 MOUNTAINS simultaneously along their straight 3D flight paths
+        // Hardware-accelerated GPU compositing only (transform & opacity, 0 paint/reflow)
+        nodes.forEach((node, i) => {
+          if (!node) return;
+          const rel = i - currentProgress;
+          const vec = FLIGHT_VECTORS[i];
+
+          const posX = rel * vec.dirX;
+          const posY = rel * vec.dirY;
+
+          let z = 0;
+          let scale = 1.0;
+          let opacity = 1.0;
+
+          if (rel <= 0) {
+            // Mountain is in focus or flying past camera to fill the screen
+            const passed = Math.abs(rel);
+            z = passed * 860;
+            scale = 1.0 + passed * 1.5;
+            opacity = Math.max(0, 1.0 - passed * 1.5);
+          } else {
+            // Background mountains receding into deep space
+            z = -rel * 450;
+            scale = Math.max(0.18, 1.0 / (1.0 + rel * 0.42));
+
+            if (rel <= 1.0) {
+              opacity = 0.82 + (1.0 - rel) * 0.18;
+            } else if (rel <= 2.0) {
+              opacity = 0.55 + (2.0 - rel) * 0.27;
+            } else if (rel <= 3.0) {
+              opacity = 0.38 + (3.0 - rel) * 0.17;
+            } else {
+              opacity = 0.22;
+            }
+          }
+
+          node.style.transform = `translate3d(${posX.toFixed(1)}px, ${posY.toFixed(1)}px, ${z.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+          node.style.opacity = opacity.toFixed(3);
+          node.style.visibility = opacity <= 0.01 ? 'hidden' : 'visible';
+        });
+
+        // Single RAF tick for shooting stars
+        renderShootingStars();
+      }
+      renderMonolith3DLoop();
     })();
   </script>
 
